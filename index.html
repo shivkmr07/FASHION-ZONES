@@ -3,1622 +3,916 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fashion Zones – Smart Living, Delivered</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Fashion Zones – Smart Picks for Modern Living</title>
+<meta name="description" content="Fashion Zones – Discover trending home essentials, kitchen gadgets, and garden tools. Quality products delivered to your door.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   CSS VARIABLES & RESET
-============================================================ */
-:root {
-  --cream: #faf7f2;
-  --warm-white: #fff9f3;
-  --terracotta: #c8603a;
-  --terracotta-dark: #a84e2c;
-  --terracotta-light: #e8845e;
-  --amber: #d4843e;
-  --sand: #e8d5b7;
-  --sand-dark: #c9b99a;
-  --charcoal: #2c2416;
-  --warm-gray: #7a6e62;
-  --light-gray: #f0ebe3;
-  --success: #5a8a5a;
-  --font-head: 'Playfair Display', Georgia, serif;
-  --font-body: 'DM Sans', sans-serif;
-  --radius: 12px;
-  --shadow: 0 4px 24px rgba(44,36,22,0.10);
-  --shadow-lg: 0 8px 40px rgba(44,36,22,0.16);
-  --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-body);
-  background: var(--cream);
-  color: var(--charcoal);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-a { text-decoration: none; color: inherit; }
-img { max-width: 100%; display: block; }
-button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }
+:root{--cream:#FAF7F2;--warm-white:#F5F0E8;--sand:#E8DDD0;--tan:#C9B99A;--terracotta:#C07A52;--terracotta-dark:#A5623D;--bark:#7A5C44;--espresso:#3D2B1F;--forest:#4A5C3E;--sage:#7A9170;--text-dark:#2C1A0E;--text-mid:#6B4C35;--text-light:#9E8070;--border:#DDD0C0;--shadow:rgba(60,35,20,0.12);--shadow-strong:rgba(60,35,20,0.22);--radius:12px;--radius-sm:8px;--transition:0.28s cubic-bezier(0.4,0,0.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit;border:none;outline:none}
+input,textarea{font-family:inherit;outline:none}
+h1,h2,h3,h4,h5{font-family:'Cormorant Garamond',serif;line-height:1.2}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.hidden{display:none!important}
 
-/* ============================================================
-   PRODUCTS DATA — EDIT HERE
-============================================================ */
-/* (Data is in JS below) */
+/* NAVBAR */
+.navbar{background:var(--espresso);position:sticky;top:0;z-index:1000;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:64px;max-width:1200px;margin:0 auto}
+.nav-logo-text{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--tan);letter-spacing:.04em;line-height:1}
+.nav-logo-tagline{font-size:.65rem;color:var(--text-light);letter-spacing:.12em;text-transform:uppercase;display:block;margin-top:1px}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.nav-btn{background:none;color:#fff;padding:8px 14px;border-radius:8px;font-size:.85rem;font-weight:500;transition:var(--transition);display:flex;align-items:center;gap:6px}
+.nav-btn:hover{background:rgba(255,255,255,.1)}
+.cart-btn{background:var(--terracotta)!important;color:#fff;padding:8px 16px;border-radius:8px;position:relative}
+.cart-btn:hover{background:var(--terracotta-dark)!important}
+.cart-badge{position:absolute;top:-6px;right:-6px;background:#fff;color:var(--espresso);font-size:.68rem;font-weight:700;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--terracotta)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;padding:8px;cursor:pointer}
+.nav-hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:var(--transition)}
 
-/* ============================================================
-   NAVBAR
-============================================================ */
-#navbar {
-  position: sticky; top: 0; z-index: 1000;
-  background: var(--warm-white);
-  border-bottom: 1.5px solid var(--sand);
-  box-shadow: 0 2px 12px rgba(44,36,22,0.07);
-}
-.nav-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 20px;
-  gap: 16px;
-}
-.nav-logo {
-  font-family: var(--font-head);
-  font-size: 1.6rem; font-weight: 900;
-  color: var(--terracotta);
-  letter-spacing: -0.5px;
-  line-height: 1;
-}
-.nav-logo span { color: var(--charcoal); }
-.nav-tagline {
-  font-size: 0.7rem; color: var(--warm-gray);
-  letter-spacing: 0.08em; text-transform: uppercase;
-  display: block; margin-top: 2px;
-}
-.nav-actions { display: flex; align-items: center; gap: 12px; }
-.nav-cart-btn {
-  position: relative;
-  background: var(--terracotta);
-  color: #fff;
-  padding: 9px 18px;
-  border-radius: 50px;
-  font-size: 0.9rem; font-weight: 600;
-  display: flex; align-items: center; gap: 7px;
-  transition: background var(--transition), transform var(--transition);
-}
-.nav-cart-btn:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
-.cart-count {
-  background: #fff;
-  color: var(--terracotta);
-  font-size: 0.72rem; font-weight: 700;
-  border-radius: 50%; width: 20px; height: 20px;
-  display: inline-flex; align-items: center; justify-content: center;
-  line-height: 1;
-}
-.nav-home-btn {
-  font-size: 0.88rem; font-weight: 500;
-  color: var(--warm-gray);
-  padding: 8px 14px;
-  border-radius: 50px;
-  transition: background var(--transition), color var(--transition);
-}
-.nav-home-btn:hover { background: var(--light-gray); color: var(--charcoal); }
+/* MOBILE NAV */
+.mobile-nav{position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--espresso);z-index:999;transform:translateX(-100%);transition:transform .3s ease;padding:24px 20px}
+.mobile-nav.open{transform:translateX(0)}
+.mobile-nav a{display:block;color:#fff;font-size:1.1rem;font-weight:500;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08);transition:var(--transition)}
+.mobile-nav a:hover{color:var(--tan);padding-left:8px}
 
-/* ============================================================
-   PAGES
-============================================================ */
-.page { display: none; }
-.page.active { display: block; }
+/* PAGES */
+.page{display:none}.page.active{display:block}
 
-/* ============================================================
-   HOME — HERO
-============================================================ */
-.hero {
-  background: linear-gradient(135deg, #2c2416 0%, #4a3520 40%, #c8603a 100%);
-  position: relative; overflow: hidden;
-  padding: 70px 20px 60px;
-  text-align: center;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-.hero-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
-.hero-badge {
-  display: inline-block;
-  background: rgba(255,255,255,0.15);
-  color: #f5d9a8;
-  font-size: 0.75rem; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 5px 16px; border-radius: 50px;
-  border: 1px solid rgba(245,217,168,0.3);
-  margin-bottom: 18px;
-}
-.hero h1 {
-  font-family: var(--font-head);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 900; color: #fff;
-  line-height: 1.12; margin-bottom: 14px;
-}
-.hero h1 em { color: #f5d9a8; font-style: normal; }
-.hero p {
-  color: rgba(255,255,255,0.75);
-  font-size: 1.05rem; line-height: 1.65;
-  margin-bottom: 28px;
-}
-.hero-cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--sand);
-  color: var(--charcoal);
-  font-size: 0.95rem; font-weight: 700;
-  padding: 13px 28px; border-radius: 50px;
-  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-}
-.hero-cta:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--espresso) 0%,#6B3D28 50%,var(--bark) 100%);min-height:480px;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
+.hero-content{position:relative;z-index:1}
+.hero-tag{display:inline-block;background:var(--terracotta);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);color:var(--cream);font-weight:600;margin-bottom:14px}
+.hero h1 span{color:var(--tan)}
+.hero p{color:var(--sand);font-size:1.05rem;max-width:480px;margin-bottom:28px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--terracotta);color:#fff;padding:13px 28px;border-radius:8px;font-weight:600;font-size:.95rem;transition:var(--transition);display:inline-block;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--terracotta-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(192,122,82,.35)}
+.btn-outline{border:2px solid var(--tan);color:var(--tan);padding:11px 26px;border-radius:8px;font-weight:500;font-size:.95rem;transition:var(--transition);display:inline-block;background:none;cursor:pointer}
+.btn-outline:hover{background:var(--tan);color:var(--espresso);transform:translateY(-2px)}
 
-/* ============================================================
-   CATEGORY SCROLL STRIP
-============================================================ */
-.cat-strip-section {
-  background: var(--warm-white);
-  padding: 32px 0 28px;
-  border-bottom: 1.5px solid var(--sand);
-}
-.cat-strip-title {
-  text-align: center;
-  font-family: var(--font-head);
-  font-size: 1.05rem; font-weight: 700;
-  color: var(--warm-gray);
-  letter-spacing: 0.06em; text-transform: uppercase;
-  margin-bottom: 22px;
-}
-.cat-scroll-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding: 6px 28px 10px;
-  cursor: grab;
-}
-.cat-scroll-wrapper:active { cursor: grabbing; }
-.cat-scroll-wrapper::-webkit-scrollbar { display: none; }
-.cat-scroll-track {
-  display: flex; gap: 24px;
-  width: max-content;
-  margin: 0 auto;
-}
-.cat-icon-item {
-  display: flex; flex-direction: column; align-items: center;
-  gap: 10px; cursor: pointer;
-  transition: transform var(--transition);
-  user-select: none;
-  min-width: 100px;
-}
-.cat-icon-item:hover { transform: translateY(-5px) scale(1.04); }
-.cat-icon-item:active { transform: scale(0.96); }
-.cat-circle {
-  width: 88px; height: 88px; border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid var(--sand);
-  box-shadow: 0 4px 18px rgba(44,36,22,0.13);
-  transition: border-color var(--transition), box-shadow var(--transition);
-  background: var(--light-gray);
-  flex-shrink: 0;
-}
-.cat-circle img { width: 100%; height: 100%; object-fit: cover; }
-.cat-icon-item:hover .cat-circle {
-  border-color: var(--terracotta);
-  box-shadow: 0 6px 24px rgba(200,96,58,0.28);
-}
-.cat-label {
-  font-size: 0.78rem; font-weight: 600;
-  color: var(--charcoal);
-  text-align: center; line-height: 1.25;
-  max-width: 90px;
-}
+/* CATEGORY ICONS */
+.cat-scroll-section{padding:40px 0 30px;background:var(--warm-white);border-bottom:1px solid var(--border)}
+.cat-scroll-section>div>h2{font-size:1.5rem;text-align:center;margin-bottom:24px;color:var(--espresso)}
+.cat-scroll-wrapper{position:relative}
+.cat-scroll-track{display:flex;gap:28px;overflow-x:auto;padding:10px 50px 16px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.cat-scroll-track::-webkit-scrollbar{display:none}
+.cat-icon-item{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;transition:var(--transition)}
+.cat-icon-item:hover{transform:translateY(-5px)}
+.cat-icon-circle{width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid var(--border);box-shadow:0 4px 16px var(--shadow);transition:var(--transition)}
+.cat-icon-circle img{width:100%;height:100%;object-fit:cover}
+.cat-icon-item:hover .cat-icon-circle{border-color:var(--terracotta);box-shadow:0 8px 24px var(--shadow-strong)}
+.cat-icon-label{font-size:.82rem;font-weight:600;color:var(--text-mid);text-align:center;white-space:nowrap}
+.cat-scroll-arrow{position:absolute;top:50%;transform:translateY(-50%);background:var(--espresso);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;box-shadow:0 4px 12px var(--shadow-strong);transition:var(--transition);border:none;font-size:1rem}
+.cat-scroll-arrow:hover{background:var(--terracotta)}
+.cat-scroll-arrow.left{left:4px}
+.cat-scroll-arrow.right{right:4px}
 
-/* ============================================================
-   FILTER BAR
-============================================================ */
-.filter-section {
-  max-width: 1200px; margin: 36px auto 0;
-  padding: 0 20px;
-}
-.filter-section h2 {
-  font-family: var(--font-head);
-  font-size: 1.8rem; font-weight: 700;
-  margin-bottom: 16px;
-  color: var(--charcoal);
-}
-.filter-bar {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin-bottom: 28px;
-}
-.filter-btn {
-  padding: 7px 18px; border-radius: 50px;
-  font-size: 0.83rem; font-weight: 600;
-  border: 1.5px solid var(--sand-dark);
-  color: var(--warm-gray);
-  background: var(--warm-white);
-  transition: all var(--transition);
-  letter-spacing: 0.02em;
-}
-.filter-btn:hover { border-color: var(--terracotta); color: var(--terracotta); background: #fff5f1; }
-.filter-btn.active {
-  background: var(--terracotta); color: #fff;
-  border-color: var(--terracotta);
-}
+/* FILTER BAR */
+.filter-bar{padding:24px 0;background:var(--warm-white);border-bottom:1px solid var(--border)}
+.filter-bar-inner{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.filter-btn{padding:8px 20px;border-radius:50px;font-size:.85rem;font-weight:500;border:2px solid var(--border);background:#fff;color:var(--text-mid);transition:var(--transition);cursor:pointer}
+.filter-btn:hover,.filter-btn.active{background:var(--espresso);color:#fff;border-color:var(--espresso)}
 
-/* ============================================================
-   PRODUCT GRID
-============================================================ */
-.product-grid {
-  max-width: 1200px; margin: 0 auto 60px;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 24px;
-}
-.product-card {
-  background: var(--warm-white);
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1.5px solid var(--sand);
-  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
-  display: flex; flex-direction: column;
-  cursor: pointer;
-}
-.product-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
-  border-color: var(--sand-dark);
-}
-.card-img-wrap {
-  position: relative; overflow: hidden;
-  aspect-ratio: 1 / 1;
-  background: var(--light-gray);
-}
-.card-img-wrap img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
-}
-.product-card:hover .card-img-wrap img { transform: scale(1.07); }
-.card-category-badge {
-  position: absolute; top: 10px; left: 10px;
-  background: rgba(255,249,243,0.92);
-  color: var(--terracotta);
-  font-size: 0.68rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  padding: 3px 10px; border-radius: 50px;
-  border: 1px solid var(--sand);
-}
-.card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; }
-.card-name {
-  font-family: var(--font-head);
-  font-size: 1rem; font-weight: 700;
-  color: var(--charcoal);
-  line-height: 1.3; margin-bottom: 8px;
-  flex: 1;
-}
-.card-price {
-  font-size: 1.15rem; font-weight: 700;
-  color: var(--terracotta);
-  margin-bottom: 12px;
-  font-family: var(--font-head);
-}
-.card-price .original { text-decoration: line-through; color: var(--warm-gray); font-size: 0.82rem; margin-left: 6px; font-family: var(--font-body); }
-.card-actions { display: flex; gap: 8px; }
-.btn-view {
-  flex: 1; padding: 9px 12px;
-  border-radius: 8px;
-  background: var(--light-gray);
-  color: var(--charcoal);
-  font-size: 0.82rem; font-weight: 600;
-  transition: background var(--transition), color var(--transition);
-  text-align: center;
-}
-.btn-view:hover { background: var(--sand); }
-.btn-cart {
-  flex: 1.4; padding: 9px 12px;
-  border-radius: 8px;
-  background: var(--terracotta);
-  color: #fff;
-  font-size: 0.82rem; font-weight: 600;
-  transition: background var(--transition), transform var(--transition);
-  text-align: center;
-}
-.btn-cart:hover { background: var(--terracotta-dark); transform: scale(1.02); }
-.btn-cart.in-cart { background: var(--success); }
-.btn-cart.in-cart:hover { background: #4a7a4a; }
+/* SECTION HEADER */
+.section-header{text-align:center;margin-bottom:40px}
+.section-header h2{font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--espresso);margin-bottom:8px}
+.section-header p{color:var(--text-light);font-size:.97rem}
+.section-divider{width:60px;height:3px;background:var(--terracotta);border-radius:2px;margin:12px auto}
 
-/* ============================================================
-   PRODUCT DETAIL PAGE
-============================================================ */
-.product-detail { max-width: 1200px; margin: 0 auto; padding: 30px 20px 60px; }
-.back-btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  color: var(--warm-gray); font-size: 0.87rem; font-weight: 500;
-  margin-bottom: 24px;
-  padding: 6px 0;
-  transition: color var(--transition);
-}
-.back-btn:hover { color: var(--terracotta); }
-.pd-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: start;
-  margin-bottom: 48px;
-}
-@media(max-width:768px){ .pd-grid { grid-template-columns: 1fr; gap: 28px; } }
+/* PRODUCT GRID */
+.products-section{padding:50px 0}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px}
+.product-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 12px var(--shadow);transition:var(--transition);cursor:pointer;border:1px solid var(--border)}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 12px 36px var(--shadow-strong)}
+.product-card-img{position:relative;overflow:hidden;aspect-ratio:1/1;background:var(--warm-white)}
+.product-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.product-card:hover .product-card-img img{transform:scale(1.06)}
+.product-card-badge{position:absolute;top:10px;left:10px;background:var(--terracotta);color:#fff;font-size:.7rem;font-weight:600;padding:3px 10px;border-radius:50px;text-transform:uppercase;letter-spacing:.06em}
+.product-card-body{padding:16px}
+.product-card-cat{font-size:.72rem;color:var(--terracotta);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.product-card-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--espresso);margin-bottom:8px;line-height:1.3}
+.product-card-price{font-size:1.2rem;font-weight:700;color:var(--bark);margin-bottom:14px}
+.product-card-actions{display:flex;gap:8px}
+.btn-add-cart{flex:1;background:var(--espresso);color:#fff;padding:10px;border-radius:var(--radius-sm);font-size:.85rem;font-weight:600;transition:var(--transition);border:none;cursor:pointer}
+.btn-add-cart:hover{background:var(--terracotta)}
+.btn-add-cart.in-cart{background:var(--forest)}
+.btn-view{background:var(--warm-white);color:var(--text-mid);padding:10px 14px;border-radius:var(--radius-sm);font-size:.85rem;transition:var(--transition);border:1px solid var(--border);cursor:pointer}
+.btn-view:hover{background:var(--sand)}
+.no-products{text-align:center;padding:60px 20px;color:var(--text-light);font-size:1rem}
 
-/* Gallery */
-.pd-gallery { position: sticky; top: 90px; }
-.main-img-wrap {
-  border-radius: var(--radius);
-  overflow: hidden;
-  aspect-ratio: 1/1;
-  background: var(--light-gray);
-  margin-bottom: 12px;
-  border: 1.5px solid var(--sand);
-}
-.main-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-.thumb-strip {
-  display: flex; gap: 8px;
-  overflow-x: auto; scrollbar-width: none;
-  padding-bottom: 4px;
-}
-.thumb-strip::-webkit-scrollbar { display: none; }
-.thumb {
-  width: 64px; height: 64px; flex-shrink: 0;
-  border-radius: 8px; overflow: hidden;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: border-color var(--transition), opacity var(--transition);
-  background: var(--light-gray);
-}
-.thumb img { width: 100%; height: 100%; object-fit: cover; }
-.thumb.active { border-color: var(--terracotta); }
-.thumb:hover { opacity: 0.85; }
+/* PRODUCT PAGE */
+.product-page{padding:40px 0 80px}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:28px;font-size:.84rem;color:var(--text-light)}
+.breadcrumb a{color:var(--terracotta)}
+.breadcrumb a:hover{text-decoration:underline}
+.product-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
 
-/* Product Info */
-.pd-info {}
-.pd-category-tag {
-  display: inline-block;
-  background: #fff5f1; color: var(--terracotta);
-  font-size: 0.72rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.1em;
-  padding: 4px 12px; border-radius: 50px;
-  border: 1px solid #f5d4c0;
-  margin-bottom: 12px;
-}
-.pd-name {
-  font-family: var(--font-head);
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  font-weight: 900; color: var(--charcoal);
-  line-height: 1.2; margin-bottom: 14px;
-}
-.pd-price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 20px; }
-.pd-price {
-  font-family: var(--font-head);
-  font-size: 1.9rem; font-weight: 700;
-  color: var(--terracotta);
-}
-.pd-stock {
-  font-size: 0.78rem; font-weight: 600;
-  color: var(--success);
-  background: #edf7ed; padding: 3px 10px; border-radius: 50px;
-}
-.pd-short-desc {
-  color: var(--warm-gray);
-  font-size: 0.93rem; line-height: 1.7;
-  margin-bottom: 24px;
-  border-left: 3px solid var(--sand-dark);
-  padding-left: 14px;
-}
-.qty-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-.qty-label { font-size: 0.85rem; font-weight: 600; color: var(--warm-gray); }
-.qty-control {
-  display: flex; align-items: center;
-  border: 1.5px solid var(--sand-dark);
-  border-radius: 8px; overflow: hidden;
-}
-.qty-btn {
-  width: 36px; height: 36px;
-  background: var(--light-gray);
-  color: var(--charcoal);
-  font-size: 1.1rem; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-  transition: background var(--transition);
-}
-.qty-btn:hover { background: var(--sand); }
-.qty-num {
-  width: 44px; text-align: center;
-  font-size: 0.95rem; font-weight: 700;
-  color: var(--charcoal);
-  line-height: 36px;
-  border-left: 1.5px solid var(--sand);
-  border-right: 1.5px solid var(--sand);
-}
-.add-cart-main {
-  width: 100%;
-  background: var(--terracotta);
-  color: #fff;
-  font-size: 1rem; font-weight: 700;
-  padding: 15px;
-  border-radius: 10px;
-  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-  letter-spacing: 0.02em;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  margin-bottom: 14px;
-}
-.add-cart-main:hover { background: var(--terracotta-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(200,96,58,0.35); }
-.add-cart-main.in-cart { background: var(--success); }
-.add-cart-main.in-cart:hover { background: #4a7a4a; }
+/* GALLERY */
+.gallery{position:sticky;top:84px}
+.gallery-main{border-radius:var(--radius);overflow:hidden;background:var(--warm-white);aspect-ratio:1/1;margin-bottom:12px;border:1px solid var(--border)}
+.gallery-main img{width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+.gallery-thumbs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.gallery-thumbs::-webkit-scrollbar{display:none}
+.gallery-thumb{flex:0 0 70px;height:70px;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer;border:2px solid transparent;transition:var(--transition)}
+.gallery-thumb:hover,.gallery-thumb.active{border-color:var(--terracotta)}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover}
 
-/* Info pills */
-.pd-meta-pills {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin-top: 16px; padding-top: 16px;
-  border-top: 1px solid var(--sand);
-}
-.meta-pill {
-  font-size: 0.75rem; font-weight: 500;
-  color: var(--warm-gray);
-  background: var(--light-gray);
-  padding: 5px 12px; border-radius: 50px;
-  display: flex; align-items: center; gap: 4px;
-}
+/* PRODUCT INFO */
+.product-cat-badge{display:inline-block;background:var(--warm-white);color:var(--terracotta);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:50px;border:1px solid var(--border);margin-bottom:12px}
+.product-title{font-size:clamp(1.5rem,3vw,2.2rem);color:var(--espresso);margin-bottom:12px}
+.product-price-row{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.product-price-big{font-size:2rem;font-weight:700;color:var(--bark)}
+.product-stock{font-size:.82rem;color:var(--forest);font-weight:600;background:#edf4ea;padding:4px 12px;border-radius:50px}
+.product-short-desc{color:var(--text-mid);font-size:.95rem;line-height:1.7;margin-bottom:24px;border-left:3px solid var(--terracotta);padding-left:14px}
+.qty-row{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.qty-label{font-size:.85rem;font-weight:600;color:var(--text-mid)}
+.qty-selector{display:flex;align-items:center;border:2px solid var(--border);border-radius:8px;overflow:hidden}
+.qty-btn{background:var(--warm-white);border:none;width:38px;height:38px;font-size:1.2rem;font-weight:600;color:var(--espresso);cursor:pointer;transition:var(--transition)}
+.qty-btn:hover{background:var(--sand)}
+.qty-num{width:46px;text-align:center;font-size:1rem;font-weight:600;color:var(--espresso);padding:0 8px}
+.product-actions{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.btn-buy-now{flex:1;background:var(--terracotta);color:#fff;padding:14px 24px;border-radius:var(--radius-sm);font-size:1rem;font-weight:700;transition:var(--transition);min-width:140px;border:none;cursor:pointer}
+.btn-buy-now:hover{background:var(--terracotta-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(192,122,82,.3)}
+.btn-cart-full{flex:1;background:var(--espresso);color:#fff;padding:14px 24px;border-radius:var(--radius-sm);font-size:1rem;font-weight:700;transition:var(--transition);min-width:140px;border:none;cursor:pointer}
+.btn-cart-full:hover{background:var(--bark);transform:translateY(-2px)}
+.btn-cart-full.in-cart{background:var(--forest)}
+.trust-badges{display:flex;gap:16px;padding:16px;background:var(--warm-white);border-radius:var(--radius-sm);border:1px solid var(--border);flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--text-mid);font-weight:500}
+.trust-icon{font-size:1.1rem}
 
-/* ============================================================
-   ACCORDION — Product Detail Sections
-============================================================ */
-.accordion-section {
-  max-width: 1200px; margin: 0 auto 48px;
-  padding: 0 20px;
-}
-.accordion-title-main {
-  font-family: var(--font-head);
-  font-size: 1.4rem; font-weight: 700;
-  color: var(--charcoal);
-  margin-bottom: 16px;
-}
-.accordion-list { display: flex; flex-direction: column; gap: 0; border: 1.5px solid var(--sand); border-radius: var(--radius); overflow: hidden; }
-.accordion-item {}
-.accordion-item + .accordion-item { border-top: 1.5px solid var(--sand); }
-.accordion-header {
-  width: 100%;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 20px;
-  background: var(--warm-white);
-  transition: background var(--transition);
-  text-align: left;
-}
-.accordion-header:hover { background: var(--light-gray); }
-.accordion-header-text {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 0.97rem; font-weight: 700;
-  color: var(--charcoal);
-}
-.accordion-icon-label {
-  font-size: 1rem;
-}
-.accordion-toggle {
-  width: 26px; height: 26px;
-  border-radius: 50%;
-  background: var(--sand);
-  color: var(--charcoal);
-  font-size: 1.1rem; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-  transition: background var(--transition), transform var(--transition);
-  flex-shrink: 0;
-}
-.accordion-item.open .accordion-toggle {
-  background: var(--terracotta); color: #fff;
-  transform: rotate(45deg);
-}
-.accordion-body {
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1);
-}
-.accordion-item.open .accordion-body { max-height: 2000px; }
-.accordion-body-inner {
-  padding: 0 20px 20px;
-  font-size: 0.9rem; line-height: 1.8;
-  color: var(--warm-gray);
-}
-.accordion-body-inner ul {
-  list-style: none; padding: 0;
-  display: flex; flex-direction: column; gap: 6px;
-}
-.accordion-body-inner ul li::before {
-  content: '•';
-  color: var(--terracotta);
-  font-weight: 700;
-  margin-right: 8px;
-}
-.accordion-body-inner p { margin-bottom: 10px; }
+/* STICKY BUY */
+.sticky-buy-bar{position:fixed;bottom:0;left:0;right:0;z-index:900;background:var(--espresso);padding:12px 20px;display:none;align-items:center;justify-content:space-between;box-shadow:0 -4px 20px rgba(0,0,0,.3)}
+.sticky-buy-bar.show{display:flex}
+.sticky-product-name{color:#fff;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-right:12px}
+.sticky-price{color:var(--tan);font-size:1.1rem;font-weight:700;margin-right:12px;white-space:nowrap}
+.sticky-buy-btn{background:var(--terracotta);color:#fff;padding:10px 22px;border-radius:8px;font-size:.9rem;font-weight:700;border:none;cursor:pointer;white-space:nowrap}
 
-/* ============================================================
-   RELATED PRODUCTS
-============================================================ */
-.related-section {
-  max-width: 1200px; margin: 0 auto 60px;
-  padding: 0 20px;
-}
-.related-section h2 {
-  font-family: var(--font-head);
-  font-size: 1.5rem; font-weight: 700;
-  color: var(--charcoal); margin-bottom: 20px;
-}
-.related-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 18px;
-}
+/* ACCORDION */
+.accordion-section{margin-top:44px}
+.accordion-item{border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:10px;overflow:hidden}
+.accordion-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;cursor:pointer;transition:var(--transition);font-weight:600;font-size:.97rem;color:var(--espresso)}
+.accordion-header:hover{background:var(--warm-white)}
+.accordion-icon{font-size:1.4rem;color:var(--terracotta);transition:var(--transition);line-height:1;font-weight:300;min-width:20px;text-align:center}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height .4s ease;background:var(--warm-white)}
+.accordion-body.open{max-height:900px}
+.accordion-body-inner{padding:18px 20px;font-size:.93rem;line-height:1.8;color:var(--text-mid)}
+.accordion-body-inner ul{padding-left:20px}
+.accordion-body-inner ul li{margin-bottom:6px}
 
-/* ============================================================
-   CART PAGE
-============================================================ */
-.cart-page { max-width: 900px; margin: 0 auto; padding: 36px 20px 60px; }
-.cart-page h1 {
-  font-family: var(--font-head);
-  font-size: 2rem; font-weight: 800;
-  margin-bottom: 28px; color: var(--charcoal);
-}
-.cart-empty {
-  text-align: center; padding: 60px 20px;
-}
-.cart-empty svg { margin: 0 auto 18px; }
-.cart-empty p {
-  font-size: 1.1rem; color: var(--warm-gray);
-  margin-bottom: 20px;
-}
-.cart-table { width: 100%; border-collapse: collapse; margin-bottom: 28px; }
-.cart-table th {
-  text-align: left; padding: 10px 12px;
-  font-size: 0.78rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--warm-gray);
-  border-bottom: 1.5px solid var(--sand);
-}
-.cart-table td {
-  padding: 14px 12px;
-  border-bottom: 1px solid var(--light-gray);
-  vertical-align: middle;
-}
-.cart-item-img {
-  width: 60px; height: 60px; object-fit: cover;
-  border-radius: 8px; border: 1.5px solid var(--sand);
-}
-.cart-item-name { font-weight: 600; font-size: 0.9rem; }
-.cart-item-price { color: var(--terracotta); font-weight: 700; }
-.cart-qty-ctrl {
-  display: flex; align-items: center; gap: 4px;
-}
-.cqb {
-  width: 28px; height: 28px;
-  background: var(--light-gray);
-  border-radius: 6px;
-  font-size: 0.95rem; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-  transition: background var(--transition);
-}
-.cqb:hover { background: var(--sand); }
-.cart-qty-num { min-width: 28px; text-align: center; font-weight: 700; font-size: 0.9rem; }
-.cart-remove { color: var(--warm-gray); font-size: 1.1rem; transition: color var(--transition); padding: 4px; }
-.cart-remove:hover { color: #c0392b; }
-.cart-total-box {
-  background: var(--warm-white);
-  border: 1.5px solid var(--sand);
-  border-radius: var(--radius);
-  padding: 22px 24px;
-  max-width: 360px; margin-left: auto;
-}
-.cart-total-row {
-  display: flex; justify-content: space-between;
-  font-size: 0.9rem; color: var(--warm-gray);
-  margin-bottom: 8px;
-}
-.cart-total-row.grand {
-  font-size: 1.15rem; font-weight: 800;
-  color: var(--charcoal);
-  border-top: 1.5px solid var(--sand);
-  padding-top: 12px; margin-top: 6px;
-}
-.checkout-btn {
-  width: 100%; margin-top: 14px;
-  background: var(--terracotta); color: #fff;
-  font-size: 1rem; font-weight: 700;
-  padding: 14px; border-radius: 10px;
-  transition: background var(--transition), transform var(--transition);
-}
-.checkout-btn:hover { background: var(--terracotta-dark); transform: translateY(-2px); }
+/* RELATED */
+.related-section{padding:50px 0;background:var(--warm-white);border-top:1px solid var(--border)}
 
-/* ============================================================
-   CHECKOUT PAGE
-============================================================ */
-.checkout-page { max-width: 960px; margin: 0 auto; padding: 36px 20px 60px; }
-.checkout-page h1 {
-  font-family: var(--font-head);
-  font-size: 2rem; font-weight: 800;
-  margin-bottom: 28px; color: var(--charcoal);
-}
-.checkout-grid {
-  display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 36px;
-  align-items: start;
-}
-@media(max-width:768px){ .checkout-grid { grid-template-columns: 1fr; } }
-.form-card {
-  background: var(--warm-white);
-  border: 1.5px solid var(--sand);
-  border-radius: var(--radius); padding: 28px;
-}
-.form-card h2 {
-  font-family: var(--font-head);
-  font-size: 1.2rem; font-weight: 700;
-  margin-bottom: 20px; color: var(--charcoal);
-}
-.form-group { margin-bottom: 16px; }
-.form-group label {
-  display: block; font-size: 0.82rem; font-weight: 600;
-  color: var(--warm-gray); margin-bottom: 6px;
-  letter-spacing: 0.03em;
-}
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  background: var(--cream);
-  border: 1.5px solid var(--sand-dark);
-  border-radius: 8px;
-  padding: 11px 14px;
-  font-size: 0.92rem; font-family: var(--font-body);
-  color: var(--charcoal);
-  transition: border-color var(--transition), box-shadow var(--transition);
-  outline: none;
-}
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--terracotta);
-  box-shadow: 0 0 0 3px rgba(200,96,58,0.12);
-}
-.form-group textarea { resize: vertical; min-height: 80px; }
-.submit-order {
-  width: 100%;
-  background: var(--terracotta); color: #fff;
-  font-size: 1rem; font-weight: 700;
-  padding: 15px; border-radius: 10px;
-  margin-top: 8px;
-  transition: background var(--transition), transform var(--transition);
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-}
-.submit-order:hover { background: var(--terracotta-dark); transform: translateY(-2px); }
-.submit-order:disabled { background: var(--warm-gray); cursor: not-allowed; transform: none; }
+/* CART */
+.cart-page{padding:50px 0 80px}
+.cart-page h1{font-size:2rem;color:var(--espresso);margin-bottom:32px}
+.cart-empty{text-align:center;padding:80px 20px}
+.cart-empty-icon{font-size:4rem;margin-bottom:16px}
+.cart-empty p{color:var(--text-light);font-size:1.05rem;margin-bottom:24px}
+.cart-grid{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start}
+.cart-items{background:#fff;border-radius:var(--radius);border:1px solid var(--border);overflow:hidden}
+.cart-item{display:flex;gap:16px;padding:20px;border-bottom:1px solid var(--border);align-items:center}
+.cart-item:last-child{border-bottom:none}
+.cart-item-img{width:80px;height:80px;border-radius:var(--radius-sm);overflow:hidden;flex-shrink:0;background:var(--warm-white)}
+.cart-item-img img{width:100%;height:100%;object-fit:cover}
+.cart-item-info{flex:1}
+.cart-item-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--espresso);margin-bottom:4px;cursor:pointer}
+.cart-item-name:hover{color:var(--terracotta)}
+.cart-item-price{color:var(--bark);font-weight:700;font-size:1rem;margin-bottom:10px}
+.cart-item-qty{display:flex;align-items:center;border:1px solid var(--border);border-radius:6px;overflow:hidden;width:fit-content}
+.cart-qty-btn{background:var(--warm-white);border:none;width:32px;height:32px;font-size:1rem;cursor:pointer;transition:var(--transition)}
+.cart-qty-btn:hover{background:var(--sand)}
+.cart-qty-num{width:36px;text-align:center;font-size:.9rem;font-weight:600}
+.cart-item-remove{background:none;border:none;color:var(--text-light);font-size:1.3rem;cursor:pointer;padding:4px;transition:var(--transition);flex-shrink:0}
+.cart-item-remove:hover{color:#c0392b}
+.cart-summary{background:#fff;border-radius:var(--radius);border:1px solid var(--border);padding:24px;position:sticky;top:84px}
+.cart-summary h3{font-size:1.3rem;color:var(--espresso);margin-bottom:20px}
+.summary-row{display:flex;justify-content:space-between;margin-bottom:12px;font-size:.93rem;color:var(--text-mid)}
+.summary-row.total{font-weight:700;font-size:1.1rem;color:var(--espresso);border-top:1px solid var(--border);padding-top:14px;margin-top:8px}
+.btn-checkout{width:100%;background:var(--terracotta);color:#fff;padding:15px;border-radius:var(--radius-sm);font-size:1rem;font-weight:700;margin-top:16px;transition:var(--transition);border:none;cursor:pointer}
+.btn-checkout:hover{background:var(--terracotta-dark)}
+.btn-continue{width:100%;background:none;border:2px solid var(--border);color:var(--text-mid);padding:12px;border-radius:var(--radius-sm);font-size:.9rem;font-weight:500;margin-top:10px;transition:var(--transition);cursor:pointer}
+.btn-continue:hover{border-color:var(--espresso);color:var(--espresso)}
 
-.order-summary-card {
-  background: var(--warm-white);
-  border: 1.5px solid var(--sand);
-  border-radius: var(--radius); padding: 24px;
-  position: sticky; top: 90px;
-}
-.order-summary-card h2 {
-  font-family: var(--font-head);
-  font-size: 1.1rem; font-weight: 700;
-  margin-bottom: 18px; color: var(--charcoal);
-}
-.summary-item {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 12px; padding-bottom: 12px;
-  border-bottom: 1px solid var(--light-gray);
-}
-.summary-item:last-of-type { border-bottom: none; }
-.summary-img {
-  width: 48px; height: 48px; object-fit: cover;
-  border-radius: 7px; border: 1.5px solid var(--sand); flex-shrink: 0;
-}
-.summary-name { font-size: 0.83rem; font-weight: 600; flex: 1; line-height: 1.3; }
-.summary-price { font-size: 0.88rem; font-weight: 700; color: var(--terracotta); white-space: nowrap; }
-.summary-total-row {
-  display: flex; justify-content: space-between;
-  font-size: 1.1rem; font-weight: 800;
-  color: var(--charcoal);
-  border-top: 1.5px solid var(--sand);
-  padding-top: 14px; margin-top: 8px;
-}
+/* CHECKOUT */
+.checkout-page{padding:50px 0 80px}
+.checkout-page h1{font-size:2rem;color:var(--espresso);margin-bottom:32px}
+.checkout-grid{display:grid;grid-template-columns:1fr 380px;gap:32px;align-items:start}
+.checkout-form-box{background:#fff;border-radius:var(--radius);border:1px solid var(--border);padding:32px}
+.checkout-form-box h2{font-size:1.3rem;color:var(--espresso);margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--text-mid);margin-bottom:6px}
+.form-group input,.form-group textarea{width:100%;padding:11px 14px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--cream);font-size:.95rem;color:var(--text-dark);transition:var(--transition)}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--terracotta);background:#fff}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-place-order{width:100%;background:var(--terracotta);color:#fff;padding:16px;border-radius:var(--radius-sm);font-size:1.05rem;font-weight:700;border:none;cursor:pointer;transition:var(--transition);margin-top:8px}
+.btn-place-order:hover{background:var(--terracotta-dark);transform:translateY(-2px)}
+.btn-place-order:disabled{background:var(--tan);cursor:not-allowed;transform:none}
+.checkout-order-summary{background:#fff;border-radius:var(--radius);border:1px solid var(--border);padding:24px;position:sticky;top:84px}
+.checkout-order-summary h3{font-size:1.2rem;color:var(--espresso);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.order-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);align-items:center}
+.order-item:last-of-type{border-bottom:none}
+.order-item-img{width:52px;height:52px;border-radius:var(--radius-sm);overflow:hidden;background:var(--warm-white);flex-shrink:0}
+.order-item-img img{width:100%;height:100%;object-fit:cover}
+.order-item-name{font-size:.87rem;font-weight:600;color:var(--espresso);flex:1;line-height:1.3}
+.order-item-sub{font-size:.78rem;color:var(--text-light);margin-top:2px}
+.order-item-price{font-size:.9rem;font-weight:700;color:var(--bark);white-space:nowrap}
 
-/* ============================================================
-   SUCCESS TOAST
-============================================================ */
-.success-overlay {
-  display: none; position: fixed; inset: 0; z-index: 9999;
-  background: rgba(44,36,22,0.55);
-  align-items: center; justify-content: center;
-  backdrop-filter: blur(3px);
-}
-.success-overlay.show { display: flex; }
-.success-box {
-  background: var(--warm-white);
-  border-radius: 20px; padding: 48px 40px;
-  text-align: center; max-width: 400px;
-  box-shadow: var(--shadow-lg);
-  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-@keyframes popIn {
-  from { transform: scale(0.75); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-.success-icon { font-size: 3.5rem; margin-bottom: 16px; }
-.success-box h2 {
-  font-family: var(--font-head); font-size: 1.7rem; font-weight: 800;
-  color: var(--charcoal); margin-bottom: 10px;
-}
-.success-box p { color: var(--warm-gray); line-height: 1.6; }
+/* SUCCESS */
+.success-overlay{position:fixed;inset:0;z-index:9999;background:rgba(61,43,31,.85);display:flex;align-items:center;justify-content:center}
+.success-box{background:#fff;border-radius:var(--radius);padding:48px 40px;text-align:center;max-width:420px;width:90%;box-shadow:0 24px 80px rgba(0,0,0,.3)}
+.success-icon{font-size:4rem;margin-bottom:16px}
+.success-box h2{font-size:1.8rem;color:var(--espresso);margin-bottom:10px}
+.success-box p{color:var(--text-mid);font-size:.95rem;line-height:1.6}
 
-/* ============================================================
-   FOOTER
-============================================================ */
-footer {
-  background: var(--charcoal);
-  color: rgba(255,255,255,0.7);
-  padding: 40px 20px 24px;
-  text-align: center;
-}
-.footer-logo {
-  font-family: var(--font-head);
-  font-size: 1.5rem; font-weight: 900;
-  color: var(--sand); margin-bottom: 8px;
-}
-.footer-tagline { font-size: 0.8rem; margin-bottom: 18px; }
-.footer-contact { font-size: 0.82rem; margin-bottom: 16px; line-height: 1.8; }
-.footer-contact a { color: var(--terracotta-light); }
-.footer-copy { font-size: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; margin-top: 16px; }
+/* FOOTER */
+.footer{background:var(--espresso);color:var(--sand);padding:50px 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--tan);display:block;margin-bottom:10px}
+.footer-desc{font-size:.87rem;color:var(--text-light);line-height:1.7;max-width:260px}
+.footer-contact{margin-top:16px}
+.footer-contact a{display:flex;align-items:center;gap:8px;color:var(--sand);font-size:.85rem;margin-bottom:8px;transition:var(--transition)}
+.footer-contact a:hover{color:var(--tan)}
+.footer-col h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--tan);margin-bottom:14px;font-weight:600}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{color:var(--text-light);font-size:.85rem;transition:var(--transition)}
+.footer-col ul li a:hover{color:var(--tan)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:18px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-size:.8rem;color:var(--text-light)}
 
-/* ============================================================
-   UTILITIES
-============================================================ */
-.btn-primary {
-  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  background: var(--terracotta); color: #fff;
-  font-size: 0.9rem; font-weight: 700;
-  padding: 11px 22px; border-radius: 10px;
-  transition: background var(--transition), transform var(--transition);
-}
-.btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
-.btn-outline {
-  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  background: transparent; color: var(--terracotta);
-  font-size: 0.9rem; font-weight: 700;
-  padding: 11px 22px; border-radius: 10px;
-  border: 2px solid var(--terracotta);
-  transition: all var(--transition);
-}
-.btn-outline:hover { background: var(--terracotta); color: #fff; }
-.mt8 { margin-top: 8px; }
-.mt16 { margin-top: 16px; }
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--espresso);color:#fff;padding:12px 24px;border-radius:50px;font-size:.88rem;font-weight:600;z-index:9998;transition:transform .3s ease;box-shadow:0 8px 24px rgba(0,0,0,.3);white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
 
-/* mobile responsive tweaks */
-@media(max-width: 600px) {
-  .cart-table th:nth-child(3),
-  .cart-table td:nth-child(3) { display: none; }
-  .pd-gallery { position: static; }
+/* TRUST BAR */
+.trust-bar{background:var(--espresso);padding:30px 0}
+.trust-bar-inner{display:flex;gap:32px;flex-wrap:wrap;justify-content:center}
+.trust-item-bar{display:flex;align-items:center;gap:10px;color:var(--sand)}
+.trust-icon-lg{font-size:1.8rem}
+.trust-title{font-weight:700;font-size:.9rem}
+.trust-sub{font-size:.78rem;color:var(--text-light)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .cart-grid{grid-template-columns:1fr}
+  .checkout-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-hamburger{display:flex}
+  .nav-desktop-links{display:none!important}
+  .hero{min-height:360px}
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .product-detail-grid{grid-template-columns:1fr;gap:28px}
+  .gallery{position:static}
+  .sticky-buy-bar{display:flex}
+  .cat-icon-circle{width:80px;height:80px}
+}
+@media(max-width:480px){
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .product-card-body{padding:10px}
+  .product-card-name{font-size:.9rem}
+  .product-card-actions{flex-direction:column}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .success-box{padding:32px 24px}
+  .trust-bar-inner{gap:20px}
 }
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-   NAVBAR
-============================================================ -->
-<nav id="navbar">
+<script>
+// ========== CONFIG ==========
+const CONFIG={siteName:"Fashion Zones",tagline:"Smart Picks for Modern Living",formspreeUrl:"https://formspree.io/f/mnjwqjde",currency:"₹",email:"shivkmr603@gmail.com",phone:"9546700242",domain:"fashionzones.in"};
+
+// ========== PRODUCTS ARRAY - Edit here ==========
+const PRODUCTS=[
+{id:"fz-001",name:"Mattress Lifter Tool (Pack of 2)",price:249,category:["trendy items"],badge:"Trending",description:"Make your bed in seconds without straining your hands or back with this smart Mattress Lifter Tool. Specially designed to lift and hold the mattress easily, it helps you tuck bedsheets, adjust bed covers, and place bedding neatly underneath without heavy effort. Its ergonomic wedge shape slides smoothly under the mattress and creates enough lifting space, giving you both hands free for quick and proper sheet tucking. Made from strong yet lightweight material, this tool is durable, reusable, and easy to handle for daily use.",features:["Ergonomic wedge design for easy mattress lifting","Helps tuck bedsheets quickly and neatly","Reduces hand, wrist, and back strain","Strong, lightweight, and reusable material","Suitable for all standard bed sizes","Pack of 2 for convenient use on both sides"],howItWorks:"Simply slide the mattress lifter under the side or corner of the mattress and push gently. The tool lifts and holds the mattress in an elevated position, creating enough space underneath to tuck bedsheets or adjust bed covers easily. Once your bedding is set, remove the tool and the mattress settles back into place.",whyChoose:"This mattress lifter tool makes daily bed making faster, easier, and more comfortable by removing the need to lift a heavy mattress with your hands. It saves time, prevents body strain, and gives your bed a neat and tight finish with minimal effort. Lightweight, practical, and highly useful, it is a smart home utility tool for every household.",images:["https://i.ibb.co/sJQWtw94/61n-Mbr-ZBSVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/CszwQrDq/71-1ap-Brv-RL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/C5mvQsQk/61-Bx-OV-o-DLL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/RkmSx9YM/71-Hkons-FPDL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/Z11k2cVm/61j-Wng2cx-UL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/tMFkbPpY/71bn-CPYae-ML-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/8g7R1P0t/71u-Lx3mwsn-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99},
+{id:"fz-002",name:"2 in 1 Portable Mini Bag Sealer",price:269,category:["trendy items"],badge:"Hot Pick",description:"Keep your snacks and groceries fresh for longer with this smart 2 in 1 Portable Mini Bag Sealer. Designed with both sealing and cutting functions, this handy device quickly reseals opened plastic packets to protect food from air, moisture, and dust. It uses fast heat sealing technology to create an airtight lock within seconds, helping maintain freshness and reduce food wastage. The built-in cutter allows neat and easy packet opening whenever needed. USB rechargeable and lightweight in design, it is simple to carry, easy to use, and perfect for daily kitchen storage, travel, office, or hostel use.",features:["2 in 1 sealing and cutting function","USB rechargeable with charging cable support","Quick heat sealing within seconds","Keeps food fresh and moisture free","Built-in packet cutter for easy opening","Compact, lightweight, and portable design","Easy one hand operation","Suitable for most plastic snack and grocery bags"],howItWorks:"Charge the device using the USB cable and switch it on. Wait a few seconds for the heating plate to warm up, then place the open end of the plastic packet between the sealing jaws. Press gently and slide across the packet to create an instant airtight seal. Use the built-in cutter side whenever you need to open the packet neatly.",whyChoose:"This mini bag sealer is a practical everyday kitchen gadget that helps keep food fresh, saves snacks from getting soft, and reduces unnecessary wastage. It removes the need for clips, rubber bands, or folding packets and offers a quick reusable sealing solution in one compact device. Easy, rechargeable, and highly useful, it is a smart addition to every home.",images:["https://i.ibb.co/Sww5KzGR/51-H0-Fb4-S-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/TDRxHrVL/710-I5-NM2kl-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/DHGnm5G7/71-Km-Ip-QDdv-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/PZPN830B/61a6-Ahm-Ab0-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/fV2hZ6pN/61-OMmo0-G9-SL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/4BkQcKv/81bh666c-VEL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/sB9N5hQ/61-Mmg-CTu-Yd-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99},
+{id:"fz-003",name:"Digital Kitchen Weighing Scale",price:329,category:["home & kitchen"],badge:"Best Seller",description:"Measure ingredients and everyday items with perfect accuracy using this smart Digital Kitchen Weighing Scale. Designed for kitchen, baking, grocery, and household use, this electronic scale provides quick and precise weight readings up to 10kg. It comes with an easy-to-read digital display and simple control buttons for hassle free operation. Whether you are weighing fruits, vegetables, flour, spices, parcels, or daily essentials, this compact machine ensures correct measurement every time. Made from durable lightweight material, it is portable, easy to store, and highly useful for home kitchens and regular household needs.",features:["High precision digital weight measurement","Supports weighing up to 10kg capacity","Easy to read LCD display screen","Quick and accurate instant results","Compact, lightweight, and portable design","Simple button control for easy use","Ideal for kitchen, grocery, and household items","Durable and long lasting body material"],howItWorks:"Place the scale on a flat surface and switch it on using the power button. Put the item or ingredient on the weighing platform and the digital screen will instantly show the exact weight. You can reset or tare the scale as needed for multiple measurements, making weighing simple, quick, and accurate.",whyChoose:"This digital weighing scale helps you measure food items and household products with better accuracy, making cooking, baking, dieting, and daily use much easier. It saves time, prevents guesswork, and gives reliable readings instantly. Compact, practical, and easy to use, it is a smart essential tool for every kitchen and home.",images:["https://i.ibb.co/mZ3sL4f/51-WMz-Zq09c-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/1Yj6WFMX/8167vj-X682-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/bM949SZM/71m-Vt-VAps3-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/d0c54Rbz/71a-UHwb-KDKL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/yc68jG8v/81-Lq-ALYh-7-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/3m0VFPVd/717p0-EXx-Gj-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99},
+{id:"fz-004",name:"5 in 1 Portable USB Air Cooler Fan",price:874,category:["home & kitchen","home essentials"],badge:"Summer Special",description:"Stay cool and comfortable anywhere with this advanced 5 in 1 Portable USB Air Cooler Fan. Designed with cooling fan, mist spray, humidifier, night light, and aroma diffuser functions in one compact device, it delivers refreshing cool air while also adding moisture to the surroundings for a more pleasant experience. The built-in water tank creates a fine mist that helps reduce dry heat, while the adjustable fan angle and multiple wind speed modes allow customized cooling as per your comfort. Its USB powered portable design makes it perfect for bedroom, office desk, study table, travel, and personal use during hot summer days.",features:["5 in 1 multifunction cooling device","Fan, air cooler, mist spray, humidifier, and night light","3 adjustable wind speed modes","Built-in water tank for cool mist spray","60 degree adjustable air flow direction","Soft LED light mode for night use","USB powered and energy efficient","Compact, lightweight, and portable design"],howItWorks:"Fill the water tank with clean water and connect the device through USB power. Switch it on and choose your preferred fan speed. Activate the mist spray mode to release cool moisture along with airflow for enhanced cooling. You can also adjust the fan direction and use the built-in light mode for night comfort. Simply refill water whenever needed for continuous refreshing air.",whyChoose:"This portable air cooler fan gives you personal cooling, humidifying, and mist comfort in one compact machine, making it far more useful than a normal table fan. It is energy saving, easy to carry, and ideal for hot weather when you need instant cool air in a small space. Practical, multifunctional, and stylish, it is a smart summer essential for home, office, or study use.",images:["https://i.ibb.co/hFMHTNCr/61x-UWj-SYQ4-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/7dcsW60D/71p-OUIn2-JHL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/RGs2hC03/71f-Moex-YOe-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/MDX4fdmj/71kpr-Kt-HMz-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/p6SV9Z5J/71-GS8-Kad-A8-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99},
+{id:"fz-005",name:"Door Bottom Guard Seal Strip (Pack of 2)",price:99,category:["home essentials","home & kitchen"],badge:"Value Deal",description:"Protect your home from dust, insects, outside noise, and unwanted air with this practical Door Bottom Guard Seal Strip. Designed to fit neatly at the bottom of doors, this smart guard fills the gap between the floor and the door to block dust, cold air, hot air, smoke, and small insects from entering inside. It also helps reduce outside noise and improves room insulation for a more comfortable indoor environment. Made from soft yet durable material, it slides smoothly with the door and can be installed easily without complicated tools. Perfect for bedrooms, kitchens, offices, and main doors, this useful strip helps keep your room cleaner, quieter, and energy efficient.",features:["Blocks dust, insects, smoke, and outside air","Helps reduce outside noise and door gaps","Improves room insulation and energy saving","Soft, durable, and long lasting material","Smooth sliding with door movement","Easy to install and remove","Suitable for most standard doors","Pack of 2 for extra convenience"],howItWorks:"Simply attach or place the guard strip at the bottom side of the door so that it covers the open gap between the door and the floor. As the door moves, the strip slides along smoothly while continuously blocking dust, air, insects, and noise from passing through the gap. It creates a protective barrier without affecting normal door use.",whyChoose:"This door guard seal strip is an easy and affordable way to make your room cleaner, quieter, and more comfortable. It helps stop dust buildup, prevents insects from entering, reduces unwanted outside noise, and keeps indoor air better controlled. Simple to use and highly practical, it is a smart household utility for everyday protection.",images:["https://i.ibb.co/Xk4rm2RP/61-Sl-PPPIcw-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/6c9dscd4/61y1sp-Mvy-EL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/s9dpL9Jm/61ob-Ri-Sq-Hc-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/CKK1289C/71-YKSA9-NEAL-AC-SL1500.jpg","https://i.ibb.co/1Y2VdWQV/61-R1-UH7q-QRL-AC-SL1500.jpg"],stock:99},
+{id:"fz-006",name:"Reusable Microfiber Cleaning Cloth Roll",price:280,category:["home essentials","home & kitchen"],badge:"Eco Choice",description:"Make everyday cleaning faster and more effective with this premium Reusable Microfiber Cleaning Cloth Roll. Designed with soft, highly absorbent microfiber material, each cloth easily wipes away dust, water, oil, stains, and dirt from kitchen surfaces, glass, furniture, electronics, vehicles, and household items without leaving scratches or lint. The convenient tear-away roll design allows you to pull and use one cloth at a time just like paper towels, but unlike ordinary tissues, these cloths are washable and reusable for multiple uses. Strong, durable, and quick drying, this cleaning roll is a practical solution for both home and professional cleaning tasks.",features:["Soft and highly absorbent microfiber material","Easily removes dust, water, oil, and stains","Tear-away roll design for convenient single use","Washable and reusable multiple times","Lint free and scratch free cleaning","Strong, durable, and quick drying cloth","Suitable for kitchen, glass, car, furniture, and electronics","Comes with multiple reusable cleaning sheets"],howItWorks:"Simply tear one cloth from the roll and use it to wipe the desired surface. The microfiber material instantly absorbs liquid, traps dust, and removes dirt effectively. After use, wash the cloth with water, let it dry, and reuse it again whenever needed. Pull a fresh sheet anytime for continuous cleaning convenience.",whyChoose:"This microfiber cleaning cloth roll gives you the convenience of paper towels with the durability of reusable fabric, making cleaning easier, cheaper, and more efficient. It saves money on disposable wipes, provides better absorbency, and works on almost every household surface. Practical, reusable, and highly useful, it is an everyday cleaning essential for every home.",images:["https://i.ibb.co/Gv420Qzp/81-Amu-Aw-EVVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/LjHzgG7/91oue-WXjmf-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/67Kp2K6H/81-Ub-Diiz-Xp-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/7xGPvbGG/81l-v8pt-k-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/GvbmHbVp/81ib-FHID-TL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/W4bdvzHH/81-Dg-W1-C3-Kd-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/kpPwyX5/81-RBn7-BFz5-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99},
+{id:"fz-007",name:"High Flow Submersible Cooler Water Pump",price:399,category:["garden tools"],badge:"Durable",description:"Ensure powerful and continuous water circulation with this efficient High Flow Submersible Cooler Water Pump. Specially designed for desert coolers, aquariums, fountains, and water circulation systems, this compact electric pump delivers a strong water flow rate for better cooling performance and smooth water movement. Built with durable motor technology, it operates with low power consumption while providing reliable high speed pumping. Its fully submersible design allows easy placement inside water tanks, and the sturdy body ensures long lasting daily use. Compact, lightweight, and easy to install, this pump is an ideal replacement or upgrade for home coolers and various water flow applications.",features:["High flow water pumping performance","Suitable for desert coolers, aquariums, and fountains","Energy efficient low power consumption motor","Fully submersible easy install design","Durable and long lasting body construction","Continuous smooth water circulation","Compact, lightweight, and portable size","Reliable daily use with strong output"],howItWorks:"Simply place the pump inside the water tank or cooler tank and connect the outlet pipe properly. Once powered on, the internal motor starts drawing water from the tank and pushes it upward through the outlet with strong pressure. This continuous circulation keeps cooler pads wet or maintains water movement wherever used, ensuring effective performance.",whyChoose:"This submersible water pump provides strong water flow, better cooling efficiency, and dependable daily operation without consuming much electricity. It is easy to install, compact in size, and highly practical for replacing weak or damaged cooler pumps. Durable, efficient, and multipurpose, it is a smart utility product for every home cooler setup.",images:["https://i.ibb.co/qM8VXJfB/71-Pwk-Pf-Hj6-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/5hc5zw6J/71-RQ1-WTg7-EL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/nqHYwyhf/6102x2-Xo-Gb-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/RkJF5F4X/61-Lhw-My-XK7-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99},
+{id:"fz-008",name:"Decorative Plastic Flower Pots Set (Pack of 5)",price:350,category:["garden tools"],badge:"Garden Must",description:"Add a fresh and elegant touch to your home or garden with this beautiful Decorative Plastic Flower Pots Set. Designed with a modern ribbed finish and attractive colors, these pots are perfect for indoor plants, flowers, herbs, succulents, and decorative greenery. Made from durable lightweight plastic, they are easy to move, unbreakable, and ideal for both indoor and outdoor use. Each pot comes with proper drainage support and a matching saucer tray to help maintain healthy plant growth while keeping surfaces clean. Stylish, practical, and reusable, this planter set enhances any balcony, office desk, living room, or garden corner instantly.",features:["Modern decorative ribbed pot design","Durable lightweight plastic material","Suitable for indoor and outdoor plants","Includes drainage holes for healthy roots","Comes with matching saucer trays","Easy to clean and reusable","Unbreakable and easy to move","Pack of 5 attractive planter pots"],howItWorks:"Simply fill each pot with soil, place your favorite plant or flower inside, and water as needed. The drainage holes at the bottom allow excess water to flow out into the saucer tray, preventing overwatering and helping roots stay healthy. Place the pots anywhere in your home, balcony, office, or garden for an instant decorative plant display.",whyChoose:"This flower pot set offers the perfect combination of style, durability, and plant care convenience. It not only makes your plants look more attractive but also supports healthy growth with proper drainage and clean water collection. Lightweight, reusable, and visually appealing, it is an ideal planter solution for every home and garden lover.",images:["https://i.ibb.co/6cQNnzfG/71-XPyayo-Ig-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/BKcDvN7f/71-34-S7z-SVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/CKHgrTGL/61-O772-D66g-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/0pX65cYp/71-Gma4mb9i-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/Ldj4tx9B/71-HSn-Iim-Qc-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/VY1mrBBg/61-CUDI269-QL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99}
+];
+
+const CATEGORIES=[
+{label:"Trendy Items",key:"trendy items",image:"https://i.ibb.co/Sww5KzGR/51-H0-Fb4-S-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"},
+{label:"Home & Kitchen",key:"home & kitchen",image:"https://i.ibb.co/mZ3sL4f/51-WMz-Zq09c-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"},
+{label:"Home Essentials",key:"home essentials",image:"https://i.ibb.co/Gv420Qzp/81-Amu-Aw-EVVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"},
+{label:"Garden Tools",key:"garden tools",image:"https://i.ibb.co/6cQNnzfG/71-XPyayo-Ig-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"}
+];
+</script>
+
+<!-- NAVBAR -->
+<nav class="navbar">
   <div class="nav-inner">
-    <div class="nav-logo" onclick="navigate('home')" style="cursor:pointer;">
-      Fashion<span>Zones</span>
-      <span class="nav-tagline">Smart Living, Delivered</span>
-    </div>
-    <div class="nav-actions">
-      <button class="nav-home-btn" onclick="navigate('home')">🏠 Home</button>
-      <button class="nav-cart-btn" onclick="navigate('cart')">
-        🛒 Cart <span class="cart-count" id="cart-count">0</span>
+    <a style="cursor:pointer" onclick="navigate('home')">
+      <span class="nav-logo-text">Fashion Zones</span>
+      <span class="nav-logo-tagline">Smart Picks for Modern Living</span>
+    </a>
+    <div class="nav-actions nav-desktop-links">
+      <button class="nav-btn" onclick="navigate('home')">🏠 Home</button>
+      <button class="nav-btn" onclick="filterByCategory('trendy items')">✨ Trending</button>
+      <button class="nav-btn" onclick="filterByCategory('home & kitchen')">🍳 Kitchen</button>
+      <button class="nav-btn cart-btn" onclick="navigate('cart')">
+        🛒 Cart <span class="cart-badge" id="cart-badge">0</span>
       </button>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <button class="nav-btn cart-btn" id="mobile-cart-btn" onclick="navigate('cart')" style="display:none">
+        🛒 <span class="cart-badge" id="cart-badge-m">0</span>
+      </button>
+      <div class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+      </div>
     </div>
   </div>
 </nav>
 
-<!-- ============================================================
-   SUCCESS OVERLAY
-============================================================ -->
-<div class="success-overlay" id="success-overlay">
-  <div class="success-box">
-    <div class="success-icon">🎉</div>
-    <h2>Order Placed!</h2>
-    <p>Thank you for shopping with Fashion Zones. We'll confirm your order soon. Redirecting to home…</p>
+<div class="mobile-nav" id="mobile-nav">
+  <a onclick="navigate('home');closeMobileNav()">🏠 Home</a>
+  <a onclick="filterByCategory('trendy items');closeMobileNav()">✨ Trendy Items</a>
+  <a onclick="filterByCategory('home & kitchen');closeMobileNav()">🍳 Home & Kitchen</a>
+  <a onclick="filterByCategory('home essentials');closeMobileNav()">🏡 Home Essentials</a>
+  <a onclick="filterByCategory('garden tools');closeMobileNav()">🌿 Garden Tools</a>
+  <a onclick="navigate('cart');closeMobileNav()">🛒 My Cart</a>
+</div>
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-tag">✦ New Season Picks</span>
+        <h1>Smart Tools for<br><span>Modern Homes</span></h1>
+        <p>Discover trending home essentials, kitchen gadgets, and utility tools crafted for everyday comfort and convenience.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="document.getElementById('products-anchor').scrollIntoView({behavior:'smooth'})">Shop Now →</button>
+          <button class="btn-outline" onclick="filterByCategory('trendy items')">Trending Picks</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cat-scroll-section">
+    <div class="container"><h2>Browse Categories</h2></div>
+    <div class="cat-scroll-wrapper">
+      <button class="cat-scroll-arrow left" onclick="scrollCats(-1)">&#8592;</button>
+      <div class="cat-scroll-track" id="cat-track"></div>
+      <button class="cat-scroll-arrow right" onclick="scrollCats(1)">&#8594;</button>
+    </div>
+  </section>
+
+  <div class="filter-bar" id="products-anchor">
+    <div class="container">
+      <div class="filter-bar-inner">
+        <button class="filter-btn active" data-cat="all" onclick="filterProducts('all',this)">All Products</button>
+        <button class="filter-btn" data-cat="trendy items" onclick="filterProducts('trendy items',this)">✨ Trendy Items</button>
+        <button class="filter-btn" data-cat="home & kitchen" onclick="filterProducts('home & kitchen',this)">🍳 Home & Kitchen</button>
+        <button class="filter-btn" data-cat="home essentials" onclick="filterProducts('home essentials',this)">🏡 Home Essentials</button>
+        <button class="filter-btn" data-cat="garden tools" onclick="filterProducts('garden tools',this)">🌿 Garden Tools</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="products-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="products-heading">All Products</h2>
+        <div class="section-divider"></div>
+        <p>Hand-picked utility tools for your home and lifestyle</p>
+      </div>
+      <div class="product-grid" id="product-grid"></div>
+      <p class="no-products hidden" id="no-products">No products found in this category.</p>
+    </div>
+  </section>
+
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <div class="trust-item-bar"><span class="trust-icon-lg">🚚</span><div><div class="trust-title">Fast Delivery</div><div class="trust-sub">Pan India Shipping</div></div></div>
+        <div class="trust-item-bar"><span class="trust-icon-lg">🔒</span><div><div class="trust-title">Secure Payment</div><div class="trust-sub">100% Safe & Encrypted</div></div></div>
+        <div class="trust-item-bar"><span class="trust-icon-lg">↩️</span><div><div class="trust-title">Easy Returns</div><div class="trust-sub">Hassle-free Support</div></div></div>
+        <div class="trust-item-bar"><span class="trust-icon-lg">⭐</span><div><div class="trust-title">Quality Assured</div><div class="trust-sub">Verified Products</div></div></div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ============================================================
-   HOME PAGE
-============================================================ -->
-<div class="page active" id="page-home">
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">✦ New Arrivals Every Week</div>
-      <h1>Smart Products for <em>Smarter Living</em></h1>
-      <p>Discover innovative home & kitchen essentials, trendy gadgets, and garden tools — curated for modern households.</p>
-      <button class="hero-cta" onclick="document.getElementById('products-anchor').scrollIntoView({behavior:'smooth'})">
-        Shop Now →
-      </button>
-    </div>
-  </section>
-
-  <!-- Category Scroll Strip -->
-  <section class="cat-strip-section">
-    <div class="cat-strip-title">Browse by Category</div>
-    <div class="cat-scroll-wrapper" id="cat-scroll">
-      <div class="cat-scroll-track" id="cat-track">
-        <div class="cat-icon-item" onclick="setFilter('trendy items')">
-          <div class="cat-circle">
-            <img src="https://i.ibb.co/sJQWtw94/61n-Mbr-ZBSVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif" alt="Trendy Items" loading="lazy">
-          </div>
-          <span class="cat-label">Trendy Items</span>
-        </div>
-        <div class="cat-icon-item" onclick="setFilter('home & kitchen')">
-          <div class="cat-circle">
-            <img src="https://i.ibb.co/mZ3sL4f/51-WMz-Zq09c-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif" alt="Home & Kitchen" loading="lazy">
-          </div>
-          <span class="cat-label">Home &amp; Kitchen</span>
-        </div>
-        <div class="cat-icon-item" onclick="setFilter('home essentials')">
-          <div class="cat-circle">
-            <img src="https://i.ibb.co/Xk4rm2RP/61-Sl-PPPIcw-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif" alt="Home Essentials" loading="lazy">
-          </div>
-          <span class="cat-label">Home Essentials</span>
-        </div>
-        <div class="cat-icon-item" onclick="setFilter('garden tools')">
-          <div class="cat-circle">
-            <img src="https://i.ibb.co/6cQNnzfG/71-XPyayo-Ig-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif" alt="Garden Tools" loading="lazy">
-          </div>
-          <span class="cat-label">Garden Tools</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Filter + Products -->
-  <section class="filter-section" id="products-anchor">
-    <h2>Our Products</h2>
-    <div class="filter-bar" id="filter-bar"></div>
-  </section>
-  <div class="product-grid" id="product-grid"></div>
-</div>
-
-<!-- ============================================================
-   PRODUCT DETAIL PAGE
-============================================================ -->
+<!-- PRODUCT PAGE -->
 <div class="page" id="page-product">
-  <div class="product-detail">
-    <button class="back-btn" onclick="navigate('home')">← Back to Products</button>
-    <div class="pd-grid">
-      <!-- Gallery -->
-      <div class="pd-gallery">
-        <div class="main-img-wrap">
-          <img src="" alt="" id="pd-main-img">
-        </div>
-        <div class="thumb-strip" id="pd-thumbs"></div>
+  <div class="container product-page">
+    <div class="breadcrumb">
+      <a onclick="navigate('home')" style="cursor:pointer">Home</a>
+      <span>/</span><span id="bc-cat" style="cursor:pointer;color:var(--terracotta)"></span>
+      <span>/</span><span id="bc-name" style="color:var(--text-dark)"></span>
+    </div>
+    <div class="product-detail-grid">
+      <div class="gallery">
+        <div class="gallery-main"><img id="gallery-main" src="" alt="" loading="lazy"></div>
+        <div class="gallery-thumbs" id="gallery-thumbs"></div>
       </div>
-      <!-- Info -->
-      <div class="pd-info">
-        <div class="pd-category-tag" id="pd-cat"></div>
-        <h1 class="pd-name" id="pd-name"></h1>
-        <div class="pd-price-row">
-          <span class="pd-price" id="pd-price"></span>
-          <span class="pd-stock" id="pd-stock"></span>
+      <div>
+        <span class="product-cat-badge" id="prod-cat-badge"></span>
+        <h1 class="product-title" id="prod-title"></h1>
+        <div class="product-price-row">
+          <span class="product-price-big" id="prod-price"></span>
+          <span class="product-stock" id="prod-stock"></span>
         </div>
-        <p class="pd-short-desc" id="pd-short-desc"></p>
+        <p class="product-short-desc" id="prod-desc"></p>
         <div class="qty-row">
           <span class="qty-label">Quantity:</span>
-          <div class="qty-control">
+          <div class="qty-selector">
             <button class="qty-btn" onclick="changeQty(-1)">−</button>
-            <span class="qty-num" id="pd-qty">1</span>
+            <span class="qty-num" id="qty-num">1</span>
             <button class="qty-btn" onclick="changeQty(1)">+</button>
           </div>
         </div>
-        <button class="add-cart-main" id="pd-add-cart" onclick="addFromDetail()">
-          🛒 Add to Cart
-        </button>
-        <div class="pd-meta-pills">
-          <span class="meta-pill">🚚 Fast Delivery</span>
-          <span class="meta-pill">🔒 Secure Payment</span>
-          <span class="meta-pill">✅ Quality Assured</span>
-          <span class="meta-pill">↩️ Easy Returns</span>
+        <div class="product-actions">
+          <button class="btn-buy-now" onclick="buyNow()">⚡ Buy Now</button>
+          <button class="btn-cart-full" id="btn-cart-full" onclick="addToCartProduct()">🛒 Add to Cart</button>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-item"><span class="trust-icon">🚚</span> Free Delivery</div>
+          <div class="trust-item"><span class="trust-icon">🔒</span> Secure Order</div>
+          <div class="trust-item"><span class="trust-icon">📞</span> 24/7 Support</div>
+          <div class="trust-item"><span class="trust-icon">↩️</span> Easy Returns</div>
+        </div>
+        <div class="accordion-section">
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAcc(this)"><span>📋 Description</span><span class="accordion-icon">+</span></div>
+            <div class="accordion-body"><div class="accordion-body-inner" id="acc-desc"></div></div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAcc(this)"><span>✅ Features</span><span class="accordion-icon">+</span></div>
+            <div class="accordion-body"><div class="accordion-body-inner" id="acc-feat"></div></div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAcc(this)"><span>⚙️ How It Works</span><span class="accordion-icon">+</span></div>
+            <div class="accordion-body"><div class="accordion-body-inner" id="acc-how"></div></div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAcc(this)"><span>💡 Why Choose This Product</span><span class="accordion-icon">+</span></div>
+            <div class="accordion-body"><div class="accordion-body-inner" id="acc-why"></div></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Accordion -->
-  <div class="accordion-section">
-    <div class="accordion-list" id="pd-accordion"></div>
+  <div class="related-section" id="related-section">
+    <div class="container">
+      <div class="section-header"><h2>You May Also Like</h2><div class="section-divider"></div></div>
+      <div class="product-grid" id="related-grid"></div>
+    </div>
   </div>
-
-  <!-- Related Products -->
-  <div class="related-section">
-    <h2>You Might Also Like</h2>
-    <div class="related-grid" id="related-grid"></div>
+  <div class="sticky-buy-bar" id="sticky-bar">
+    <span class="sticky-product-name" id="sticky-name"></span>
+    <span class="sticky-price" id="sticky-price"></span>
+    <button class="sticky-buy-btn" onclick="buyNow()">Buy Now</button>
   </div>
 </div>
 
-<!-- ============================================================
-   CART PAGE
-============================================================ -->
+<!-- CART PAGE -->
 <div class="page" id="page-cart">
-  <div class="cart-page">
+  <div class="container cart-page">
     <h1>🛒 Your Cart</h1>
-    <div id="cart-body"></div>
+    <div id="cart-empty-state" class="cart-empty hidden">
+      <div class="cart-empty-icon">🛍️</div>
+      <p>Your cart is empty. Add some great products!</p>
+      <button class="btn-primary" onclick="navigate('home')">Continue Shopping</button>
+    </div>
+    <div id="cart-filled" class="hidden">
+      <div class="cart-grid">
+        <div class="cart-items" id="cart-items-list"></div>
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row"><span>Items</span><span id="cs-count">0</span></div>
+          <div class="summary-row"><span>Subtotal</span><span id="cs-subtotal">₹0</span></div>
+          <div class="summary-row"><span>Shipping</span><span style="color:var(--forest);font-weight:600">FREE</span></div>
+          <div class="summary-row total"><span>Total</span><span id="cs-total">₹0</span></div>
+          <button class="btn-checkout" onclick="navigate('checkout')">Proceed to Checkout →</button>
+          <button class="btn-continue" onclick="navigate('home')">← Continue Shopping</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ============================================================
-   CHECKOUT PAGE
-============================================================ -->
+<!-- CHECKOUT PAGE -->
 <div class="page" id="page-checkout">
-  <div class="checkout-page">
+  <div class="container checkout-page">
     <h1>Checkout</h1>
     <div class="checkout-grid">
-      <div class="form-card">
-        <h2>Delivery Details</h2>
-        <div class="form-group">
-          <label>Full Name *</label>
-          <input type="text" id="f-name" placeholder="Your full name" required>
+      <div class="checkout-form-box">
+        <h2>Shipping Details</h2>
+        <div class="form-row">
+          <div class="form-group"><label>Full Name *</label><input type="text" id="ch-name" placeholder="Your full name"></div>
+          <div class="form-group"><label>Phone *</label><input type="tel" id="ch-phone" placeholder="10-digit mobile number"></div>
         </div>
-        <div class="form-group">
-          <label>Email Address *</label>
-          <input type="email" id="f-email" placeholder="you@email.com" required>
-        </div>
-        <div class="form-group">
-          <label>Phone Number *</label>
-          <input type="tel" id="f-phone" placeholder="+91 XXXXX XXXXX" required>
-        </div>
-        <div class="form-group">
-          <label>Delivery Address *</label>
-          <textarea id="f-address" placeholder="Full address with pincode…"></textarea>
-        </div>
-        <div class="form-group">
-          <label>Order Notes (optional)</label>
-          <textarea id="f-notes" placeholder="Any special instructions…" style="min-height:60px"></textarea>
-        </div>
-        <button class="submit-order" id="submit-order-btn" onclick="submitOrder()">
-          ✅ Place Order
-        </button>
+        <div class="form-group"><label>Email Address *</label><input type="email" id="ch-email" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Full Delivery Address *</label><textarea id="ch-address" placeholder="House/Flat No., Street, Area, City, State, PIN"></textarea></div>
+        <div class="form-group"><label>Order Notes (Optional)</label><textarea id="ch-notes" placeholder="Any special instructions..."></textarea></div>
+        <button class="btn-place-order" id="btn-order" onclick="placeOrder()">🛒 Place Order</button>
+        <p style="font-size:.78rem;color:var(--text-light);margin-top:10px;text-align:center">🔒 Your information is secure and encrypted.</p>
       </div>
-      <div class="order-summary-card">
-        <h2>Order Summary</h2>
-        <div id="checkout-summary-items"></div>
-        <div class="summary-total-row" id="checkout-grand-total"></div>
+      <div class="checkout-order-summary">
+        <h3>Your Order</h3>
+        <div id="co-items"></div>
+        <div style="padding-top:14px;margin-top:4px">
+          <div class="summary-row"><span>Subtotal</span><span id="co-subtotal"></span></div>
+          <div class="summary-row"><span>Shipping</span><span style="color:var(--forest);font-weight:600">FREE</span></div>
+          <div class="summary-row total"><span>Total</span><span id="co-total"></span></div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ============================================================
-   FOOTER
-============================================================ -->
-<footer>
-  <div class="footer-logo">FashionZones</div>
-  <div class="footer-tagline">Smart Living, Delivered</div>
-  <div class="footer-contact">
-    📧 <a href="mailto:shivkmr603@gmail.com">shivkmr603@gmail.com</a><br>
-    📞 <a href="tel:+919546700242">+91 9546700242</a>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-logo">Fashion Zones</span>
+        <p class="footer-desc">Discover smart, trending, and useful home products at the best prices. Quality you can trust, delivered to your door.</p>
+        <div class="footer-contact">
+          <a href="mailto:shivkmr603@gmail.com">✉️ shivkmr603@gmail.com</a>
+          <a href="tel:9546700242">📞 9546700242</a>
+          <a>🌐 fashionzones.in</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul>
+          <li><a onclick="filterByCategory('trendy items')" style="cursor:pointer">Trendy Items</a></li>
+          <li><a onclick="filterByCategory('home & kitchen')" style="cursor:pointer">Home & Kitchen</a></li>
+          <li><a onclick="filterByCategory('home essentials')" style="cursor:pointer">Home Essentials</a></li>
+          <li><a onclick="filterByCategory('garden tools')" style="cursor:pointer">Garden Tools</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a onclick="navigate('home')" style="cursor:pointer">Home</a></li>
+          <li><a onclick="navigate('cart')" style="cursor:pointer">Cart</a></li>
+          <li><a onclick="navigate('checkout')" style="cursor:pointer">Checkout</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="mailto:shivkmr603@gmail.com">Contact Us</a></li>
+          <li><a>Returns Policy</a></li>
+          <li><a>Privacy Policy</a></li>
+          <li><a>Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 <span style="color:var(--terracotta)">Fashion Zones</span>. All rights reserved. | fashionzones.in</p>
+      <p>Made with <span style="color:var(--terracotta)">♥</span> in India</p>
+    </div>
   </div>
-  <div class="footer-copy">© 2025 Fashion Zones. All rights reserved.</div>
 </footer>
 
-<!-- ============================================================
-   JAVASCRIPT
-============================================================ -->
+<div class="toast" id="toast"></div>
+
 <script>
-/* ============================================================
-   CONFIG
-============================================================ */
-const CONFIG = {
-  storeName: "Fashion Zones",
-  tagline: "Smart Living, Delivered",
-  formspree: "https://formspree.io/f/mnjwqjde",
-  currency: "₹",
-  cartKey: "zone_cart"
-};
+// ========== CART ==========
+const CART_KEY='zone_cart';
+let curProdId=null,curQty=1;
 
-/* ============================================================
-   PRODUCTS DATA — EDIT BELOW
-============================================================ */
-const PRODUCTS = [
-  {
-    id: "p001",
-    name: "Mattress Lifter Tool (Pack of 2)",
-    price: 249,
-    category: "trendy items",
-    images: [
-      "https://i.ibb.co/sJQWtw94/61n-Mbr-ZBSVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/CszwQrDq/71-1ap-Brv-RL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/C5mvQsQk/61-Bx-OV-o-DLL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/RkmSx9YM/71-Hkons-FPDL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/Z11k2cVm/61j-Wng2cx-UL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/tMFkbPpY/71bn-CPYae-ML-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/8g7R1P0t/71u-Lx3mwsn-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"
-    ],
-    stock: 99,
-    shortDesc: "Make your bed in seconds without straining your hands or back with this smart Mattress Lifter Tool. Specially designed to lift and hold the mattress easily, it helps you tuck bedsheets, adjust bed covers, and place bedding neatly underneath without heavy effort.",
-    accordion: {
-      description: "Make your bed in seconds without straining your hands or back with this smart Mattress Lifter Tool. Specially designed to lift and hold the mattress easily, it helps you tuck bedsheets, adjust bed covers, and place bedding neatly underneath without heavy effort. Its ergonomic wedge shape slides smoothly under the mattress and creates enough lifting space, giving you both hands free for quick and proper sheet tucking. Made from strong yet lightweight material, this tool is durable, reusable, and easy to handle for daily use.",
-      features: ["Ergonomic wedge design for easy mattress lifting","Helps tuck bedsheets quickly and neatly","Reduces hand, wrist, and back strain","Strong, lightweight, and reusable material","Suitable for all standard bed sizes","Pack of 2 for convenient use on both sides"],
-      howItWorks: "Simply slide the mattress lifter under the side or corner of the mattress and push gently. The tool lifts and holds the mattress in an elevated position, creating enough space underneath to tuck bedsheets or adjust bed covers easily. Once your bedding is set, remove the tool and the mattress settles back into place.",
-      whyChoose: "This mattress lifter tool makes daily bed making faster, easier, and more comfortable by removing the need to lift a heavy mattress with your hands. It saves time, prevents body strain, and gives your bed a neat and tight finish with minimal effort. Lightweight, practical, and highly useful, it is a smart home utility tool for every household."
-    }
-  },
-  {
-    id: "p002",
-    name: "2 in 1 Portable Mini Bag Sealer",
-    price: 269,
-    category: "trendy items",
-    images: [
-      "https://i.ibb.co/Sww5KzGR/51-H0-Fb4-S-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/TDRxHrVL/710-I5-NM2kl-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/DHGnm5G7/71-Km-Ip-QDdv-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/PZPN830B/61a6-Ahm-Ab0-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/fV2hZ6pN/61-OMmo0-G9-SL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/4BkQcKv/81bh666c-VEL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/sB9N5hQ/61-Mmg-CTu-Yd-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"
-    ],
-    stock: 99,
-    shortDesc: "Keep your snacks and groceries fresh for longer with this smart 2 in 1 Portable Mini Bag Sealer. Designed with both sealing and cutting functions, this handy device quickly reseals opened plastic packets to protect food from air, moisture, and dust.",
-    accordion: {
-      description: "Keep your snacks and groceries fresh for longer with this smart 2 in 1 Portable Mini Bag Sealer. Designed with both sealing and cutting functions, this handy device quickly reseals opened plastic packets to protect food from air, moisture, and dust. It uses fast heat sealing technology to create an airtight lock within seconds, helping maintain freshness and reduce food wastage. The built-in cutter allows neat and easy packet opening whenever needed. USB rechargeable and lightweight in design, it is simple to carry, easy to use, and perfect for daily kitchen storage, travel, office, or hostel use.",
-      features: ["2 in 1 sealing and cutting function","USB rechargeable with charging cable support","Quick heat sealing within seconds","Keeps food fresh and moisture free","Built-in packet cutter for easy opening","Compact, lightweight, and portable design","Easy one hand operation","Suitable for most plastic snack and grocery bags"],
-      howItWorks: "Charge the device using the USB cable and switch it on. Wait a few seconds for the heating plate to warm up, then place the open end of the plastic packet between the sealing jaws. Press gently and slide across the packet to create an instant airtight seal. Use the built-in cutter side whenever you need to open the packet neatly.",
-      whyChoose: "This mini bag sealer is a practical everyday kitchen gadget that helps keep food fresh, saves snacks from getting soft, and reduces unnecessary wastage. It removes the need for clips, rubber bands, or folding packets and offers a quick reusable sealing solution in one compact device. Easy, rechargeable, and highly useful, it is a smart addition to every home."
-    }
-  },
-  {
-    id: "p003",
-    name: "Digital Kitchen Weighing Scale",
-    price: 329,
-    category: "home & kitchen",
-    images: [
-      "https://i.ibb.co/mZ3sL4f/51-WMz-Zq09c-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/1Yj6WFMX/8167vj-X682-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/bM949SZM/71m-Vt-VAps3-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/d0c54Rbz/71a-UHwb-KDKL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/yc68jG8v/81-Lq-ALYh-7-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/3m0VFPVd/717p0-EXx-Gj-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"
-    ],
-    stock: 99,
-    shortDesc: "Measure ingredients and everyday items with perfect accuracy using this smart Digital Kitchen Weighing Scale. Designed for kitchen, baking, grocery, and household use, this electronic scale provides quick and precise weight readings up to 10kg.",
-    accordion: {
-      description: "Measure ingredients and everyday items with perfect accuracy using this smart Digital Kitchen Weighing Scale. Designed for kitchen, baking, grocery, and household use, this electronic scale provides quick and precise weight readings up to 10kg. It comes with an easy-to-read digital display and simple control buttons for hassle free operation. Whether you are weighing fruits, vegetables, flour, spices, parcels, or daily essentials, this compact machine ensures correct measurement every time. Made from durable lightweight material, it is portable, easy to store, and highly useful for home kitchens and regular household needs.",
-      features: ["High precision digital weight measurement","Supports weighing up to 10kg capacity","Easy to read LCD display screen","Quick and accurate instant results","Compact, lightweight, and portable design","Simple button control for easy use","Ideal for kitchen, grocery, and household items","Durable and long lasting body material"],
-      howItWorks: "Place the scale on a flat surface and switch it on using the power button. Put the item or ingredient on the weighing platform and the digital screen will instantly show the exact weight. You can reset or tare the scale as needed for multiple measurements, making weighing simple, quick, and accurate.",
-      whyChoose: "This digital weighing scale helps you measure food items and household products with better accuracy, making cooking, baking, dieting, and daily use much easier. It saves time, prevents guesswork, and gives reliable readings instantly. Compact, practical, and easy to use, it is a smart essential tool for every kitchen and home."
-    }
-  },
-  {
-    id: "p004",
-    name: "5 in 1 Portable USB Air Cooler Fan",
-    price: 874,
-    category: "home & kitchen",
-    images: [
-      "https://i.ibb.co/hFMHTNCr/61x-UWj-SYQ4-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/7dcsW60D/71p-OUIn2-JHL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/RGs2hC03/71f-Moex-YOe-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/MDX4fdmj/71kpr-Kt-HMz-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/p6SV9Z5J/71-GS8-Kad-A8-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"
-    ],
-    stock: 99,
-    shortDesc: "Stay cool and comfortable anywhere with this advanced 5 in 1 Portable USB Air Cooler Fan. Designed with cooling fan, mist spray, humidifier, night light, and aroma diffuser functions in one compact device, it delivers refreshing cool air.",
-    accordion: {
-      description: "Stay cool and comfortable anywhere with this advanced 5 in 1 Portable USB Air Cooler Fan. Designed with cooling fan, mist spray, humidifier, night light, and aroma diffuser functions in one compact device, it delivers refreshing cool air while also adding moisture to the surroundings for a more pleasant experience. The built-in water tank creates a fine mist that helps reduce dry heat, while the adjustable fan angle and multiple wind speed modes allow customized cooling as per your comfort. Its USB powered portable design makes it perfect for bedroom, office desk, study table, travel, and personal use during hot summer days.",
-      features: ["5 in 1 multifunction cooling device","Fan, air cooler, mist spray, humidifier, and night light","3 adjustable wind speed modes","Built-in water tank for cool mist spray","60 degree adjustable air flow direction","Soft LED light mode for night use","USB powered and energy efficient","Compact, lightweight, and portable design"],
-      howItWorks: "Fill the water tank with clean water and connect the device through USB power. Switch it on and choose your preferred fan speed. Activate the mist spray mode to release cool moisture along with airflow for enhanced cooling. You can also adjust the fan direction and use the built-in light mode for night comfort. Simply refill water whenever needed for continuous refreshing air.",
-      whyChoose: "This portable air cooler fan gives you personal cooling, humidifying, and mist comfort in one compact machine, making it far more useful than a normal table fan. It is energy saving, easy to carry, and ideal for hot weather when you need instant cool air in a small space. Practical, multifunctional, and stylish, it is a smart summer essential for home, office, or study use."
-    }
-  },
-  {
-    id: "p005",
-    name: "Door Bottom Guard Seal Strip (Pack of 2)",
-    price: 99,
-    category: "home essentials",
-    images: [
-      "https://i.ibb.co/Xk4rm2RP/61-Sl-PPPIcw-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/6c9dscd4/61y1sp-Mvy-EL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/s9dpL9Jm/61ob-Ri-Sq-Hc-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/CKK1289C/71-YKSA9-NEAL-AC-SL1500.jpg",
-      "https://i.ibb.co/1Y2VdWQV/61-R1-UH7q-QRL-AC-SL1500.jpg"
-    ],
-    stock: 99,
-    shortDesc: "Protect your home from dust, insects, outside noise, and unwanted air with this practical Door Bottom Guard Seal Strip. Designed to fit neatly at the bottom of doors, this smart guard fills the gap to block dust, cold air, hot air, smoke, and small insects.",
-    accordion: {
-      description: "Protect your home from dust, insects, outside noise, and unwanted air with this practical Door Bottom Guard Seal Strip. Designed to fit neatly at the bottom of doors, this smart guard fills the gap between the floor and the door to block dust, cold air, hot air, smoke, and small insects from entering inside. It also helps reduce outside noise and improves room insulation for a more comfortable indoor environment. Made from soft yet durable material, it slides smoothly with the door and can be installed easily without complicated tools. Perfect for bedrooms, kitchens, offices, and main doors, this useful strip helps keep your room cleaner, quieter, and energy efficient.",
-      features: ["Blocks dust, insects, smoke, and outside air","Helps reduce outside noise and door gaps","Improves room insulation and energy saving","Soft, durable, and long lasting material","Smooth sliding with door movement","Easy to install and remove","Suitable for most standard doors","Pack of 2 for extra convenience"],
-      howItWorks: "Simply attach or place the guard strip at the bottom side of the door so that it covers the open gap between the door and the floor. As the door moves, the strip slides along smoothly while continuously blocking dust, air, insects, and noise from passing through the gap. It creates a protective barrier without affecting normal door use.",
-      whyChoose: "This door guard seal strip is an easy and affordable way to make your room cleaner, quieter, and more comfortable. It helps stop dust buildup, prevents insects from entering, reduces unwanted outside noise, and keeps indoor air better controlled. Simple to use and highly practical, it is a smart household utility for everyday protection."
-    }
-  },
-  {
-    id: "p006",
-    name: "Reusable Microfiber Cleaning Cloth Roll",
-    price: 280,
-    category: "home essentials",
-    images: [
-      "https://i.ibb.co/Gv420Qzp/81-Amu-Aw-EVVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/LjHzgG7/91oue-WXjmf-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/67Kp2K6H/81-Ub-Diiz-Xp-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/7xGPvbGG/81l-v8pt-k-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/GvbmHbVp/81ib-FHID-TL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/W4bdvzHH/81-Dg-W1-C3-Kd-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/kpPwyX5/81-RBn7-BFz5-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"
-    ],
-    stock: 99,
-    shortDesc: "Make everyday cleaning faster and more effective with this premium Reusable Microfiber Cleaning Cloth Roll. Designed with soft, highly absorbent microfiber material, each cloth easily wipes away dust, water, oil, stains, and dirt without leaving scratches or lint.",
-    accordion: {
-      description: "Make everyday cleaning faster and more effective with this premium Reusable Microfiber Cleaning Cloth Roll. Designed with soft, highly absorbent microfiber material, each cloth easily wipes away dust, water, oil, stains, and dirt from kitchen surfaces, glass, furniture, electronics, vehicles, and household items without leaving scratches or lint. The convenient tear-away roll design allows you to pull and use one cloth at a time just like paper towels, but unlike ordinary tissues, these cloths are washable and reusable for multiple uses. Strong, durable, and quick drying, this cleaning roll is a practical solution for both home and professional cleaning tasks.",
-      features: ["Soft and highly absorbent microfiber material","Easily removes dust, water, oil, and stains","Tear-away roll design for convenient single use","Washable and reusable multiple times","Lint free and scratch free cleaning","Strong, durable, and quick drying cloth","Suitable for kitchen, glass, car, furniture, and electronics","Comes with multiple reusable cleaning sheets"],
-      howItWorks: "Simply tear one cloth from the roll and use it to wipe the desired surface. The microfiber material instantly absorbs liquid, traps dust, and removes dirt effectively. After use, wash the cloth with water, let it dry, and reuse it again whenever needed. Pull a fresh sheet anytime for continuous cleaning convenience.",
-      whyChoose: "This microfiber cleaning cloth roll gives you the convenience of paper towels with the durability of reusable fabric, making cleaning easier, cheaper, and more efficient. It saves money on disposable wipes, provides better absorbency, and works on almost every household surface. Practical, reusable, and highly useful, it is an everyday cleaning essential for every home."
-    }
-  },
-  {
-    id: "p007",
-    name: "High Flow Submersible Cooler Water Pump",
-    price: 399,
-    category: "garden tools",
-    images: [
-      "https://i.ibb.co/qM8VXJfB/71-Pwk-Pf-Hj6-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/5hc5zw6J/71-RQ1-WTg7-EL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/nqHYwyhf/6102x2-Xo-Gb-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/RkJF5F4X/61-Lhw-My-XK7-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"
-    ],
-    stock: 99,
-    shortDesc: "Ensure powerful and continuous water circulation with this efficient High Flow Submersible Cooler Water Pump. Specially designed for desert coolers, aquariums, fountains, and water circulation systems, this compact electric pump delivers strong water flow.",
-    accordion: {
-      description: "Ensure powerful and continuous water circulation with this efficient High Flow Submersible Cooler Water Pump. Specially designed for desert coolers, aquariums, fountains, and water circulation systems, this compact electric pump delivers a strong water flow rate for better cooling performance and smooth water movement. Built with durable motor technology, it operates with low power consumption while providing reliable high speed pumping. Its fully submersible design allows easy placement inside water tanks, and the sturdy body ensures long lasting daily use. Compact, lightweight, and easy to install, this pump is an ideal replacement or upgrade for home coolers and various water flow applications.",
-      features: ["High flow water pumping performance","Suitable for desert coolers, aquariums, and fountains","Energy efficient low power consumption motor","Fully submersible easy install design","Durable and long lasting body construction","Continuous smooth water circulation","Compact, lightweight, and portable size","Reliable daily use with strong output"],
-      howItWorks: "Simply place the pump inside the water tank or cooler tank and connect the outlet pipe properly. Once powered on, the internal motor starts drawing water from the tank and pushes it upward through the outlet with strong pressure. This continuous circulation keeps cooler pads wet or maintains water movement wherever used, ensuring effective performance.",
-      whyChoose: "This submersible water pump provides strong water flow, better cooling efficiency, and dependable daily operation without consuming much electricity. It is easy to install, compact in size, and highly practical for replacing weak or damaged cooler pumps. Durable, efficient, and multipurpose, it is a smart utility product for every home cooler setup."
-    }
-  },
-  {
-    id: "p008",
-    name: "Decorative Plastic Flower Pots Set (Pack of 5)",
-    price: 350,
-    category: "garden tools",
-    images: [
-      "https://i.ibb.co/6cQNnzfG/71-XPyayo-Ig-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/BKcDvN7f/71-34-S7z-SVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/CKHgrTGL/61-O772-D66g-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/0pX65cYp/71-Gma4mb9i-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/Ldj4tx9B/71-HSn-Iim-Qc-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif",
-      "https://i.ibb.co/VY1mrBBg/61-CUDI269-QL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"
-    ],
-    stock: 99,
-    shortDesc: "Add a fresh and elegant touch to your home or garden with this beautiful Decorative Plastic Flower Pots Set. Designed with a modern ribbed finish and attractive colors, these pots are perfect for indoor plants, flowers, herbs, succulents, and decorative greenery.",
-    accordion: {
-      description: "Add a fresh and elegant touch to your home or garden with this beautiful Decorative Plastic Flower Pots Set. Designed with a modern ribbed finish and attractive colors, these pots are perfect for indoor plants, flowers, herbs, succulents, and decorative greenery. Made from durable lightweight plastic, they are easy to move, unbreakable, and ideal for both indoor and outdoor use. Each pot comes with proper drainage support and a matching saucer tray to help maintain healthy plant growth while keeping surfaces clean. Stylish, practical, and reusable, this planter set enhances any balcony, office desk, living room, or garden corner instantly.",
-      features: ["Modern decorative ribbed pot design","Durable lightweight plastic material","Suitable for indoor and outdoor plants","Includes drainage holes for healthy roots","Comes with matching saucer trays","Easy to clean and reusable","Unbreakable and easy to move","Pack of 5 attractive planter pots"],
-      howItWorks: "Simply fill each pot with soil, place your favorite plant or flower inside, and water as needed. The drainage holes at the bottom allow excess water to flow out into the saucer tray, preventing overwatering and helping roots stay healthy. Place the pots anywhere in your home, balcony, office, or garden for an instant decorative plant display.",
-      whyChoose: "This flower pot set offers the perfect combination of style, durability, and plant care convenience. It not only makes your plants look more attractive but also supports healthy growth with proper drainage and clean water collection. Lightweight, reusable, and visually appealing, it is an ideal planter solution for every home and garden lover."
-    }
-  }
-];
+function getCart(){try{return JSON.parse(localStorage.getItem(CART_KEY))||[]}catch{return[]}}
+function saveCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));updateBadges()}
+function updateBadges(){const c=getCart();const n=c.reduce((s,i)=>s+i.qty,0);['cart-badge','cart-badge-m'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=n})}
+function addToCart(id,qty=1){const c=getCart();const ex=c.find(i=>i.id===id);if(ex)ex.qty+=qty;else c.push({id,qty});saveCart(c)}
+function removeFromCart(id){saveCart(getCart().filter(i=>i.id!==id))}
+function isInCart(id){return getCart().some(i=>i.id===id)}
+function getCartTotal(){return getCart().reduce((s,i)=>{const p=PRODUCTS.find(pr=>pr.id===i.id);return s+(p?p.price*i.qty:0)},0)}
 
-/* ============================================================
-   CART STATE
-============================================================ */
-let cart = [];
-let currentFilter = "all";
-let currentProductId = null;
-let currentQty = 1;
-
-function loadCart() {
-  try { cart = JSON.parse(localStorage.getItem(CONFIG.cartKey)) || []; } catch(e) { cart = []; }
-}
-function saveCart() {
-  localStorage.setItem(CONFIG.cartKey, JSON.stringify(cart));
-  updateCartCount();
-}
-function updateCartCount() {
-  const total = cart.reduce((s, i) => s + i.qty, 0);
-  document.getElementById('cart-count').textContent = total;
-}
-function getCartItem(id) { return cart.find(i => i.id === id); }
-function addToCart(id, qty = 1) {
-  const item = getCartItem(id);
-  if (item) { item.qty += qty; } else { cart.push({ id, qty }); }
-  saveCart();
-}
-function removeFromCart(id) {
-  cart = cart.filter(i => i.id !== id);
-  saveCart();
-}
-function updateCartQty(id, qty) {
-  const item = getCartItem(id);
-  if (item) { item.qty = Math.max(1, qty); saveCart(); }
+// ========== NAVIGATION ==========
+function navigate(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  window.scrollTo(0,0);
+  const sb=document.getElementById('sticky-bar');
+  if(sb)sb.classList.remove('show');
+  if(page==='cart')renderCart();
+  if(page==='checkout')renderCheckout();
+  if(page==='home'){renderProducts('all');renderCategoryIcons();document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat==='all'))}
 }
 
-/* ============================================================
-   ROUTING
-============================================================ */
-function navigate(page, productId) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (page === 'product' && productId) renderProductDetail(productId);
-  if (page === 'cart') renderCart();
-  if (page === 'checkout') renderCheckout();
-}
-
-/* ============================================================
-   HOME PAGE
-============================================================ */
-function getCategories() {
-  const cats = new Set();
-  PRODUCTS.forEach(p => p.category.split(',').forEach(c => cats.add(c.trim().toLowerCase())));
-  return ['all', ...Array.from(cats)];
-}
-
-function setFilter(cat) {
-  currentFilter = cat.toLowerCase();
-  document.querySelectorAll('.filter-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.cat === currentFilter);
-  });
-  renderProductGrid();
-  // scroll to products
-  document.getElementById('products-anchor').scrollIntoView({ behavior: 'smooth' });
-}
-
-function renderFilterBar() {
-  const bar = document.getElementById('filter-bar');
-  bar.innerHTML = '';
-  getCategories().forEach(cat => {
-    const btn = document.createElement('button');
-    btn.className = 'filter-btn' + (cat === currentFilter ? ' active' : '');
-    btn.dataset.cat = cat;
-    btn.textContent = cat === 'all' ? 'All Products' : cat.replace(/\b\w/g, l => l.toUpperCase());
-    btn.onclick = () => setFilter(cat);
-    bar.appendChild(btn);
+// ========== CATEGORY ICONS ==========
+let autoScrollInterval=null;
+function renderCategoryIcons(){
+  const track=document.getElementById('cat-track');
+  if(!track)return;
+  track.innerHTML=CATEGORIES.map(c=>`
+    <div class="cat-icon-item" onclick="filterByCategory('${c.key}')">
+      <div class="cat-icon-circle"><img src="${c.image}" alt="${c.label}" loading="lazy"></div>
+      <span class="cat-icon-label">${c.label}</span>
+    </div>`).join('');
+  clearInterval(autoScrollInterval);
+  let dir=1;
+  autoScrollInterval=setInterval(()=>{
+    if(!track)return;
+    track.scrollLeft+=dir*1.2;
+    if(track.scrollLeft+track.clientWidth>=track.scrollWidth-5)dir=-1;
+    if(track.scrollLeft<=0)dir=1;
+  },20);
+  track.addEventListener('mouseenter',()=>clearInterval(autoScrollInterval));
+  track.addEventListener('mouseleave',()=>{
+    dir=1;
+    autoScrollInterval=setInterval(()=>{
+      track.scrollLeft+=dir*1.2;
+      if(track.scrollLeft+track.clientWidth>=track.scrollWidth-5)dir=-1;
+      if(track.scrollLeft<=0)dir=1;
+    },20);
   });
 }
+function scrollCats(dir){document.getElementById('cat-track').scrollBy({left:dir*200,behavior:'smooth'})}
 
-function renderProductGrid() {
-  const grid = document.getElementById('product-grid');
-  const filtered = currentFilter === 'all'
-    ? PRODUCTS
-    : PRODUCTS.filter(p => p.category.toLowerCase().includes(currentFilter));
-  grid.innerHTML = '';
-  filtered.forEach(p => grid.appendChild(createProductCard(p)));
-}
-
-function createProductCard(p) {
-  const inCart = !!getCartItem(p.id);
-  const div = document.createElement('div');
-  div.className = 'product-card';
-  div.innerHTML = `
-    <div class="card-img-wrap" onclick="navigate('product','${p.id}')">
+// ========== PRODUCTS ==========
+function buildCard(p){
+  const inCart=isInCart(p.id);
+  const cat=p.category[0].split(' ').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ');
+  return`<div class="product-card" id="card-${p.id}">
+    <div class="product-card-img" onclick="openProduct('${p.id}')">
       <img src="${p.images[0]}" alt="${p.name}" loading="lazy">
-      <span class="card-category-badge">${p.category.split(',')[0].trim()}</span>
+      ${p.badge?`<span class="product-card-badge">${p.badge}</span>`:''}
     </div>
-    <div class="card-body">
-      <div class="card-name" onclick="navigate('product','${p.id}')">${p.name}</div>
-      <div class="card-price">${CONFIG.currency}${p.price.toLocaleString('en-IN')}</div>
-      <div class="card-actions">
-        <button class="btn-view" onclick="navigate('product','${p.id}')">View Details</button>
-        <button class="btn-cart ${inCart ? 'in-cart' : ''}" id="card-cart-${p.id}" onclick="event.stopPropagation(); cardAddToCart('${p.id}')">
-          ${inCart ? 'In Cart ✓' : 'Add to Cart'}
-        </button>
+    <div class="product-card-body">
+      <div class="product-card-cat">${cat}</div>
+      <div class="product-card-name" onclick="openProduct('${p.id}')">${p.name}</div>
+      <div class="product-card-price">${CONFIG.currency}${p.price.toLocaleString('en-IN')}</div>
+      <div class="product-card-actions">
+        <button class="btn-add-cart${inCart?' in-cart':''}" id="add-${p.id}" onclick="event.stopPropagation();cardAdd('${p.id}')">${inCart?'In Cart ✓':'+ Add to Cart'}</button>
+        <button class="btn-view" onclick="openProduct('${p.id}')">View</button>
       </div>
-    </div>`;
-  return div;
+    </div>
+  </div>`;
 }
 
-function cardAddToCart(id) {
-  addToCart(id, 1);
-  const btn = document.getElementById('card-cart-' + id);
-  if (btn) { btn.textContent = 'In Cart ✓'; btn.classList.add('in-cart'); }
+function cardAdd(id){
+  if(isInCart(id)){navigate('cart');return}
+  addToCart(id);
+  const btn=document.getElementById('add-'+id);
+  if(btn){btn.textContent='In Cart ✓';btn.classList.add('in-cart')}
+  showToast('Added to cart! 🛒');
 }
 
-/* ============================================================
-   PRODUCT DETAIL
-============================================================ */
-function renderProductDetail(id) {
-  currentProductId = id;
-  currentQty = 1;
-  const p = PRODUCTS.find(x => x.id === id);
-  if (!p) return;
-
-  document.getElementById('pd-main-img').src = p.images[0];
-  document.getElementById('pd-main-img').alt = p.name;
-  document.getElementById('pd-cat').textContent = p.category.split(',')[0].trim().replace(/\b\w/g, l => l.toUpperCase());
-  document.getElementById('pd-name').textContent = p.name;
-  document.getElementById('pd-price').textContent = CONFIG.currency + p.price.toLocaleString('en-IN');
-  document.getElementById('pd-stock').textContent = p.stock > 0 ? `✓ In Stock (${p.stock})` : 'Out of Stock';
-  document.getElementById('pd-short-desc').textContent = p.shortDesc;
-  document.getElementById('pd-qty').textContent = 1;
-
-  // Cart button state
-  updateDetailCartBtn();
-
-  // Thumbnails
-  const thumbs = document.getElementById('pd-thumbs');
-  thumbs.innerHTML = '';
-  p.images.forEach((img, i) => {
-    const t = document.createElement('div');
-    t.className = 'thumb' + (i === 0 ? ' active' : '');
-    t.innerHTML = `<img src="${img}" alt="${p.name} ${i+1}" loading="lazy">`;
-    t.onclick = () => {
-      document.getElementById('pd-main-img').src = img;
-      thumbs.querySelectorAll('.thumb').forEach(x => x.classList.remove('active'));
-      t.classList.add('active');
-    };
-    thumbs.appendChild(t);
-  });
-
-  // Accordion
-  renderAccordion(p);
-
-  // Related
-  renderRelated(p);
+function renderProducts(filter){
+  const list=filter==='all'?PRODUCTS:PRODUCTS.filter(p=>p.category.some(c=>c===filter));
+  const grid=document.getElementById('product-grid');
+  const np=document.getElementById('no-products');
+  const h=document.getElementById('products-heading');
+  h.textContent=filter==='all'?'All Products':filter.split(' ').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ');
+  if(!list.length){grid.innerHTML='';np.classList.remove('hidden');return}
+  np.classList.add('hidden');
+  grid.innerHTML=list.map(p=>buildCard(p)).join('');
 }
 
-function updateDetailCartBtn() {
-  const btn = document.getElementById('pd-add-cart');
-  const inCart = !!getCartItem(currentProductId);
-  if (inCart) {
-    btn.textContent = '✓ In Cart'; btn.classList.add('in-cart');
-  } else {
-    btn.innerHTML = '🛒 Add to Cart'; btn.classList.remove('in-cart');
-  }
+function filterProducts(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  renderProducts(cat);
 }
 
-function changeQty(delta) {
-  currentQty = Math.max(1, currentQty + delta);
-  document.getElementById('pd-qty').textContent = currentQty;
+function filterByCategory(cat){
+  navigate('home');
+  setTimeout(()=>{
+    renderProducts(cat);
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));
+    document.getElementById('products-anchor').scrollIntoView({behavior:'smooth'});
+  },100);
 }
 
-function addFromDetail() {
-  addToCart(currentProductId, currentQty);
-  updateDetailCartBtn();
-  currentQty = 1;
-  document.getElementById('pd-qty').textContent = 1;
-  // refresh card button if visible
-  const cardBtn = document.getElementById('card-cart-' + currentProductId);
-  if (cardBtn) { cardBtn.textContent = 'In Cart ✓'; cardBtn.classList.add('in-cart'); }
+// ========== PRODUCT PAGE ==========
+function openProduct(id){
+  const p=PRODUCTS.find(pr=>pr.id===id);
+  if(!p)return;
+  curProdId=id;curQty=1;
+  navigate('product');
+  const cat=p.category[0].split(' ').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ');
+  document.getElementById('bc-cat').textContent=cat;
+  document.getElementById('bc-cat').onclick=()=>filterByCategory(p.category[0]);
+  document.getElementById('bc-name').textContent=p.name;
+  document.getElementById('gallery-main').src=p.images[0];
+  document.getElementById('gallery-main').alt=p.name;
+  document.getElementById('gallery-thumbs').innerHTML=p.images.map((img,i)=>`
+    <div class="gallery-thumb${i===0?' active':''}" onclick="setImg('${img}',this)">
+      <img src="${img}" alt="${p.name}" loading="lazy">
+    </div>`).join('');
+  document.getElementById('prod-cat-badge').textContent=cat;
+  document.getElementById('prod-title').textContent=p.name;
+  document.getElementById('prod-price').textContent=CONFIG.currency+p.price.toLocaleString('en-IN');
+  document.getElementById('prod-stock').textContent='✓ '+p.stock+' in stock';
+  document.getElementById('prod-desc').textContent=p.description.substring(0,200)+'...';
+  document.getElementById('qty-num').textContent=1;
+  document.getElementById('acc-desc').textContent=p.description;
+  document.getElementById('acc-feat').innerHTML='<ul>'+p.features.map(f=>`<li>${f}</li>`).join('')+'</ul>';
+  document.getElementById('acc-how').textContent=p.howItWorks;
+  document.getElementById('acc-why').textContent=p.whyChoose;
+  document.querySelectorAll('.accordion-body').forEach(b=>b.classList.remove('open'));
+  document.querySelectorAll('.accordion-icon').forEach(i=>i.textContent='+');
+  updateProdCartBtn();
+  document.getElementById('sticky-name').textContent=p.name;
+  document.getElementById('sticky-price').textContent=CONFIG.currency+p.price.toLocaleString('en-IN');
+  setTimeout(()=>{const sb=document.getElementById('sticky-bar');if(sb)sb.classList.add('show')},2500);
+  const related=PRODUCTS.filter(pr=>pr.id!==id&&pr.category.some(c=>p.category.includes(c))).slice(0,4);
+  const rs=document.getElementById('related-section');
+  rs.style.display=related.length?'':'none';
+  document.getElementById('related-grid').innerHTML=related.map(pr=>buildCard(pr)).join('');
 }
 
-function renderAccordion(p) {
-  const a = p.accordion;
-  const list = document.getElementById('pd-accordion');
-  list.innerHTML = '';
-  const sections = [
-    { key: 'description', icon: '📋', label: 'Description', content: a.description, type: 'text' },
-    { key: 'features',    icon: '✨', label: 'Features',    content: a.features,    type: 'list' },
-    { key: 'howItWorks',  icon: '⚙️', label: 'How It Works', content: a.howItWorks, type: 'text' },
-    { key: 'whyChoose',   icon: '💡', label: 'Why Choose This Product', content: a.whyChoose, type: 'text' },
-  ];
-  sections.forEach((s, idx) => {
-    const item = document.createElement('div');
-    item.className = 'accordion-item';
-    let bodyHTML = '';
-    if (s.type === 'list') {
-      bodyHTML = '<ul>' + s.content.map(f => `<li>${f}</li>`).join('') + '</ul>';
-    } else {
-      bodyHTML = `<p>${s.content}</p>`;
-    }
-    item.innerHTML = `
-      <button class="accordion-header" onclick="toggleAccordion(this.parentElement)">
-        <span class="accordion-header-text">
-          <span class="accordion-icon-label">${s.icon}</span>
-          ${s.label}
-        </span>
-        <span class="accordion-toggle">+</span>
-      </button>
-      <div class="accordion-body">
-        <div class="accordion-body-inner">${bodyHTML}</div>
-      </div>`;
-    list.appendChild(item);
-  });
+function setImg(src,el){
+  const img=document.getElementById('gallery-main');
+  img.style.opacity='0';
+  setTimeout(()=>{img.src=src;img.style.opacity='1'},150);
+  document.querySelectorAll('.gallery-thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
 }
 
-function toggleAccordion(item) {
-  const isOpen = item.classList.contains('open');
-  // close all
-  document.querySelectorAll('.accordion-item.open').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
+function changeQty(d){curQty=Math.max(1,curQty+d);document.getElementById('qty-num').textContent=curQty}
+
+function updateProdCartBtn(){
+  const btn=document.getElementById('btn-cart-full');
+  if(!btn||!curProdId)return;
+  const ic=isInCart(curProdId);
+  btn.textContent=ic?'✓ Added to Cart':'🛒 Add to Cart';
+  btn.classList.toggle('in-cart',ic);
 }
 
-function renderRelated(p) {
-  const related = PRODUCTS.filter(x => x.id !== p.id && x.category.split(',').some(c => p.category.split(',').map(s=>s.trim().toLowerCase()).includes(c.trim().toLowerCase()))).slice(0, 4);
-  const grid = document.getElementById('related-grid');
-  grid.innerHTML = '';
-  related.forEach(r => grid.appendChild(createProductCard(r)));
-  if (!related.length) grid.innerHTML = '<p style="color:var(--warm-gray);font-size:0.9rem;">No related products found.</p>';
+function addToCartProduct(){
+  if(!curProdId)return;
+  addToCart(curProdId,curQty);
+  updateProdCartBtn();
+  const btn=document.getElementById('add-'+curProdId);
+  if(btn){btn.textContent='In Cart ✓';btn.classList.add('in-cart')}
+  showToast(curQty>1?curQty+'x Added to cart! 🛒':'Added to cart! 🛒');
 }
 
-/* ============================================================
-   CART PAGE
-============================================================ */
-function renderCart() {
-  const body = document.getElementById('cart-body');
-  if (!cart.length) {
-    body.innerHTML = `
-      <div class="cart-empty">
-        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="40" cy="40" r="40" fill="#f0ebe3"/>
-          <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-size="36">🛒</text>
-        </svg>
-        <p>Your cart is empty.</p>
-        <button class="btn-primary" onclick="navigate('home')">Start Shopping</button>
-      </div>`;
-    return;
-  }
+function buyNow(){if(!curProdId)return;addToCart(curProdId,curQty);navigate('checkout')}
 
-  const subtotal = cart.reduce((s, i) => {
-    const p = PRODUCTS.find(x => x.id === i.id);
-    return s + (p ? p.price * i.qty : 0);
-  }, 0);
+// ========== ACCORDION ==========
+function toggleAcc(header){
+  const body=header.nextElementSibling;
+  const icon=header.querySelector('.accordion-icon');
+  const isOpen=body.classList.contains('open');
+  document.querySelectorAll('.accordion-body').forEach(b=>b.classList.remove('open'));
+  document.querySelectorAll('.accordion-icon').forEach(i=>i.textContent='+');
+  if(!isOpen){body.classList.add('open');icon.textContent='−'}
+}
 
-  let rows = cart.map(i => {
-    const p = PRODUCTS.find(x => x.id === i.id);
-    if (!p) return '';
-    return `<tr>
-      <td><img class="cart-item-img" src="${p.images[0]}" alt="${p.name}"></td>
-      <td><div class="cart-item-name">${p.name}</div></td>
-      <td class="cart-item-price">${CONFIG.currency}${p.price.toLocaleString('en-IN')}</td>
-      <td>
-        <div class="cart-qty-ctrl">
-          <button class="cqb" onclick="cartChangeQty('${p.id}',-1)">−</button>
-          <span class="cart-qty-num">${i.qty}</span>
-          <button class="cqb" onclick="cartChangeQty('${p.id}',1)">+</button>
+// ========== CART PAGE ==========
+function renderCart(){
+  const cart=getCart();
+  const emp=document.getElementById('cart-empty-state');
+  const fil=document.getElementById('cart-filled');
+  if(!cart.length){emp.classList.remove('hidden');fil.classList.add('hidden');return}
+  emp.classList.add('hidden');fil.classList.remove('hidden');
+  document.getElementById('cart-items-list').innerHTML=cart.map(item=>{
+    const p=PRODUCTS.find(pr=>pr.id===item.id);
+    if(!p)return'';
+    return`<div class="cart-item" id="ci-${p.id}">
+      <div class="cart-item-img" onclick="openProduct('${p.id}')"><img src="${p.images[0]}" alt="${p.name}" loading="lazy"></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name" onclick="openProduct('${p.id}')">${p.name}</div>
+        <div class="cart-item-price" id="cp-${p.id}">${CONFIG.currency}${(p.price*item.qty).toLocaleString('en-IN')}</div>
+        <div class="cart-item-qty">
+          <button class="cart-qty-btn" onclick="adjQty('${p.id}',-1)">−</button>
+          <span class="cart-qty-num" id="cq-${p.id}">${item.qty}</span>
+          <button class="cart-qty-btn" onclick="adjQty('${p.id}',1)">+</button>
         </div>
-      </td>
-      <td class="cart-item-price">${CONFIG.currency}${(p.price * i.qty).toLocaleString('en-IN')}</td>
-      <td><button class="cart-remove" onclick="cartRemove('${p.id}')">🗑</button></td>
-    </tr>`;
-  }).join('');
-
-  body.innerHTML = `
-    <table class="cart-table">
-      <thead><tr>
-        <th></th><th>Product</th><th>Price</th><th>Qty</th><th>Total</th><th></th>
-      </tr></thead>
-      <tbody>${rows}</tbody>
-    </table>
-    <div class="cart-total-box">
-      <div class="cart-total-row"><span>Subtotal</span><span>${CONFIG.currency}${subtotal.toLocaleString('en-IN')}</span></div>
-      <div class="cart-total-row"><span>Delivery</span><span style="color:var(--success)">FREE</span></div>
-      <div class="cart-total-row grand"><span>Grand Total</span><span>${CONFIG.currency}${subtotal.toLocaleString('en-IN')}</span></div>
-      <button class="checkout-btn" onclick="navigate('checkout')">Proceed to Checkout →</button>
+      </div>
+      <button class="cart-item-remove" onclick="remItem('${p.id}')">✕</button>
     </div>`;
+  }).join('');
+  refreshCartSummary();
 }
 
-function cartChangeQty(id, delta) {
-  const item = getCartItem(id);
-  if (!item) return;
-  if (item.qty + delta < 1) { cartRemove(id); return; }
-  updateCartQty(id, item.qty + delta);
-  renderCart();
+function adjQty(id,d){
+  const c=getCart();const item=c.find(i=>i.id===id);if(!item)return;
+  item.qty=Math.max(1,item.qty+d);saveCart(c);
+  document.getElementById('cq-'+id).textContent=item.qty;
+  const p=PRODUCTS.find(pr=>pr.id===id);
+  const el=document.getElementById('cp-'+id);
+  if(p&&el)el.textContent=CONFIG.currency+(p.price*item.qty).toLocaleString('en-IN');
+  refreshCartSummary();
 }
 
-function cartRemove(id) {
+function remItem(id){
   removeFromCart(id);
-  renderCart();
-  // refresh card btn
-  const btn = document.getElementById('card-cart-' + id);
-  if (btn) { btn.textContent = 'Add to Cart'; btn.classList.remove('in-cart'); }
+  const el=document.getElementById('ci-'+id);
+  if(el)el.remove();
+  if(!getCart().length)renderCart();
+  refreshCartSummary();
 }
 
-/* ============================================================
-   CHECKOUT PAGE
-============================================================ */
-function renderCheckout() {
-  const itemsDiv = document.getElementById('checkout-summary-items');
-  const grandDiv = document.getElementById('checkout-grand-total');
-  let total = 0;
-  itemsDiv.innerHTML = '';
-  cart.forEach(i => {
-    const p = PRODUCTS.find(x => x.id === i.id);
-    if (!p) return;
-    const itemTotal = p.price * i.qty;
-    total += itemTotal;
-    itemsDiv.innerHTML += `
-      <div class="summary-item">
-        <img class="summary-img" src="${p.images[0]}" alt="${p.name}">
-        <span class="summary-name">${p.name} ×${i.qty}</span>
-        <span class="summary-price">${CONFIG.currency}${itemTotal.toLocaleString('en-IN')}</span>
-      </div>`;
-  });
-  grandDiv.innerHTML = `<span>Total</span><span>${CONFIG.currency}${total.toLocaleString('en-IN')}</span>`;
+function refreshCartSummary(){
+  const total=getCartTotal();
+  const count=getCart().reduce((s,i)=>s+i.qty,0);
+  const st=document.getElementById('cs-subtotal');
+  const tt=document.getElementById('cs-total');
+  const ct=document.getElementById('cs-count');
+  if(st)st.textContent=CONFIG.currency+total.toLocaleString('en-IN');
+  if(tt)tt.textContent=CONFIG.currency+total.toLocaleString('en-IN');
+  if(ct)ct.textContent=count+' item'+(count!==1?'s':'');
 }
 
-async function submitOrder() {
-  const name = document.getElementById('f-name').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const phone = document.getElementById('f-phone').value.trim();
-  const address = document.getElementById('f-address').value.trim();
-  const notes = document.getElementById('f-notes').value.trim();
+// ========== CHECKOUT ==========
+function renderCheckout(){
+  const cart=getCart();let total=0;
+  document.getElementById('co-items').innerHTML=cart.map(item=>{
+    const p=PRODUCTS.find(pr=>pr.id===item.id);if(!p)return'';
+    const lt=p.price*item.qty;total+=lt;
+    return`<div class="order-item">
+      <div class="order-item-img"><img src="${p.images[0]}" alt="${p.name}"></div>
+      <div class="order-item-name">${p.name}<div class="order-item-sub">Qty: ${item.qty}</div></div>
+      <div class="order-item-price">${CONFIG.currency}${lt.toLocaleString('en-IN')}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('co-subtotal').textContent=CONFIG.currency+total.toLocaleString('en-IN');
+  document.getElementById('co-total').textContent=CONFIG.currency+total.toLocaleString('en-IN');
+}
 
-  if (!name || !email || !phone || !address) {
-    alert('Please fill in all required fields.'); return;
-  }
-
-  const btn = document.getElementById('submit-order-btn');
-  btn.disabled = true;
-  btn.textContent = 'Placing Order…';
-
-  const orderItems = cart.map(i => {
-    const p = PRODUCTS.find(x => x.id === i.id);
-    return `${p ? p.name : i.id} × ${i.qty} = ${CONFIG.currency}${p ? (p.price * i.qty).toLocaleString('en-IN') : '?'}`;
-  }).join('\n');
-
-  const total = cart.reduce((s, i) => {
-    const p = PRODUCTS.find(x => x.id === i.id);
-    return s + (p ? p.price * i.qty : 0);
-  }, 0);
-
-  const message = `New Order from Fashion Zones\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}\nNotes: ${notes || 'None'}\n\n--- ORDER ITEMS ---\n${orderItems}\n\nGrand Total: ${CONFIG.currency}${total.toLocaleString('en-IN')}`;
-
-  try {
-    const res = await fetch(CONFIG.formspree, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name, email, phone, address, notes, message })
-    });
-    if (res.ok) {
-      cart = []; saveCart();
-      document.getElementById('success-overlay').classList.add('show');
-      setTimeout(() => {
-        document.getElementById('success-overlay').classList.remove('show');
-        navigate('home');
-      }, 3000);
-    } else {
-      alert('Something went wrong. Please try again.');
-      btn.disabled = false; btn.textContent = '✅ Place Order';
-    }
-  } catch(e) {
-    alert('Network error. Please check your connection.');
-    btn.disabled = false; btn.textContent = '✅ Place Order';
+async function placeOrder(){
+  const name=document.getElementById('ch-name').value.trim();
+  const email=document.getElementById('ch-email').value.trim();
+  const phone=document.getElementById('ch-phone').value.trim();
+  const address=document.getElementById('ch-address').value.trim();
+  const notes=document.getElementById('ch-notes').value.trim();
+  if(!name||!email||!phone||!address){showToast('Please fill all required fields!');return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('Please enter a valid email!');return}
+  const cart=getCart();
+  if(!cart.length){showToast('Cart is empty!');return}
+  const btn=document.getElementById('btn-order');
+  btn.disabled=true;btn.textContent='Placing Order...';
+  const cartText=cart.map(i=>{const p=PRODUCTS.find(pr=>pr.id===i.id);return p?`${p.name} x${i.qty} = ${CONFIG.currency}${(p.price*i.qty).toLocaleString('en-IN')}`:''}).filter(Boolean).join('\n');
+  const total=getCartTotal();
+  try{
+    const res=await fetch(CONFIG.formspreeUrl,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name,email,phone,address,notes:notes||'None',order:cartText,total:CONFIG.currency+total.toLocaleString('en-IN'),_subject:`New Order from ${name} - Fashion Zones`})});
+    if(res.ok){
+      showSuccess(name,total);
+      saveCart([]);updateBadges();
+    } else throw new Error('failed');
+  } catch{
+    showToast('Something went wrong. Please try again.');
+    btn.disabled=false;btn.textContent='🛒 Place Order';
   }
 }
 
-/* ============================================================
-   CATEGORY STRIP DRAG SCROLL
-============================================================ */
-function initCatScroll() {
-  const el = document.getElementById('cat-scroll');
-  let isDown = false, startX, scrollLeft;
-  el.addEventListener('mousedown', e => {
-    isDown = true; el.classList.add('active');
-    startX = e.pageX - el.offsetLeft;
-    scrollLeft = el.scrollLeft;
-  });
-  el.addEventListener('mouseleave', () => { isDown = false; });
-  el.addEventListener('mouseup', () => { isDown = false; });
-  el.addEventListener('mousemove', e => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - el.offsetLeft;
-    el.scrollLeft = scrollLeft - (x - startX) * 1.4;
-  });
+function showSuccess(name,total){
+  const ov=document.createElement('div');ov.className='success-overlay';
+  ov.innerHTML=`<div class="success-box">
+    <div class="success-icon">🎉</div>
+    <h2>Order Placed!</h2>
+    <p>Thank you <strong>${name}</strong>! Your order of <strong>${CONFIG.currency}${total.toLocaleString('en-IN')}</strong> has been received. We will contact you shortly on your provided details.</p>
+    <p style="margin-top:12px;color:var(--text-light);font-size:.85rem">Redirecting to home in 3 seconds...</p>
+  </div>`;
+  document.body.appendChild(ov);
+  setTimeout(()=>{ov.remove();navigate('home')},3500);
 }
 
-/* ============================================================
-   INIT
-============================================================ */
-loadCart();
-updateCartCount();
-renderFilterBar();
-renderProductGrid();
-initCatScroll();
+// ========== TOAST ==========
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ========== MOBILE NAV ==========
+function toggleMobileNav(){document.getElementById('mobile-nav').classList.toggle('open')}
+function closeMobileNav(){document.getElementById('mobile-nav').classList.remove('open')}
+document.addEventListener('click',e=>{
+  const nav=document.getElementById('mobile-nav');const ham=document.getElementById('hamburger');
+  if(nav.classList.contains('open')&&!nav.contains(e.target)&&!ham.contains(e.target))closeMobileNav();
+});
+
+// ========== RESPONSIVE ==========
+function handleResize(){
+  const w=window.innerWidth<=768;
+  document.getElementById('mobile-cart-btn').style.display=w?'flex':'none';
+  const dl=document.querySelector('.nav-desktop-links');
+  if(dl)dl.style.display=w?'none':'flex';
+}
+window.addEventListener('resize',handleResize);
+
+// ========== INIT ==========
+handleResize();
+updateBadges();
+renderProducts('all');
+renderCategoryIcons();
 </script>
 </body>
 </html>
