@@ -299,6 +299,10 @@ ul{list-style:none}
 .category-hero h2{font-family:var(--font-head);font-size:1.8rem;font-weight:700;color:var(--bark);margin-bottom:6px}
 .category-hero p{color:var(--text-mid);font-size:.94rem}
 
+/* CATEGORY HERO ICON */
+.cat-hero-icon{font-size:3rem;margin-bottom:12px}
+.category-hero .breadcrumb{margin-bottom:0;padding-bottom:0}
+
 /* FOOTER */
 .footer{background:var(--espresso);color:rgba(255,255,255,.72);padding:50px 20px 0;margin-top:60px}
 .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
@@ -583,15 +587,68 @@ const CATEGORIES=[
   <div id="productFooter"></div>
 </div>
 
-<!-- CATEGORY PAGE -->
-<div class="page" id="page-cat">
+<!-- CATEGORY PAGE: TRENDY ITEMS -->
+<div class="page" id="page-cat-trendy-items">
   <div class="category-page">
     <div class="container">
-      <div class="category-hero" id="catHero"></div>
-      <div class="product-grid" id="catProductGrid"></div>
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a> / <span>Trendy Items</span></div>
+      <div class="category-hero">
+        <div class="cat-hero-icon">✨</div>
+        <h2>Trendy Items</h2>
+        <p>Discover our hottest trending products — smart, stylish, and designed for modern everyday life. These are the picks everyone is talking about!</p>
+      </div>
+      <div class="product-grid" id="catGrid-trendy-items"></div>
     </div>
   </div>
-  <div id="catFooter"></div>
+  <div id="catFooter-trendy-items"></div>
+</div>
+
+<!-- CATEGORY PAGE: HOME & KITCHEN -->
+<div class="page" id="page-cat-home-kitchen">
+  <div class="category-page">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a> / <span>Home &amp; Kitchen</span></div>
+      <div class="category-hero">
+        <div class="cat-hero-icon">🍳</div>
+        <h2>Home &amp; Kitchen</h2>
+        <p>Upgrade your kitchen and home with our premium collection of smart gadgets, tools, and essentials that make everyday tasks easier and more efficient.</p>
+      </div>
+      <div class="product-grid" id="catGrid-home-kitchen"></div>
+    </div>
+  </div>
+  <div id="catFooter-home-kitchen"></div>
+</div>
+
+<!-- CATEGORY PAGE: HOME ESSENTIALS -->
+<div class="page" id="page-cat-home-essentials">
+  <div class="category-page">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a> / <span>Home Essentials</span></div>
+      <div class="category-hero">
+        <div class="cat-hero-icon">🏡</div>
+        <h2>Home Essentials</h2>
+        <p>Everything your home needs — practical, durable, and affordable must-have products for a cleaner, smarter, and more comfortable living space.</p>
+      </div>
+      <div class="product-grid" id="catGrid-home-essentials"></div>
+    </div>
+  </div>
+  <div id="catFooter-home-essentials"></div>
+</div>
+
+<!-- CATEGORY PAGE: GARDEN TOOLS -->
+<div class="page" id="page-cat-garden-tools">
+  <div class="category-page">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a> / <span>Garden Tools</span></div>
+      <div class="category-hero">
+        <div class="cat-hero-icon">🌿</div>
+        <h2>Garden Tools</h2>
+        <p>Grow, nurture, and beautify your garden and outdoor space with our handpicked collection of quality garden tools and plant accessories.</p>
+      </div>
+      <div class="product-grid" id="catGrid-garden-tools"></div>
+    </div>
+  </div>
+  <div id="catFooter-garden-tools"></div>
 </div>
 
 <!-- CART PAGE -->
@@ -752,7 +809,9 @@ function navigate(page,param=null){
     if(window.innerWidth<768)document.getElementById('stickyBar').style.display='flex';
   } else if(page==='cat'){
     renderCategoryPage(param);
-    document.getElementById('page-cat').classList.add('active');
+    const pageId='page-cat-'+param.replace(/[\s&]/g,c=>c===' '?'-':'').replace(/--+/g,'-').replace(/-$/,'');
+    const catEl=document.getElementById(pageId)||document.getElementById('page-cat-trendy-items');
+    catEl.classList.add('active');
   } else if(page==='cart'){
     renderCartPage();
     document.getElementById('page-cart').classList.add('active');
@@ -765,14 +824,9 @@ function navigate(page,param=null){
   history.pushState(null,'','#'+hash);
 }
 
-// CATEGORY FILTER (from home)
+// CATEGORY FILTER
 function filterByCat(cat){
-  navigate('home');
-  setTimeout(()=>{
-    filterProducts(cat,null);
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));
-    document.getElementById('products-anchor').scrollIntoView({behavior:'smooth'});
-  },80);
+  navigate('cat',cat);
 }
 
 // CARD BUILDER
@@ -873,7 +927,7 @@ function renderProductPage(id){
 
   document.getElementById('productBreadcrumb').innerHTML=
     `<a onclick="navigate('home')">Home</a> /
-     <a onclick="filterByCat('${catKey}')">${cat}</a> /
+     <a onclick="navigate('cat','${catKey}')" style="cursor:pointer">${cat}</a> /
      <span>${p.name}</span>`;
 
   document.getElementById('productLayout').innerHTML=`
@@ -972,13 +1026,19 @@ function addToCartFromProduct(){
 }
 function buyNow(){if(!currentProduct)return;addToCart(currentProduct.id,currentQty);navigate('checkout')}
 
-// CATEGORY PAGE
+// CATEGORY PAGES
+function catPageId(catKey){
+  // convert "home & kitchen" -> "home-kitchen", "trendy items" -> "trendy-items" etc
+  return catKey.replace(/&\s*/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/-$/,'');
+}
 function renderCategoryPage(catKey){
-  const catObj=CATEGORIES.find(c=>c.key===catKey)||{label:catKey};
-  document.getElementById('catHero').innerHTML=`<h2>${catObj.label}</h2><p>Browse our curated collection of <strong>${catObj.label}</strong> – handpicked for quality and value.</p>`;
+  const slug=catPageId(catKey);
+  const grid=document.getElementById('catGrid-'+slug);
+  const footerEl=document.getElementById('catFooter-'+slug);
+  if(!grid)return;
   const prods=PRODUCTS.filter(p=>p.category.includes(catKey));
-  document.getElementById('catProductGrid').innerHTML=prods.length?prods.map(buildCard).join(''):'<p style="color:var(--text-light);padding:40px;text-align:center;grid-column:1/-1">No products in this category yet.</p>';
-  document.getElementById('catFooter').innerHTML=footerHTML();
+  grid.innerHTML=prods.length?prods.map(buildCard).join(''):'<p style="color:var(--text-light);padding:40px;text-align:center;grid-column:1/-1">No products in this category yet.</p>';
+  if(footerEl&&!footerEl.innerHTML)footerEl.innerHTML=footerHTML();
 }
 
 // CART PAGE
