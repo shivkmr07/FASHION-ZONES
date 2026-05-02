@@ -299,6 +299,11 @@ ul{list-style:none}
 .category-hero h2{font-family:var(--font-head);font-size:1.8rem;font-weight:700;color:var(--bark);margin-bottom:6px}
 .category-hero p{color:var(--text-mid);font-size:.94rem}
 
+/* SEE MORE */
+.see-more-wrap{text-align:center;margin-top:36px;padding-bottom:10px}
+.see-more-btn{display:inline-flex;align-items:center;gap:10px;background:white;color:var(--espresso);border:2px solid var(--espresso);border-radius:50px;padding:13px 32px;font-size:.95rem;font-weight:700;font-family:var(--font-body);cursor:pointer;transition:.2s;box-shadow:var(--shadow-sm)}
+.see-more-btn:hover{background:var(--espresso);color:white;transform:translateY(-2px);box-shadow:var(--shadow-md)}
+
 /* CATEGORY HERO ICON */
 .cat-hero-icon{font-size:3rem;margin-bottom:12px}
 .category-hero .breadcrumb{margin-bottom:0;padding-bottom:0}
@@ -419,10 +424,10 @@ const PRODUCTS=[
 ];
 
 const CATEGORIES=[
-  {key:"trendy items",label:"Trendy Items",image:"https://i.ibb.co/sJQWtw94/61n-Mbr-ZBSVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"},
+  {key:"trendy items",label:"Trendy Items",image:"https://i.ibb.co/Sww5KzGR/51-H0-Fb4-S-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"},
   {key:"home & kitchen",label:"Home & Kitchen",image:"https://i.ibb.co/mZ3sL4f/51-WMz-Zq09c-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"},
-  {key:"home essentials",label:"Home Essentials",image:"https://i.ibb.co/Gv420Qzp/81-Amu-Aw-EVVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"},
-  {key:"garden tools",label:"Garden Tools",image:"https://i.ibb.co/6cQNnzfG/71-XPyayo-Ig-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"}
+  {key:"home essentials",label:"Home Essentials",image:"https://i.ibb.co/Xk4rm2RP/61-Sl-PPPIcw-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"},
+  {key:"garden tools",label:"Garden Tools",image:"https://i.ibb.co/qM8VXJfB/71-Pwk-Pf-Hj6-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"}
 ];
 </script>
 
@@ -548,6 +553,11 @@ const CATEGORIES=[
       </div>
       <div class="product-grid" id="homeProductGrid"></div>
       <p id="noProducts" class="hidden" style="text-align:center;padding:40px;color:var(--text-light)">No products found in this category.</p>
+      <div id="seeMoreWrap" class="see-more-wrap hidden">
+        <button class="see-more-btn" onclick="seeMoreProducts()">
+          View All Products <span id="seeMoreCount"></span> more →
+        </button>
+      </div>
     </div>
   </section>
 
@@ -878,13 +888,37 @@ function filterProducts(cat,btn){
   const h=document.getElementById('productsHeading');
   if(h){
     const label=cat==='all'?'All':cat.replace(/\b\w/g,c=>c.toUpperCase());
-    h.innerHTML=cat==='all'?`All <span>Products</span>`:`${label} <span>Products</span>`;
+    h.innerHTML=cat==='all'?'All <span>Products</span>':label+' <span>Products</span>';
   }
   const grid=document.getElementById('homeProductGrid');
   const np=document.getElementById('noProducts');
-  if(!list.length){if(grid)grid.innerHTML='';if(np)np.classList.remove('hidden');return}
+  const smWrap=document.getElementById('seeMoreWrap');
+  if(!list.length){if(grid)grid.innerHTML='';if(np)np.classList.remove('hidden');if(smWrap)smWrap.classList.add('hidden');return}
   if(np)np.classList.add('hidden');
-  if(grid)grid.innerHTML=list.map(buildCard).join('');
+  if(cat==='all'){
+    if(grid)grid.innerHTML=list.map(buildCard).join('');
+    if(smWrap)smWrap.classList.add('hidden');
+  } else {
+    const show=list.slice(0,6);
+    if(grid)grid.innerHTML=show.map(buildCard).join('');
+    if(smWrap){
+      if(list.length>6){smWrap.classList.remove('hidden');smWrap.dataset.cat=cat;document.getElementById('seeMoreCount').textContent=list.length-6;}
+      else smWrap.classList.add('hidden');
+    }
+  }
+}
+
+function seeMoreProducts(){
+  const cat=document.getElementById('seeMoreWrap').dataset.cat||'all';
+  if(cat==='all'){
+    // Show all products on home page without limit
+    const grid=document.getElementById('homeProductGrid');
+    const smWrap=document.getElementById('seeMoreWrap');
+    if(grid)grid.innerHTML=PRODUCTS.map(buildCard).join('');
+    if(smWrap)smWrap.classList.add('hidden');
+  } else {
+    filterByCat(cat);
+  }
 }
 
 // CAROUSEL
