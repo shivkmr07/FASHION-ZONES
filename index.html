@@ -720,6 +720,11 @@ function addToCart(id,qty=1){
 }
 function removeFromCart(id){saveCart(getCart().filter(i=>i.id!==id));refreshCardBtns()}
 function getCartTotal(){return getCart().reduce((s,i)=>{const p=PRODUCTS.find(pr=>pr.id===i.id);return s+(p?p.price*i.qty:0)},0)}
+// STOCK MANAGEMENT
+const STOCK_KEY="zone_stock";
+function getStockData(){try{return JSON.parse(localStorage.getItem(STOCK_KEY))||{}}catch{return{}}}
+function getStock(id){const d=getStockData();const p=PRODUCTS.find(pr=>pr.id===id);if(!p)return 0;return d[id]!==undefined?d[id]:p.stock}
+function reduceStock(cart){const d=getStockData();cart.forEach(item=>{const cur=getStock(item.id);d[item.id]=Math.max(0,cur-item.qty)});localStorage.setItem(STOCK_KEY,JSON.stringify(d))}
 function refreshCardBtns(){
   document.querySelectorAll('[data-cart-id]').forEach(btn=>{
     const inC=isInCart(btn.dataset.cartId);
@@ -981,7 +986,7 @@ function renderProductPage(id){
         <span style="font-size:.8rem;color:var(--text-light);font-family:var(--font-body)">(${Math.floor(Math.random()*200+80)} reviews)</span>
       </div>
       <div class="product-detail-price">${CONFIG.currency}${p.price.toLocaleString('en-IN')}</div>
-      <span class="stock-badge">✅ In Stock (${p.stock} available)</span>
+      <span class="stock-badge" id="stockBadge">${getStock(p.id)>0?"✅ In Stock ("+getStock(p.id)+" available)":"❌ Out of Stock"}</span>
       <p class="product-short-desc">${p.description.substring(0,200)}…</p>
       <div class="qty-row">
         <span class="qty-label">Quantity:</span>
@@ -1017,7 +1022,7 @@ function renderProductPage(id){
       ${acc('📋 Description',`<p>${p.description}</p>`)}
       ${acc('✅ Features',`<ul>${p.features.map(f=>`<li>${f}</li>`).join('')}</ul>`)}
       ${acc('⚙️ How It Works',`<p>${p.howItWorks}</p>`)}
-      ${acc('💡 Why Choose This Product',`<p>${p.whyChoose}</p>`)}
+      ${acc('💡 Why Choose This Product',`<p>${p.whyChoose}</p>`)}      ${acc('↩️ Return Policy',`<p><strong>7 Days Return Policy</strong></p><p style='margin-top:8px'>We offer a <strong>7-day return policy</strong> from the date of delivery. To be eligible for a return, please note the following conditions:</p><ul><li><strong>Unboxing video is mandatory</strong> — Returns will only be accepted if the customer has a clear and complete unboxing video recorded at the time of receiving the product. Without an unboxing video, return requests cannot be processed.</li><li>The product must be unused and in its original packaging.</li><li>Return request must be raised within 7 days of delivery.</li><li>Damaged, defective, or wrong products will be replaced or refunded after video verification.</li><li>To initiate a return, contact us at <strong>shivkmr603@gmail.com</strong> or call <strong>9546700242</strong> with your order details and unboxing video.</li></ul>`)}
     </div>`;
 
   // Related
@@ -1175,7 +1180,7 @@ async function placeOrder(){
       body:JSON.stringify({name,email,phone,address,notes:notes||'None',order:cartText,total:CONFIG.currency+total.toLocaleString('en-IN'),_subject:`New Order from ${name} – Fashion Zones`})
     });
     if(res.ok){
-      saveCart([]);updateCartCount();
+      reduceStock(cart);saveCart([]);updateCartCount();
       document.getElementById('successOverlay').classList.add('show');
       setTimeout(()=>{document.getElementById('successOverlay').classList.remove('show');navigate('home')},3500);
     }else{showToast('⚠️ Something went wrong. Please try again.');btn.disabled=false;btn.textContent='🛒 Place Order Securely'}
