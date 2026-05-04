@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion Zones – Smart Picks for Smarter Homes</title>
+<meta name="description" content="Fashion Zones – Premium home essentials, trendy items, kitchen tools, and garden accessories. Shop at fashionzones.in">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --clay:#C8763A;--clay-dark:#A0582A;--clay-light:#F0D4B8;
+  --cream:#FAF6F0;--warm-white:#FFFDF9;
+  --bark:#3D2B1F;--bark-light:#6B4C35;
+  --espresso:#2C1A0E;--espresso-mid:#4A2E1A;
+  --sage:#7A8C6E;--sage-light:#E8EDDF;
+  --gold:#C9972C;--gold-light:#F5E6C0;
+  --text-dark:#2C1A10;--text-mid:#5C4033;--text-light:#9C7B67;
+  --border:#E8D5C4;
+  --shadow-sm:0 2px 8px rgba(61,43,31,.08);
+  --shadow-md:0 6px 24px rgba(61,43,31,.12);
+  --shadow-lg:0 16px 48px rgba(61,43,31,.18);
+  --radius:14px;--radius-sm:8px;--radius-lg:24px;
+  --font-head:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans','Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;font-family:var(--font-body);outline:none}
+input,textarea{font-family:var(--font-body);outline:none}
+ul{list-style:none}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.hidden{display:none!important}
+.page{display:none}.page.active{display:block}
+
+/* ========== NAVBAR ========== */
+.navbar{background:var(--espresso);position:sticky;top:0;z-index:9999;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:66px;max-width:1200px;margin:0 auto;gap:12px}
+.logo{display:flex;flex-direction:column;cursor:pointer;flex-shrink:0}
+.logo-name{font-family:var(--font-head);font-size:1.65rem;font-weight:800;color:var(--clay-light);letter-spacing:-.5px;line-height:1}
+.logo-tag{font-size:.6rem;color:rgba(255,255,255,.45);letter-spacing:2px;text-transform:uppercase;font-weight:500;margin-top:2px}
+
+/* Search */
+.search-wrap{flex:1;max-width:440px;position:relative}
+.search-bar{display:flex;align-items:center;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);border-radius:50px;padding:8px 16px;gap:8px;transition:border-color .2s,background .2s}
+.search-bar:focus-within{background:rgba(255,255,255,.18);border-color:var(--clay)}
+.search-bar input{flex:1;border:none;background:transparent;font-family:var(--font-body);font-size:.88rem;color:white;outline:none}
+.search-bar input::placeholder{color:rgba(255,255,255,.45)}
+.search-icon{color:rgba(255,255,255,.5);font-size:.9rem}
+.search-dropdown{position:absolute;top:calc(100% + 8px);left:0;right:0;background:white;border:1.5px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);z-index:2000;overflow:hidden}
+.search-result-item{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;transition:background .15s;border-bottom:1px solid var(--border)}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--cream)}
+.search-result-item img{width:44px;height:44px;object-fit:cover;border-radius:8px}
+.search-result-name{font-size:.86rem;font-weight:600;color:var(--text-dark)}
+.search-result-price{font-size:.8rem;color:var(--clay);font-weight:600}
+
+/* Nav Actions */
+.nav-actions{display:flex;align-items:center;gap:6px}
+.nav-link-btn{background:none;color:rgba(255,255,255,.8);padding:8px 12px;border-radius:8px;font-size:.84rem;font-weight:500;transition:.2s;white-space:nowrap}
+.nav-link-btn:hover{background:rgba(255,255,255,.1);color:white}
+.cart-btn{display:flex;align-items:center;gap:7px;background:var(--clay);color:white;border-radius:50px;padding:9px 18px;font-size:.85rem;font-weight:600;transition:background .2s,transform .15s;white-space:nowrap;position:relative}
+.cart-btn:hover{background:var(--clay-dark);transform:translateY(-1px)}
+.cart-count{background:white;color:var(--clay);border-radius:50%;width:20px;height:20px;font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* Hamburger */
+.hamburger{display:flex;flex-direction:column;gap:5px;padding:8px;cursor:pointer;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:white;border-radius:2px;transition:.3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* Mobile Nav Drawer */
+.mobile-nav-drawer{position:fixed;top:66px;left:0;right:0;bottom:0;background:var(--espresso);z-index:999;transform:translateX(-100%);transition:transform .3s ease;padding:20px;overflow-y:auto}
+.mobile-nav-drawer.open{transform:translateX(0)}
+.mobile-nav-drawer a{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.85);font-size:1.05rem;font-weight:500;padding:15px 10px;border-bottom:1px solid rgba(255,255,255,.08);transition:.2s;cursor:pointer}
+.mobile-nav-drawer a:hover{color:var(--clay-light);padding-left:18px}
+.mobile-nav-drawer a:last-child{border-bottom:none}
+
+/* Mobile Search */
+.mobile-search-wrap{display:none;background:var(--espresso-mid);border-bottom:1px solid rgba(255,255,255,.08);padding:0 16px 14px;position:relative}
+.mobile-search-bar{display:flex;align-items:center;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.15);border-radius:50px;padding:9px 16px;gap:8px}
+.mobile-search-bar input{flex:1;border:none;background:transparent;font-family:var(--font-body);font-size:.88rem;color:white;outline:none}
+.mobile-search-bar input::placeholder{color:rgba(255,255,255,.4)}
+.mobile-search-bar span{color:rgba(255,255,255,.5)}
+
+/* ========== HERO ========== */
+.hero{background:linear-gradient(135deg,var(--espresso) 0%,var(--espresso-mid) 40%,var(--clay) 100%);color:white;padding:72px 20px 90px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(200,118,58,.25) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(201,151,44,.15) 0%,transparent 50%)}
+.hero-content{position:relative;z-index:1}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22);color:var(--gold-light);font-size:.72rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;padding:6px 18px;border-radius:50px;margin-bottom:20px}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.2rem,5vw,4rem);font-weight:800;line-height:1.1;margin-bottom:16px;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+.hero h1 span{color:var(--clay-light)}
+.hero p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 32px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--clay-dark);font-weight:700;font-size:.95rem;padding:13px 28px;border-radius:50px;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;font-family:var(--font-body)}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.hero-cta-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,.5);color:white;font-weight:600;font-size:.95rem;padding:11px 26px;border-radius:50px;background:none;transition:border-color .2s,background .2s;cursor:pointer;font-family:var(--font-body)}
+.hero-cta-outline:hover{border-color:white;background:rgba(255,255,255,.1)}
+
+/* ========== TRUST BAR ========== */
+.trust-bar{background:var(--bark);padding:28px 0}
+.trust-bar-inner{display:flex;gap:28px;flex-wrap:wrap;justify-content:center;max-width:1200px;margin:0 auto;padding:0 20px}
+.trust-item-bar{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.8)}
+.trust-icon-lg{font-size:1.7rem}
+.trust-title{font-weight:700;font-size:.88rem;color:white}
+.trust-sub{font-size:.75rem;color:rgba(255,255,255,.5)}
+
+/* ========== CATEGORY CAROUSEL ========== */
+.category-section{padding:40px 0 28px;background:var(--warm-white);border-bottom:2px solid var(--border)}
+.section-label{text-align:center;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-light);font-weight:600;margin-bottom:24px}
+.cat-scroll-outer{position:relative}
+.cat-scroll-wrapper{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;user-select:none}
+.cat-scroll-wrapper::-webkit-scrollbar{display:none}
+.cat-scroll-wrapper.grabbing{cursor:grabbing}
+.cat-track{display:flex;gap:28px;padding:10px 50px 16px;width:max-content}
+.cat-item{display:flex;flex-direction:column;align-items:center;gap:10px;scroll-snap-align:center;cursor:pointer;transition:transform .2s}
+.cat-item:hover{transform:translateY(-5px)}
+.cat-circle{width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid var(--border);box-shadow:var(--shadow-md);transition:border-color .2s,box-shadow .2s;background:var(--cream);flex-shrink:0}
+.cat-item:hover .cat-circle{border-color:var(--clay);box-shadow:0 0 0 4px rgba(200,118,58,.2),var(--shadow-md)}
+.cat-circle img{width:100%;height:100%;object-fit:cover;transition:transform .3s;pointer-events:none}
+.cat-item:hover .cat-circle img{transform:scale(1.08)}
+.cat-label{font-size:.78rem;font-weight:600;color:var(--text-mid);text-align:center;max-width:90px;line-height:1.3}
+.cat-arrow{position:absolute;top:50%;transform:translateY(-50%);background:var(--espresso);color:white;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,.25);transition:.2s;border:none;font-size:.9rem}
+.cat-arrow:hover{background:var(--clay)}
+.cat-arrow.left{left:4px}
+.cat-arrow.right{right:4px}
+
+/* ========== FILTER BAR ========== */
+.filter-bar{padding:20px 0;background:var(--warm-white);border-bottom:1px solid var(--border)}
+.filter-bar-inner{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.filter-btn{padding:8px 18px;border-radius:50px;font-size:.82rem;font-weight:500;border:2px solid var(--border);background:white;color:var(--text-mid);transition:.2s;cursor:pointer;font-family:var(--font-body)}
+.filter-btn:hover,.filter-btn.active{background:var(--espresso);color:white;border-color:var(--espresso)}
+
+/* ========== SECTION HEADER ========== */
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;gap:16px;flex-wrap:wrap}
+.section-title{font-family:var(--font-head);font-size:1.8rem;font-weight:700;color:var(--text-dark)}
+.section-title span{color:var(--clay)}
+.section-divider{width:50px;height:3px;background:var(--clay);border-radius:2px;margin-top:6px}
+
+/* ========== PRODUCT GRID ========== */
+.products-section{padding:50px 0}
+.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(min-width:900px){.product-grid{grid-template-columns:repeat(4,1fr)}}
+
+/* ========== PRODUCT CARD ========== */
+.product-card{background:white;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s;cursor:pointer;border:1px solid var(--border);display:flex;flex-direction:column}
+.product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:var(--cream)}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.product-card:hover .product-img-wrap img{transform:scale(1.06)}
+.product-badge{position:absolute;top:10px;left:10px;background:var(--clay);color:white;font-size:.66rem;font-weight:700;padding:4px 10px;border-radius:50px;letter-spacing:.5px;text-transform:uppercase}
+.product-info{padding:14px;display:flex;flex-direction:column;gap:5px;flex:1}
+.product-cat{font-size:.66rem;font-weight:600;color:var(--clay);text-transform:uppercase;letter-spacing:1px}
+.product-name{font-family:var(--font-head);font-size:.96rem;font-weight:600;color:var(--text-dark);line-height:1.35;flex:1}
+.product-price{font-size:1.1rem;font-weight:700;color:var(--bark)}
+.stars{color:var(--gold);font-size:.72rem;letter-spacing:1px}
+.card-actions{display:flex;gap:7px;margin-top:10px}
+.card-btn{flex:1;background:var(--espresso);color:white;border-radius:var(--radius-sm);padding:10px;font-size:.82rem;font-weight:600;transition:background .2s;font-family:var(--font-body)}
+.card-btn:hover{background:var(--clay)}
+.card-btn.in-cart{background:var(--sage)}
+.card-btn.in-cart:hover{background:#5e7055}
+.card-view-btn{background:var(--warm-white);color:var(--text-mid);border-radius:var(--radius-sm);padding:10px 13px;font-size:.82rem;transition:background .2s;border:1px solid var(--border);font-family:var(--font-body)}
+.card-view-btn:hover{background:var(--clay-light)}
+
+/* ========== PRODUCT PAGE ========== */
+.product-page-inner{padding:32px 0 60px}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text-light);margin-bottom:28px;flex-wrap:wrap}
+.breadcrumb a{color:var(--clay);cursor:pointer}
+.breadcrumb a:hover{text-decoration:underline}
+.product-layout{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:768px){.product-layout{grid-template-columns:1fr 1fr}}
+.gallery{position:sticky;top:84px}
+.gallery-main{border-radius:var(--radius);overflow:hidden;aspect-ratio:1;background:var(--cream);border:1px solid var(--border);margin-bottom:12px}
+.gallery-main img{width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+.gallery-thumbs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;flex-wrap:wrap}
+.gallery-thumbs::-webkit-scrollbar{display:none}
+.gallery-thumb{width:66px;height:66px;border-radius:var(--radius-sm);overflow:hidden;border:2px solid transparent;cursor:pointer;transition:border-color .2s;flex-shrink:0}
+.gallery-thumb.active,.gallery-thumb:hover{border-color:var(--clay)}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover}
+.product-detail-cat{font-size:.7rem;font-weight:700;color:var(--clay);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.product-detail-name{font-family:var(--font-head);font-size:clamp(1.4rem,3vw,2.1rem);font-weight:700;color:var(--text-dark);margin-bottom:12px;line-height:1.2}
+.product-detail-price{font-size:2rem;font-weight:800;color:var(--bark);margin-bottom:14px}
+.stock-badge{display:inline-flex;align-items:center;gap:6px;background:#edf7ed;color:#2e7d32;font-size:.8rem;font-weight:600;padding:5px 14px;border-radius:50px;margin-bottom:18px}
+.product-short-desc{color:var(--text-mid);font-size:.94rem;line-height:1.75;margin-bottom:22px;border-left:3px solid var(--clay);padding-left:14px}
+.qty-row{display:flex;align-items:center;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+.qty-label{font-size:.88rem;font-weight:600;color:var(--text-mid)}
+.qty-control{display:flex;align-items:center;border:2px solid var(--border);border-radius:50px;overflow:hidden}
+.qty-btn{width:38px;height:38px;background:var(--cream);color:var(--text-dark);font-size:1.1rem;font-weight:600;display:flex;align-items:center;justify-content:center;transition:background .15s;border:none;cursor:pointer;font-family:var(--font-body)}
+.qty-btn:hover{background:var(--clay-light)}
+.qty-num{width:48px;text-align:center;font-weight:700;font-size:1rem;border:none;background:white;outline:none;font-family:var(--font-body)}
+.action-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.btn-buy-now{flex:1;background:var(--clay);color:white;border-radius:50px;padding:14px 24px;font-size:1rem;font-weight:700;transition:background .2s,transform .15s;cursor:pointer;border:none;font-family:var(--font-body);min-width:130px}
+.btn-buy-now:hover{background:var(--clay-dark);transform:translateY(-1px)}
+.btn-add-cart{flex:1;background:var(--espresso);color:white;border-radius:50px;padding:14px 24px;font-size:1rem;font-weight:700;transition:background .2s,transform .15s;cursor:pointer;border:none;font-family:var(--font-body);min-width:130px}
+.btn-add-cart:hover{background:var(--bark-light);transform:translateY(-1px)}
+.btn-add-cart.in-cart{background:var(--sage)}
+.trust-row{display:flex;gap:16px;flex-wrap:wrap;padding:16px;background:var(--warm-white);border-radius:var(--radius-sm);border:1px solid var(--border)}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--text-mid);font-weight:500}
+.trust-icon{font-size:1.1rem}
+
+/* STICKY BAR */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:var(--espresso);border-top:none;padding:12px 20px;display:none;align-items:center;justify-content:space-between;gap:10px;z-index:900;box-shadow:0 -4px 20px rgba(0,0,0,.3)}
+@media(max-width:767px){.sticky-bar{display:flex}}
+.sticky-product-name{color:white;font-family:var(--font-head);font-size:1rem;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-right:10px}
+.sticky-price{color:var(--clay-light);font-size:1.05rem;font-weight:700;white-space:nowrap;margin-right:10px}
+.sticky-add{background:var(--clay);color:white;border-radius:50px;padding:10px 22px;font-weight:700;font-size:.9rem;white-space:nowrap;border:none;cursor:pointer;font-family:var(--font-body);transition:background .2s}
+.sticky-add:hover{background:var(--clay-dark)}
+
+/* ACCORDION */
+.accordion-section{margin-top:48px}
+.accordion-title-main{font-family:var(--font-head);font-size:1.4rem;font-weight:700;color:var(--text-dark);margin-bottom:16px}
+.accordion-list{display:flex;flex-direction:column;gap:10px}
+.accordion-item{border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;background:white}
+.accordion-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;user-select:none;gap:12px;transition:background .15s}
+.accordion-header:hover{background:var(--warm-white)}
+.accordion-head-title{font-weight:600;font-size:.95rem;color:var(--espresso);flex:1}
+.accordion-icon{width:28px;height:28px;border-radius:50%;background:var(--clay-light);color:var(--clay-dark);display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:300;flex-shrink:0;transition:background .2s,transform .3s;line-height:1}
+.accordion-item.open .accordion-icon{background:var(--clay);color:white;transform:rotate(45deg)}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.accordion-item.open .accordion-body{max-height:1000px}
+.accordion-content{padding:0 20px 20px;font-size:.92rem;color:var(--text-mid);line-height:1.8;background:var(--warm-white)}
+.accordion-content ul{padding-left:20px;list-style:disc;margin-top:8px}
+.accordion-content li{margin-bottom:5px}
+
+/* RELATED */
+.related-section{padding:50px 0;background:var(--warm-white);border-top:1px solid var(--border)}
+.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(min-width:768px){.related-grid{grid-template-columns:repeat(4,1fr)}}
+
+/* CART */
+.cart-page{padding:44px 0 80px}
+.page-heading{font-family:var(--font-head);font-size:2rem;font-weight:700;color:var(--text-dark);margin-bottom:30px}
+.cart-layout{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:768px){.cart-layout{grid-template-columns:1fr 340px}}
+.cart-items-wrap{display:flex;flex-direction:column;gap:14px}
+.cart-item{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:16px;display:flex;gap:14px;align-items:center;transition:box-shadow .2s}
+.cart-item:hover{box-shadow:var(--shadow-md)}
+.cart-item-img{width:78px;height:78px;border-radius:var(--radius-sm);object-fit:cover;flex-shrink:0;cursor:pointer;background:var(--cream)}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-name{font-family:var(--font-head);font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:4px;cursor:pointer;line-height:1.3}
+.cart-item-name:hover{color:var(--clay)}
+.cart-item-price{font-weight:700;color:var(--bark);font-size:1rem;margin-bottom:10px}
+.cart-item-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cart-qty-wrap{display:flex;align-items:center;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.cart-qty-btn{background:var(--warm-white);border:none;width:32px;height:32px;font-size:1rem;cursor:pointer;transition:background .15s;font-family:var(--font-body)}
+.cart-qty-btn:hover{background:var(--clay-light)}
+.cart-qty-num{width:34px;text-align:center;font-size:.9rem;font-weight:600;color:var(--text-dark)}
+.remove-btn{background:none;border:1.5px solid #e0a0a0;color:#c0392b;font-size:.78rem;font-weight:600;padding:5px 12px;border-radius:50px;transition:background .2s;cursor:pointer;font-family:var(--font-body)}
+.remove-btn:hover{background:#fdecea}
+.cart-item-remove-x{background:none;border:none;color:var(--text-light);font-size:1.2rem;cursor:pointer;padding:4px;transition:.2s;flex-shrink:0;align-self:flex-start}
+.cart-item-remove-x:hover{color:#c0392b}
+.cart-summary{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:24px;height:fit-content;position:sticky;top:84px}
+.cart-summary h3{font-family:var(--font-head);font-size:1.2rem;margin-bottom:20px;color:var(--text-dark)}
+.summary-row{display:flex;justify-content:space-between;font-size:.9rem;color:var(--text-mid);padding:8px 0;border-bottom:1px solid var(--border)}
+.summary-total{display:flex;justify-content:space-between;font-size:1.1rem;font-weight:700;color:var(--text-dark);padding-top:14px;margin-top:4px;border-top:2px solid var(--espresso)}
+.btn-checkout{width:100%;background:var(--clay);color:white;border-radius:50px;padding:14px;font-size:1rem;font-weight:700;margin-top:18px;transition:background .2s,transform .15s;cursor:pointer;border:none;font-family:var(--font-body)}
+.btn-checkout:hover{background:var(--clay-dark);transform:translateY(-1px)}
+.btn-continue{width:100%;background:none;border:2px solid var(--border);color:var(--text-mid);border-radius:50px;padding:11px;font-size:.9rem;font-weight:500;margin-top:10px;transition:.2s;cursor:pointer;font-family:var(--font-body)}
+.btn-continue:hover{border-color:var(--espresso);color:var(--espresso)}
+.empty-cart{text-align:center;padding:80px 20px;color:var(--text-light)}
+.empty-cart .icon{font-size:4rem;margin-bottom:16px}
+.empty-cart h3{font-family:var(--font-head);font-size:1.4rem;margin-bottom:10px;color:var(--text-mid)}
+.btn-shop{display:inline-block;background:var(--clay);color:white;padding:12px 30px;border-radius:50px;font-weight:600;margin-top:16px;cursor:pointer;border:none;font-size:.95rem;transition:background .2s;font-family:var(--font-body)}
+.btn-shop:hover{background:var(--clay-dark)}
+
+/* CHECKOUT */
+.checkout-page{padding:40px 0 80px}
+.checkout-layout{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:768px){.checkout-layout{grid-template-columns:1fr 380px}}
+.checkout-form-wrap{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+.form-section-title{font-family:var(--font-head);font-size:1.15rem;font-weight:700;color:var(--text-dark);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--text-mid);margin-bottom:5px}
+.form-group input,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--cream);font-size:.92rem;color:var(--text-dark);transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--clay);background:white;box-shadow:0 0 0 3px rgba(200,118,58,.08)}
+.form-group textarea{min-height:90px;resize:vertical}
+.btn-place-order{width:100%;background:var(--clay);color:white;border-radius:50px;padding:15px;font-size:1.05rem;font-weight:700;border:none;cursor:pointer;transition:background .2s,transform .15s;font-family:var(--font-body)}
+.btn-place-order:hover{background:var(--clay-dark);transform:translateY(-1px)}
+.btn-place-order:disabled{background:var(--text-light);cursor:not-allowed;transform:none}
+.order-summary-box{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:24px;height:fit-content;position:sticky;top:84px}
+.order-summary-box h3{font-family:var(--font-head);font-size:1.15rem;color:var(--text-dark);margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.order-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);align-items:center}
+.order-item:last-of-type{border-bottom:none}
+.order-item img{width:52px;height:52px;object-fit:cover;border-radius:8px;flex-shrink:0;background:var(--cream)}
+.order-item-name{font-size:.86rem;font-weight:600;flex:1;color:var(--text-dark);line-height:1.3}
+.order-item-sub{font-size:.76rem;color:var(--text-light);margin-top:2px}
+.order-item-price{font-size:.9rem;font-weight:700;color:var(--bark);white-space:nowrap}
+
+/* CATEGORY PAGE */
+.category-page{padding:40px 0 60px}
+.category-hero{background:linear-gradient(135deg,var(--clay-light) 0%,white 100%);border-radius:var(--radius-lg);padding:40px 30px;margin-bottom:36px;border:1px solid var(--border)}
+.category-hero h2{font-family:var(--font-head);font-size:1.8rem;font-weight:700;color:var(--bark);margin-bottom:6px}
+.category-hero p{color:var(--text-mid);font-size:.94rem}
+
+/* SEE MORE */
+.see-more-wrap{text-align:center;margin-top:36px;padding-bottom:10px}
+.see-more-btn{display:inline-flex;align-items:center;gap:10px;background:white;color:var(--espresso);border:2px solid var(--espresso);border-radius:50px;padding:13px 32px;font-size:.95rem;font-weight:700;font-family:var(--font-body);cursor:pointer;transition:.2s;box-shadow:var(--shadow-sm)}
+.see-more-btn:hover{background:var(--espresso);color:white;transform:translateY(-2px);box-shadow:var(--shadow-md)}
+
+/* CATEGORY HERO ICON */
+.cat-hero-icon{font-size:3rem;margin-bottom:12px}
+.category-hero .breadcrumb{margin-bottom:0;padding-bottom:0}
+
+/* FOOTER */
+.footer{background:var(--espresso);color:rgba(255,255,255,.72);padding:50px 20px 0;margin-top:60px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.footer-inner{grid-template-columns:1fr;gap:28px}}
+.footer-brand-name{font-family:var(--font-head);font-size:1.5rem;font-weight:800;color:var(--clay-light);margin-bottom:8px;display:block}
+.footer-tag{font-size:.78rem;color:rgba(255,255,255,.38);margin-bottom:14px}
+.footer-desc{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.7;max-width:260px;margin-bottom:16px}
+.footer-contact a{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.7);font-size:.84rem;margin-bottom:8px;transition:color .2s}
+.footer-contact a:hover{color:var(--clay-light)}
+.footer-col h4{font-family:var(--font-head);font-size:1.05rem;color:var(--clay-light);margin-bottom:14px;font-weight:600}
+.footer-col ul{display:flex;flex-direction:column;gap:8px}
+.footer-col ul a{font-size:.84rem;color:rgba(255,255,255,.55);transition:color .2s;cursor:pointer}
+.footer-col ul a:hover{color:var(--clay-light)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding:18px 0;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;font-size:.78rem;gap:10px;flex-wrap:wrap}
+.footer-bottom span{color:rgba(255,255,255,.4)}
+.footer-instagram{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:8px 16px;border-radius:50px;font-size:.82rem;font-weight:600;margin-top:14px;transition:opacity .2s;text-decoration:none}
+.footer-instagram:hover{opacity:.88}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--espresso);color:white;padding:12px 24px;border-radius:50px;font-size:.88rem;font-weight:600;z-index:9998;transition:transform .3s ease;box-shadow:0 8px 24px rgba(0,0,0,.3);white-space:nowrap;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* SUCCESS */
+.success-overlay{position:fixed;inset:0;background:rgba(44,26,14,.85);display:none;align-items:center;justify-content:center;z-index:9999}
+.success-overlay.show{display:flex}
+.success-box{background:white;border-radius:var(--radius-lg);padding:50px 40px;text-align:center;max-width:420px;width:90%;box-shadow:var(--shadow-lg)}
+.success-icon{font-size:4rem;margin-bottom:16px}
+.success-box h2{font-family:var(--font-head);font-size:1.7rem;color:var(--text-dark);margin-bottom:10px}
+.success-box p{color:var(--text-light);font-size:.92rem;line-height:1.6}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-desktop{display:none!important}
+  .gallery{position:static}
+}
+@media(max-width:480px){
+  .nav-inner{gap:8px}
+  .search-wrap{display:none}
+  .mobile-search-wrap{display:block}
+  .logo-name{font-size:1.35rem}
+  .cart-btn{padding:9px 13px;font-size:.8rem}
+  .product-card-body{padding:10px}
+  .success-box{padding:32px 22px}
+}
+
+/* POLICY PAGES */
+.policy-page{padding:40px 0 80px}
+.policy-box{background:white;border:1px solid var(--border);border-radius:var(--radius-lg);padding:48px 44px;max-width:860px;margin:0 auto;box-shadow:var(--shadow-sm)}
+.policy-icon{font-size:3rem;margin-bottom:14px}
+.policy-title{font-family:var(--font-head);font-size:2.2rem;font-weight:800;color:var(--espresso);margin-bottom:6px}
+.policy-subtitle{font-size:.84rem;color:var(--text-light);margin-bottom:36px;padding-bottom:24px;border-bottom:2px solid var(--border)}
+.policy-section{margin-bottom:32px}
+.policy-section h2{font-family:var(--font-head);font-size:1.2rem;font-weight:700;color:var(--bark);margin-bottom:12px;padding-left:12px;border-left:4px solid var(--clay)}
+.policy-section p{font-size:.94rem;color:var(--text-mid);line-height:1.85;margin-bottom:10px}
+.policy-section ul{padding-left:22px;list-style:disc;display:flex;flex-direction:column;gap:8px}
+.policy-section ul li{font-size:.92rem;color:var(--text-mid);line-height:1.7}
+.policy-section ul li strong{color:var(--text-dark)}
+.policy-contact{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-top:8px}
+.policy-contact p{font-size:.9rem;color:var(--text-mid);margin-bottom:6px}
+.policy-contact a{color:var(--clay);font-weight:600}
+@media(max-width:600px){.policy-box{padding:28px 20px}.policy-title{font-size:1.6rem}}
+
+
+/* PAYMENT METHOD */
+.payment-section{margin-top:24px;padding-top:20px;border-top:2px solid var(--border)}
+.payment-section-title{font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:var(--text-dark);margin-bottom:16px}
+.payment-options{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.pay-option{flex:1;min-width:140px;border:2px solid var(--border);border-radius:var(--radius);padding:14px 16px;cursor:pointer;transition:.2s;background:white;display:flex;align-items:center;gap:10px;font-family:var(--font-body)}
+.pay-option:hover{border-color:var(--clay)}
+.pay-option.selected{border-color:var(--clay);background:rgba(200,118,58,.06)}
+.pay-option input[type=radio]{accent-color:var(--clay);width:16px;height:16px;flex-shrink:0}
+.pay-option-label{display:flex;flex-direction:column;gap:2px}
+.pay-option-title{font-weight:700;font-size:.9rem;color:var(--text-dark)}
+.pay-option-sub{font-size:.75rem;color:var(--text-light)}
+
+/* UPI BOX */
+.upi-box{background:var(--cream);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px;display:none;text-align:center;margin-bottom:4px}
+.upi-box.show{display:block}
+.upi-box h4{font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:var(--text-dark);margin-bottom:6px}
+.upi-box p{font-size:.85rem;color:var(--text-mid);margin-bottom:14px}
+.upi-qr{width:180px;height:180px;object-fit:contain;border-radius:var(--radius-sm);border:2px solid var(--border);margin:0 auto 14px;display:block;background:white;padding:6px}
+.upi-id-box{background:white;border:1.5px dashed var(--clay);border-radius:var(--radius-sm);padding:10px 16px;display:inline-block;margin-bottom:12px}
+.upi-id-text{font-size:1rem;font-weight:700;color:var(--clay-dark);letter-spacing:.5px}
+.upi-steps{text-align:left;background:white;border-radius:var(--radius-sm);padding:14px 16px;border:1px solid var(--border);margin-top:8px}
+.upi-steps p{font-size:.82rem;color:var(--text-mid);margin-bottom:4px;display:flex;align-items:flex-start;gap:8px}
+.upi-note{font-size:.78rem;color:var(--text-light);margin-top:10px;font-style:italic}
+
+/* COD BOX */
+.cod-box{background:var(--cream);border:1.5px solid var(--border);border-radius:var(--radius);padding:18px 22px;display:none;margin-bottom:4px}
+.cod-box.show{display:block}
+.cod-box p{font-size:.88rem;color:var(--text-mid);display:flex;align-items:flex-start;gap:8px;margin-bottom:6px}
+.cod-box p:last-child{margin-bottom:0}
+
+
+/* UTR FIELD */
+.utr-field{margin-top:16px;text-align:left}
+.utr-label{display:block;font-size:.88rem;font-weight:700;color:var(--text-dark);margin-bottom:8px}
+.utr-input{width:100%;padding:12px 44px 12px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:1rem;color:var(--text-dark);background:white;outline:none;transition:border-color .2s,box-shadow .2s;letter-spacing:.5px}
+.utr-input:focus{border-color:var(--clay);box-shadow:0 0 0 3px rgba(200,118,58,.12)}
+.utr-input.utr-ok{border-color:#2e7d32;box-shadow:0 0 0 3px rgba(46,125,50,.1)}
+.utr-input.utr-err{border-color:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.1)}
+.utr-error{font-size:.8rem;color:#c0392b;margin-top:7px;background:#fdecea;padding:8px 12px;border-radius:6px;border-left:3px solid #c0392b;font-weight:500}
+.utr-success{font-size:.8rem;color:#2e7d32;margin-top:7px;background:#edf7ed;padding:8px 12px;border-radius:6px;border-left:3px solid #2e7d32;font-weight:500}
+.utr-hint{font-size:.76rem;color:#7a5c00;margin-top:10px;line-height:1.7;background:#fff8e8;padding:10px 12px;border-radius:6px;border-left:3px solid var(--gold)}
+
+</style>
+</head>
+<body>
+
+<script>
+// ========== CONFIG ==========
+const CONFIG={
+  siteName:"Fashion Zones",
+  tagline:"Smart Picks for Smarter Homes",
+  formspree:"https://formspree.io/f/mnjwqjde",
+  currency:"₹",
+  email:"shivkmr603@gmail.com",
+  phone:"9546700242",
+  domain:"fashionzones.in",
+  instagram:"https://www.instagram.com/fashion.zoness?igsh=enV1MDNwNGN2ZzJ2"
+};
+
+// ========== PRODUCTS ARRAY – Edit here ==========
+const PRODUCTS=[
+  {id:"FZ001",name:"Mattress Lifter Tool (Pack of 2)",price:249,category:["trendy items"],badge:"Best Seller",
+   description:"Make your bed in seconds without straining your hands or back with this smart Mattress Lifter Tool. Specially designed to lift and hold the mattress easily, it helps you tuck bedsheets, adjust bed covers, and place bedding neatly underneath without heavy effort. Its ergonomic wedge shape slides smoothly under the mattress and creates enough lifting space, giving you both hands free for quick and proper sheet tucking. Made from strong yet lightweight material, this tool is durable, reusable, and easy to handle for daily use.",
+   features:["Ergonomic wedge design for easy mattress lifting","Helps tuck bedsheets quickly and neatly","Reduces hand, wrist, and back strain","Strong, lightweight, and reusable material","Suitable for all standard bed sizes","Pack of 2 for convenient use on both sides"],
+   howItWorks:"Simply slide the mattress lifter under the side or corner of the mattress and push gently. The tool lifts and holds the mattress in an elevated position, creating enough space underneath to tuck bedsheets or adjust bed covers easily. Once your bedding is set, remove the tool and the mattress settles back into place.",
+   whyChoose:"This mattress lifter tool makes daily bed making faster, easier, and more comfortable by removing the need to lift a heavy mattress with your hands. It saves time, prevents body strain, and gives your bed a neat and tight finish with minimal effort. Lightweight, practical, and highly useful, it is a smart home utility tool for every household.",
+   images:["https://i.ibb.co/sJQWtw94/61n-Mbr-ZBSVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/CszwQrDq/71-1ap-Brv-RL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/C5mvQsQk/61-Bx-OV-o-DLL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/RkmSx9YM/71-Hkons-FPDL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/Z11k2cVm/61j-Wng2cx-UL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/tMFkbPpY/71bn-CPYae-ML-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/8g7R1P0t/71u-Lx3mwsn-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99},
+  {id:"FZ002",name:"2 in 1 Portable Mini Bag Sealer",price:269,category:["trendy items"],badge:"Trending",
+   description:"Keep your snacks and groceries fresh for longer with this smart 2 in 1 Portable Mini Bag Sealer. Designed with both sealing and cutting functions, this handy device quickly reseals opened plastic packets to protect food from air, moisture, and dust. It uses fast heat sealing technology to create an airtight lock within seconds, helping maintain freshness and reduce food wastage. The built-in cutter allows neat and easy packet opening whenever needed. USB rechargeable and lightweight in design, it is simple to carry, easy to use, and perfect for daily kitchen storage, travel, office, or hostel use.",
+   features:["2 in 1 sealing and cutting function","USB rechargeable with charging cable support","Quick heat sealing within seconds","Keeps food fresh and moisture free","Built-in packet cutter for easy opening","Compact, lightweight, and portable design","Easy one hand operation","Suitable for most plastic snack and grocery bags"],
+   howItWorks:"Charge the device using the USB cable and switch it on. Wait a few seconds for the heating plate to warm up, then place the open end of the plastic packet between the sealing jaws. Press gently and slide across the packet to create an instant airtight seal. Use the built-in cutter side whenever you need to open the packet neatly.",
+   whyChoose:"This mini bag sealer is a practical everyday kitchen gadget that helps keep food fresh, saves snacks from getting soft, and reduces unnecessary wastage. It removes the need for clips, rubber bands, or folding packets and offers a quick reusable sealing solution in one compact device. Easy, rechargeable, and highly useful, it is a smart addition to every home.",
+   images:["https://i.ibb.co/Sww5KzGR/51-H0-Fb4-S-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/TDRxHrVL/710-I5-NM2kl-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/DHGnm5G7/71-Km-Ip-QDdv-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/PZPN830B/61a6-Ahm-Ab0-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/fV2hZ6pN/61-OMmo0-G9-SL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/4BkQcKv/81bh666c-VEL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/sB9N5hQ/61-Mmg-CTu-Yd-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99},
+  {id:"FZ003",name:"Digital Kitchen Weighing Scale",price:329,category:["home & kitchen"],badge:"Popular",
+   description:"Measure ingredients and everyday items with perfect accuracy using this smart Digital Kitchen Weighing Scale. Designed for kitchen, baking, grocery, and household use, this electronic scale provides quick and precise weight readings up to 10kg. It comes with an easy-to-read digital display and simple control buttons for hassle free operation. Whether you are weighing fruits, vegetables, flour, spices, parcels, or daily essentials, this compact machine ensures correct measurement every time. Made from durable lightweight material, it is portable, easy to store, and highly useful for home kitchens.",
+   features:["High precision digital weight measurement","Supports weighing up to 10kg capacity","Easy to read LCD display screen","Quick and accurate instant results","Compact, lightweight, and portable design","Simple button control for easy use","Ideal for kitchen, grocery, and household items","Durable and long lasting body material"],
+   howItWorks:"Place the scale on a flat surface and switch it on using the power button. Put the item or ingredient on the weighing platform and the digital screen will instantly show the exact weight. You can reset or tare the scale as needed for multiple measurements, making weighing simple, quick, and accurate.",
+   whyChoose:"This digital weighing scale helps you measure food items and household products with better accuracy, making cooking, baking, dieting, and daily use much easier. It saves time, prevents guesswork, and gives reliable readings instantly. Compact, practical, and easy to use, it is a smart essential tool for every kitchen and home.",
+   images:["https://i.ibb.co/mZ3sL4f/51-WMz-Zq09c-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/1Yj6WFMX/8167vj-X682-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/bM949SZM/71m-Vt-VAps3-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/d0c54Rbz/71a-UHwb-KDKL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/yc68jG8v/81-Lq-ALYh-7-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/3m0VFPVd/717p0-EXx-Gj-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99},
+  {id:"FZ004",name:"5 in 1 Portable USB Air Cooler Fan",price:874,category:["home & kitchen","home essentials"],badge:"Hot Deal",
+   description:"Stay cool and comfortable anywhere with this advanced 5 in 1 Portable USB Air Cooler Fan. Designed with cooling fan, mist spray, humidifier, night light, and aroma diffuser functions in one compact device, it delivers refreshing cool air while also adding moisture to the surroundings for a more pleasant experience. The built-in water tank creates a fine mist that helps reduce dry heat, while the adjustable fan angle and multiple wind speed modes allow customized cooling. Its USB powered portable design makes it perfect for bedroom, office desk, study table, and travel.",
+   features:["5 in 1 multifunction cooling device","Fan, air cooler, mist spray, humidifier, and night light","3 adjustable wind speed modes","Built-in water tank for cool mist spray","60 degree adjustable air flow direction","Soft LED light mode for night use","USB powered and energy efficient","Compact, lightweight, and portable design"],
+   howItWorks:"Fill the water tank with clean water and connect the device through USB power. Switch it on and choose your preferred fan speed. Activate the mist spray mode to release cool moisture along with airflow for enhanced cooling. You can also adjust the fan direction and use the built-in light mode for night comfort. Simply refill water whenever needed.",
+   whyChoose:"This portable air cooler fan gives you personal cooling, humidifying, and mist comfort in one compact machine, making it far more useful than a normal table fan. It is energy saving, easy to carry, and ideal for hot weather when you need instant cool air in a small space. Practical, multifunctional, and stylish.",
+   images:["https://i.ibb.co/hFMHTNCr/61x-UWj-SYQ4-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/7dcsW60D/71p-OUIn2-JHL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/RGs2hC03/71f-Moex-YOe-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/MDX4fdmj/71kpr-Kt-HMz-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/p6SV9Z5J/71-GS8-Kad-A8-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99},
+  {id:"FZ005",name:"Door Bottom Guard Seal Strip (Pack of 2)",price:199,category:["home essentials","home & kitchen"],badge:"Must Have",
+   description:"Protect your home from dust, insects, outside noise, and unwanted air with this practical Door Bottom Guard Seal Strip. Designed to fit neatly at the bottom of doors, this smart guard fills the gap between the floor and the door to block dust, cold air, hot air, smoke, and small insects from entering inside. It also helps reduce outside noise and improves room insulation for a more comfortable indoor environment. Made from soft yet durable material, it slides smoothly with the door and can be installed easily without complicated tools.",
+   features:["Blocks dust, insects, smoke, and outside air","Helps reduce outside noise and door gaps","Improves room insulation and energy saving","Soft, durable, and long lasting material","Smooth sliding with door movement","Easy to install and remove","Suitable for most standard doors","Pack of 2 for extra convenience"],
+   howItWorks:"Simply attach or place the guard strip at the bottom side of the door so that it covers the open gap between the door and the floor. As the door moves, the strip slides along smoothly while continuously blocking dust, air, insects, and noise from passing through the gap. It creates a protective barrier without affecting normal door use.",
+   whyChoose:"This door guard seal strip is an easy and affordable way to make your room cleaner, quieter, and more comfortable. It helps stop dust buildup, prevents insects from entering, reduces unwanted outside noise, and keeps indoor air better controlled. Simple to use and highly practical, it is a smart household utility.",
+   images:["https://i.ibb.co/Xk4rm2RP/61-Sl-PPPIcw-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/6c9dscd4/61y1sp-Mvy-EL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/s9dpL9Jm/61ob-Ri-Sq-Hc-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/CKK1289C/71-YKSA9-NEAL-AC-SL1500.jpg","https://i.ibb.co/1Y2VdWQV/61-R1-UH7q-QRL-AC-SL1500.jpg"],stock:99},
+  {id:"FZ006",name:"Reusable Microfiber Cleaning Cloth Roll",price:280,category:["home essentials","home & kitchen"],badge:"Eco Pick",
+   description:"Make everyday cleaning faster and more effective with this premium Reusable Microfiber Cleaning Cloth Roll. Designed with soft, highly absorbent microfiber material, each cloth easily wipes away dust, water, oil, stains, and dirt from kitchen surfaces, glass, furniture, electronics, vehicles, and household items without leaving scratches or lint. The convenient tear-away roll design allows you to pull and use one cloth at a time just like paper towels, but unlike ordinary tissues, these cloths are washable and reusable for multiple uses.",
+   features:["Soft and highly absorbent microfiber material","Easily removes dust, water, oil, and stains","Tear-away roll design for convenient single use","Washable and reusable multiple times","Lint free and scratch free cleaning","Strong, durable, and quick drying cloth","Suitable for kitchen, glass, car, furniture, and electronics","Comes with multiple reusable cleaning sheets"],
+   howItWorks:"Simply tear one cloth from the roll and use it to wipe the desired surface. The microfiber material instantly absorbs liquid, traps dust, and removes dirt effectively. After use, wash the cloth with water, let it dry, and reuse it again whenever needed. Pull a fresh sheet anytime for continuous cleaning convenience.",
+   whyChoose:"This microfiber cleaning cloth roll gives you the convenience of paper towels with the durability of reusable fabric, making cleaning easier, cheaper, and more efficient. It saves money on disposable wipes, provides better absorbency, and works on almost every household surface. Practical, reusable, and highly useful.",
+   images:["https://i.ibb.co/Gv420Qzp/81-Amu-Aw-EVVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/LjHzgG7/91oue-WXjmf-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/67Kp2K6H/81-Ub-Diiz-Xp-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/7xGPvbGG/81l-v8pt-k-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/GvbmHbVp/81ib-FHID-TL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/W4bdvzHH/81-Dg-W1-C3-Kd-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/kpPwyX5/81-RBn7-BFz5-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99},
+  {id:"FZ007",name:"High Flow Submersible Cooler Water Pump",price:399,category:["garden tools"],badge:"High Performance",
+   description:"Ensure powerful and continuous water circulation with this efficient High Flow Submersible Cooler Water Pump. Specially designed for desert coolers, aquariums, fountains, and water circulation systems, this compact electric pump delivers a strong water flow rate for better cooling performance and smooth water movement. Built with durable motor technology, it operates with low power consumption while providing reliable high speed pumping. Its fully submersible design allows easy placement inside water tanks, and the sturdy body ensures long lasting daily use.",
+   features:["High flow water pumping performance","Suitable for desert coolers, aquariums, and fountains","Energy efficient low power consumption motor","Fully submersible easy install design","Durable and long lasting body construction","Continuous smooth water circulation","Compact, lightweight, and portable size","Reliable daily use with strong output"],
+   howItWorks:"Simply place the pump inside the water tank or cooler tank and connect the outlet pipe properly. Once powered on, the internal motor starts drawing water from the tank and pushes it upward through the outlet with strong pressure. This continuous circulation keeps cooler pads wet or maintains water movement wherever used.",
+   whyChoose:"This submersible water pump provides strong water flow, better cooling efficiency, and dependable daily operation without consuming much electricity. It is easy to install, compact in size, and highly practical for replacing weak or damaged cooler pumps. Durable, efficient, and multipurpose.",
+   images:["https://i.ibb.co/qM8VXJfB/71-Pwk-Pf-Hj6-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/5hc5zw6J/71-RQ1-WTg7-EL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/nqHYwyhf/6102x2-Xo-Gb-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/RkJF5F4X/61-Lhw-My-XK7-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99},
+  {id:"FZ008",name:"Decorative Plastic Flower Pots Set (Pack of 5)",price:350,category:["garden tools"],badge:"Garden Gem",
+   description:"Add a fresh and elegant touch to your home or garden with this beautiful Decorative Plastic Flower Pots Set. Designed with a modern ribbed finish and attractive colors, these pots are perfect for indoor plants, flowers, herbs, succulents, and decorative greenery. Made from durable lightweight plastic, they are easy to move, unbreakable, and ideal for both indoor and outdoor use. Each pot comes with proper drainage support and a matching saucer tray to help maintain healthy plant growth while keeping surfaces clean.",
+   features:["Modern decorative ribbed pot design","Durable lightweight plastic material","Suitable for indoor and outdoor plants","Includes drainage holes for healthy roots","Comes with matching saucer trays","Easy to clean and reusable","Unbreakable and easy to move","Pack of 5 attractive planter pots"],
+   howItWorks:"Simply fill each pot with soil, place your favorite plant or flower inside, and water as needed. The drainage holes at the bottom allow excess water to flow out into the saucer tray, preventing overwatering and helping roots stay healthy. Place the pots anywhere in your home, balcony, office, or garden for an instant decorative plant display.",
+   whyChoose:"This flower pot set offers the perfect combination of style, durability, and plant care convenience. It not only makes your plants look more attractive but also supports healthy growth with proper drainage and clean water collection. Lightweight, reusable, and visually appealing.",
+   images:["https://i.ibb.co/6cQNnzfG/71-XPyayo-Ig-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/BKcDvN7f/71-34-S7z-SVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/CKHgrTGL/61-O772-D66g-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/0pX65cYp/71-Gma4mb9i-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/Ldj4tx9B/71-HSn-Iim-Qc-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif","https://i.ibb.co/VY1mrBBg/61-CUDI269-QL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"],stock:99}
+];
+
+const CATEGORIES=[
+  {key:"trendy items",label:"Trendy Items",image:"https://i.ibb.co/Sww5KzGR/51-H0-Fb4-S-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"},
+  {key:"home & kitchen",label:"Home & Kitchen",image:"https://i.ibb.co/mZ3sL4f/51-WMz-Zq09c-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"},
+  {key:"home essentials",label:"Home Essentials",image:"https://i.ibb.co/Xk4rm2RP/61-Sl-PPPIcw-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"},
+  {key:"garden tools",label:"Garden Tools",image:"https://i.ibb.co/qM8VXJfB/71-Pwk-Pf-Hj6-L-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif"}
+];
+</script>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="logo" onclick="navigate('home')">
+      <span class="logo-name">Fashion Zones</span>
+      <span class="logo-tag">Smart Picks for Smarter Homes</span>
+    </div>
+    <div class="search-wrap nav-desktop">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off"
+          oninput="handleSearch(this.value)" onfocus="handleSearch(this.value)" onblur="setTimeout(closeSearch,200)">
+      </div>
+      <div class="search-dropdown hidden" id="searchDropdown"></div>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-link-btn nav-desktop" onclick="navigate('home')">🏠 Home</button>
+      <button class="nav-link-btn nav-desktop" onclick="filterByCat('trendy items')">✨ Trending</button>
+      <button class="nav-link-btn nav-desktop" onclick="filterByCat('home & kitchen')">🍳 Kitchen</button>
+      <button class="cart-btn" onclick="navigate('cart')">
+        🛒 Cart <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile Search -->
+  <div class="mobile-search-wrap" id="mobileSearchWrap">
+    <div class="mobile-search-bar">
+      <span>🔍</span>
+      <input type="text" id="mobileSearchInput" placeholder="Search products..." oninput="handleMobileSearch(this.value)">
+    </div>
+    <div class="search-dropdown hidden" id="mobileSearchDropdown"
+      style="position:relative;left:0;transform:none;width:100%;top:4px;border-radius:8px;"></div>
+  </div>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div id="mobileNavDrawer" style="position:fixed;top:66px;left:0;right:0;bottom:0;background:#2C1A0E;z-index:998;transform:translateX(-100%);transition:transform 0.3s ease;padding:10px 0;overflow-y:auto;display:block;">
+  <a onclick="navigate('home');closeNav()" style="display:flex;align-items:center;gap:12px;color:white;font-size:1.05rem;font-weight:600;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.1);cursor:pointer;text-decoration:none;">🏠 Home</a>
+  <a onclick="filterByCat('trendy items');closeNav()" style="display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.85);font-size:1.05rem;font-weight:500;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.1);cursor:pointer;text-decoration:none;">✨ Trendy Items</a>
+  <a onclick="filterByCat('home &amp; kitchen');closeNav()" style="display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.85);font-size:1.05rem;font-weight:500;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.1);cursor:pointer;text-decoration:none;">🍳 Home &amp; Kitchen</a>
+  <a onclick="filterByCat('home essentials');closeNav()" style="display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.85);font-size:1.05rem;font-weight:500;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.1);cursor:pointer;text-decoration:none;">🏡 Home Essentials</a>
+  <a onclick="filterByCat('garden tools');closeNav()" style="display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.85);font-size:1.05rem;font-weight:500;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.1);cursor:pointer;text-decoration:none;">🌿 Garden Tools</a>
+  <a onclick="navigate('cart');closeNav()" style="display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.85);font-size:1.05rem;font-weight:500;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.1);cursor:pointer;text-decoration:none;">🛒 My Cart</a>
+  <a href="https://www.instagram.com/fashion.zoness?igsh=enV1MDNwNGN2ZzJ2" target="_blank" style="display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.85);font-size:1.05rem;font-weight:500;padding:16px 20px;cursor:pointer;text-decoration:none;">📸 Instagram</a>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">🎉</div>
+    <h2>Order Confirmed!</h2>
+    <p id="successOrderId" style="font-size:1rem;font-weight:700;color:var(--clay-dark);background:var(--clay-light);padding:8px 16px;border-radius:50px;margin:10px 0;display:inline-block;letter-spacing:.5px"></p>
+    <p>Thank you for shopping at <strong>Fashion Zones</strong>! A confirmation email with your Order ID has been sent to your email address.</p>
+    <p style="margin-top:10px;font-size:.88rem;color:var(--text-light)">🚚 Your order will be delivered in <strong>4–6 working days</strong>. Redirecting to home…</p>
+  </div>
+</div>
+
+<!-- STICKY BUY BAR (mobile) -->
+<div class="sticky-bar" id="stickyBar">
+  <span class="sticky-product-name" id="stickyName"></span>
+  <span class="sticky-price" id="stickyPrice"></span>
+  <button class="sticky-add" id="stickyAddBtn" onclick="addToCartFromProduct()">Add to Cart</button>
+</div>
+
+<!-- ========== PAGES ========== -->
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">✦ New Season Picks</div>
+        <h1>Smart Picks for<br><span>Smarter Homes</span></h1>
+        <p>Discover curated utility products that make daily life easier, smarter, and more comfortable.</p>
+        <div class="hero-btns">
+          <button class="hero-cta" onclick="document.getElementById('products-anchor').scrollIntoView({behavior:'smooth'})">Shop Now →</button>
+          <button class="hero-cta-outline" onclick="filterByCat('trendy items')">Trending Picks</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Carousel -->
+  <section class="category-section">
+    <div class="section-label">Browse Categories</div>
+    <div class="cat-scroll-outer">
+      <button class="cat-arrow left" onclick="scrollCats(-1)">&#8592;</button>
+      <div class="cat-scroll-wrapper" id="catScroll">
+        <div class="cat-track" id="catTrack"></div>
+      </div>
+      <button class="cat-arrow right" onclick="scrollCats(1)">&#8594;</button>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar" id="products-anchor">
+    <div class="container">
+      <div class="filter-bar-inner">
+        <button class="filter-btn active" data-cat="all" onclick="filterProducts('all',this)">All Products</button>
+        <button class="filter-btn" data-cat="trendy items" onclick="filterProducts('trendy items',this)">✨ Trendy Items</button>
+        <button class="filter-btn" data-cat="home & kitchen" onclick="filterProducts('home & kitchen',this)">🍳 Home &amp; Kitchen</button>
+        <button class="filter-btn" data-cat="home essentials" onclick="filterProducts('home essentials',this)">🏡 Home Essentials</button>
+        <button class="filter-btn" data-cat="garden tools" onclick="filterProducts('garden tools',this)">🌿 Garden Tools</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products -->
+  <section class="products-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" id="productsHeading">All <span>Products</span></h2>
+          <div class="section-divider"></div>
+        </div>
+      </div>
+      <div class="product-grid" id="homeProductGrid"></div>
+      <p id="noProducts" class="hidden" style="text-align:center;padding:40px;color:var(--text-light)">No products found in this category.</p>
+      <div id="seeMoreWrap" class="see-more-wrap hidden">
+        <button class="see-more-btn" onclick="seeMoreProducts()">
+          View All Products <span id="seeMoreCount"></span> more →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item-bar"><span class="trust-icon-lg">🚚</span><div><div class="trust-title">Fast Delivery</div><div class="trust-sub">Pan India Shipping</div></div></div>
+      <div class="trust-item-bar"><span class="trust-icon-lg">🔒</span><div><div class="trust-title">Secure Payment</div><div class="trust-sub">100% Safe &amp; Encrypted</div></div></div>
+      <div class="trust-item-bar"><span class="trust-icon-lg">↩️</span><div><div class="trust-title">Easy Returns</div><div class="trust-sub">Hassle-free Support</div></div></div>
+      <div class="trust-item-bar"><span class="trust-icon-lg">⭐</span><div><div class="trust-title">Quality Assured</div><div class="trust-sub">Verified Products</div></div></div>
+    </div>
+  </div>
+
+  <div id="homeFooter"></div>
+</div>
+
+<!-- PRODUCT PAGE -->
+<div class="page" id="page-product">
+  <div class="product-page-inner">
+    <div class="container">
+      <div class="breadcrumb" id="productBreadcrumb"></div>
+      <div class="product-layout" id="productLayout"></div>
+      <div class="accordion-section" id="accordionSection"></div>
+    </div>
+  </div>
+  <div class="related-section" id="relatedSectionWrap">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">You May Also <span>Like</span></h2>
+          <div class="section-divider"></div>
+        </div>
+      </div>
+      <div class="related-grid" id="relatedGrid"></div>
+    </div>
+  </div>
+  <div id="productFooter"></div>
+</div>
+
+<!-- CATEGORY PAGE: TRENDY ITEMS -->
+<div class="page" id="page-cat-trendy-items">
+  <div class="category-page">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a> / <span>Trendy Items</span></div>
+      <div class="category-hero">
+        <div class="cat-hero-icon">✨</div>
+        <h2>Trendy Items</h2>
+        <p>Discover our hottest trending products — smart, stylish, and designed for modern everyday life. These are the picks everyone is talking about!</p>
+      </div>
+      <div class="product-grid" id="catGrid-trendy-items"></div>
+    </div>
+  </div>
+  <div id="catFooter-trendy-items"></div>
+</div>
+
+<!-- CATEGORY PAGE: HOME & KITCHEN -->
+<div class="page" id="page-cat-home-kitchen">
+  <div class="category-page">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a> / <span>Home &amp; Kitchen</span></div>
+      <div class="category-hero">
+        <div class="cat-hero-icon">🍳</div>
+        <h2>Home &amp; Kitchen</h2>
+        <p>Upgrade your kitchen and home with our premium collection of smart gadgets, tools, and essentials that make everyday tasks easier and more efficient.</p>
+      </div>
+      <div class="product-grid" id="catGrid-home-kitchen"></div>
+    </div>
+  </div>
+  <div id="catFooter-home-kitchen"></div>
+</div>
+
+<!-- CATEGORY PAGE: HOME ESSENTIALS -->
+<div class="page" id="page-cat-home-essentials">
+  <div class="category-page">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a> / <span>Home Essentials</span></div>
+      <div class="category-hero">
+        <div class="cat-hero-icon">🏡</div>
+        <h2>Home Essentials</h2>
+        <p>Everything your home needs — practical, durable, and affordable must-have products for a cleaner, smarter, and more comfortable living space.</p>
+      </div>
+      <div class="product-grid" id="catGrid-home-essentials"></div>
+    </div>
+  </div>
+  <div id="catFooter-home-essentials"></div>
+</div>
+
+<!-- CATEGORY PAGE: GARDEN TOOLS -->
+<div class="page" id="page-cat-garden-tools">
+  <div class="category-page">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a> / <span>Garden Tools</span></div>
+      <div class="category-hero">
+        <div class="cat-hero-icon">🌿</div>
+        <h2>Garden Tools</h2>
+        <p>Grow, nurture, and beautify your garden and outdoor space with our handpicked collection of quality garden tools and plant accessories.</p>
+      </div>
+      <div class="product-grid" id="catGrid-garden-tools"></div>
+    </div>
+  </div>
+  <div id="catFooter-garden-tools"></div>
+</div>
+
+<!-- CART PAGE -->
+<div class="page" id="page-cart">
+  <div class="cart-page">
+    <div class="container">
+      <h1 class="page-heading">🛒 Your Cart</h1>
+      <div id="cartContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT PAGE -->
+<div class="page" id="page-checkout">
+  <div class="checkout-page">
+    <div class="container">
+      <h1 class="page-heading">Checkout</h1>
+      <div class="checkout-layout">
+        <div class="checkout-form-wrap">
+          <div class="form-section-title">Shipping Details</div>
+          <div class="form-row">
+            <div class="form-group"><label>Full Name *</label><input type="text" id="ch-name" placeholder="Your full name"></div>
+            <div class="form-group"><label>Phone *</label><input type="tel" id="ch-phone" placeholder="10-digit mobile number"></div>
+          </div>
+          <div class="form-group"><label>Email Address *</label><input type="email" id="ch-email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>Full Delivery Address *</label><textarea id="ch-address" placeholder="House/Flat No., Street, Area, City, State, PIN"></textarea></div>
+          <div class="form-group"><label>Order Notes (Optional)</label><textarea id="ch-notes" placeholder="Any special instructions..."></textarea></div>
+
+          <!-- PAYMENT METHOD -->
+          <div class="payment-section">
+            <div class="payment-section-title">💳 Select Payment Method</div>
+            <div class="payment-options">
+              <label class="pay-option selected" id="payOptUPI" onclick="selectPayment('upi')">
+                <input type="radio" name="payMethod" value="upi" checked>
+                <div class="pay-option-label">
+                  <span class="pay-option-title">📱 UPI Payment</span>
+                  <span class="pay-option-sub">GPay, PhonePe, Paytm</span>
+                </div>
+              </label>
+              <label class="pay-option" id="payOptCOD" onclick="selectPayment('cod')">
+                <input type="radio" name="payMethod" value="cod">
+                <div class="pay-option-label">
+                  <span class="pay-option-title">💵 Cash on Delivery</span>
+                  <span class="pay-option-sub">Pay when delivered</span>
+                </div>
+              </label>
+            </div>
+
+            <!-- UPI Details Box -->
+            <div class="upi-box show" id="upiBox">
+              <h4>Scan &amp; Pay via UPI</h4>
+              <p>Scan the QR code below or use the UPI ID to pay</p>
+              <img class="upi-qr" src="https://i.ibb.co/Rk0KQGMF/Gallery-1777787606940.png" alt="UPI QR Code – Fashion Zones">
+              <div class="upi-id-box">
+                <div class="upi-id-text">9546700242@ybl</div>
+              </div>
+              <div class="upi-steps">
+                <p>1️⃣ Open any UPI app (GPay / PhonePe / Paytm)</p>
+                <p>2️⃣ Scan the QR code or enter UPI ID manually</p>
+                <p>3️⃣ Enter the exact order amount and pay</p>
+                <p>4️⃣ After payment open your UPI app → go to transaction history</p>
+                <p>5️⃣ Copy the <strong>12-digit UTR number</strong> from transaction details</p>
+                <p>6️⃣ Enter UTR number below and then click Place Order</p>
+              </div>
+
+              <!-- UTR NUMBER FIELD — directly inside UPI box -->
+              <div style="margin-top:16px;text-align:left;background:#fff8e8;border:2px solid #C9972C;border-radius:10px;padding:16px;">
+                <label style="display:block;font-size:.88rem;font-weight:700;color:#2C1A10;margin-bottom:8px;">🔢 Enter 12-Digit UTR / Transaction Number *</label>
+                <div style="position:relative;">
+                  <input type="text" id="utrInput" inputmode="numeric"
+                    style="width:100%;padding:12px 50px 12px 14px;border:2px solid #C8763A;border-radius:8px;font-size:1rem;font-family:inherit;color:#2C1A10;background:white;outline:none;letter-spacing:1px;"
+                    placeholder="Enter 12-digit UTR number" maxlength="12"
+                    oninput="validateUTR(this)">
+                  <span id="utrCounter" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:.78rem;color:#9C7B67;font-weight:700;">0/12</span>
+                </div>
+                <div id="utrError" style="display:none;font-size:.8rem;color:#c0392b;margin-top:7px;background:#fdecea;padding:8px 12px;border-radius:6px;border-left:3px solid #c0392b;font-weight:500;">
+                  ❌ UTR number must be exactly 12 digits. Please check and re-enter.
+                </div>
+                <div id="utrSuccess" style="display:none;font-size:.8rem;color:#2e7d32;margin-top:7px;background:#edf7ed;padding:8px 12px;border-radius:6px;border-left:3px solid #2e7d32;font-weight:500;">
+                  ✅ UTR number looks correct! You can now place your order.
+                </div>
+                <div style="margin-top:10px;font-size:.75rem;color:#7a5c00;line-height:1.7;">
+                  <strong>📱 Where to find UTR number?</strong><br>
+                  • <strong>GPay:</strong> Open app → Transactions → Select payment → "UPI Ref No." or "UPI transaction ID"<br>
+                  • <strong>PhonePe:</strong> Open app → History → Select payment → "Transaction ID"<br>
+                  • <strong>Paytm:</strong> Open app → Passbook → Select payment → "UTR No."<br>
+                  ⚠️ <strong>Without UTR your order will NOT be confirmed.</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- COD Details Box -->
+            <div class="cod-box" id="codBox">
+              <p>✅ <span><strong>Cash on Delivery available</strong> — pay when your order arrives at your doorstep.</span></p>
+              <p>📦 <span>Your order will be packed and dispatched within 1–2 business days.</span></p>
+              <p>🚚 <span>Expected delivery: <strong>4–6 working days</strong> from order confirmation.</span></p>
+              <p>💡 <span>Please keep exact change ready at the time of delivery.</span></p>
+            </div>
+          </div>
+
+          <button class="btn-place-order" id="btnPlaceOrder" onclick="placeOrder()">🛒 Place Order Securely</button>
+          <p style="font-size:.75rem;color:var(--text-light);margin-top:10px;text-align:center">🔒 Your information is secure and encrypted.</p>
+        </div>
+        <div class="order-summary-box">
+          <h3>Your Order</h3>
+          <div id="checkoutItems"></div>
+          <div id="checkoutTotals"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- RETURN POLICY PAGE -->
+<div class="page" id="page-return-policy">
+  <div class="policy-page">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a> / <span>Return Policy</span></div>
+      <div class="policy-box">
+        <div class="policy-icon">↩️</div>
+        <h1 class="policy-title">Return Policy</h1>
+        <p class="policy-subtitle">Last updated: January 2024</p>
+        <div class="policy-section">
+          <h2>7 Days Return Policy</h2>
+          <p>At Fashion Zones, we want you to be completely satisfied with your purchase. We offer a <strong>7-day return policy</strong> from the date of delivery of your order.</p>
+        </div>
+        <div class="policy-section">
+          <h2>⚠️ Unboxing Video is Mandatory</h2>
+          <p>Returns will <strong>only be accepted</strong> if the customer has a <strong>clear and complete unboxing video</strong> recorded at the time of receiving and opening the product package.</p>
+          <ul>
+            <li>The unboxing video must show the sealed package before opening.</li>
+            <li>The video must clearly show the product condition upon delivery.</li>
+            <li>Without a valid unboxing video, return requests <strong>cannot be processed</strong> under any circumstances.</li>
+            <li>The video must be unedited and recorded in one continuous shot.</li>
+          </ul>
+        </div>
+        <div class="policy-section">
+          <h2>Return Eligibility Conditions</h2>
+          <ul>
+            <li>Return request must be raised within <strong>7 days</strong> of the delivery date.</li>
+            <li>The product must be <strong>unused</strong> and in its original condition.</li>
+            <li>Product must be returned in its <strong>original packaging</strong> with all accessories and tags.</li>
+            <li>Products that are damaged due to misuse, negligence, or improper handling are not eligible for return.</li>
+            <li>Consumable or perishable items once opened are not eligible for return.</li>
+          </ul>
+        </div>
+        <div class="policy-section">
+          <h2>Eligible Return Reasons</h2>
+          <ul>
+            <li>Product received is damaged or defective.</li>
+            <li>Wrong product delivered (different from what was ordered).</li>
+            <li>Product is missing parts or accessories as described.</li>
+            <li>Product is significantly different from the description on our website.</li>
+          </ul>
+        </div>
+        <div class="policy-section">
+          <h2>Return Process</h2>
+          <ul>
+            <li>Contact us within 7 days of delivery at <strong>shivkmr603@gmail.com</strong> or call <strong>9546700242</strong>.</li>
+            <li>Share your order details, reason for return, and your unboxing video.</li>
+            <li>Our team will review your request within 2–3 business days.</li>
+            <li>If approved, we will arrange a pickup or provide return shipping instructions.</li>
+            <li>Refund or replacement will be processed within 7–10 business days after receiving the returned product.</li>
+          </ul>
+        </div>
+        <div class="policy-section">
+          <h2>Refund Method</h2>
+          <p>Refunds will be processed to your original payment method or as store credit, based on your preference and the nature of the issue.</p>
+        </div>
+        <div class="policy-contact">
+          <p>For any return related queries, please contact us:</p>
+          <p>📧 <a href="mailto:shivkmr603@gmail.com">shivkmr603@gmail.com</a></p>
+          <p>📞 <a href="tel:9546700242">9546700242</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="returnPolicyFooter"></div>
+</div>
+
+<!-- PRIVACY POLICY PAGE -->
+<div class="page" id="page-privacy-policy">
+  <div class="policy-page">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a> / <span>Privacy Policy</span></div>
+      <div class="policy-box">
+        <div class="policy-icon">🔒</div>
+        <h1 class="policy-title">Privacy Policy</h1>
+        <p class="policy-subtitle">Last updated: January 2024</p>
+        <div class="policy-section">
+          <h2>Introduction</h2>
+          <p>Welcome to <strong>Fashion Zones</strong> (fashionzones.in). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website and make a purchase.</p>
+        </div>
+        <div class="policy-section">
+          <h2>Information We Collect</h2>
+          <p>When you place an order or contact us, we may collect the following information:</p>
+          <ul>
+            <li><strong>Personal Identification Information:</strong> Name, email address, phone number.</li>
+            <li><strong>Delivery Information:</strong> Shipping address, city, state, and PIN code.</li>
+            <li><strong>Order Information:</strong> Products purchased, quantities, and order value.</li>
+            <li><strong>Communication Data:</strong> Messages or queries you send us via email or phone.</li>
+          </ul>
+        </div>
+        <div class="policy-section">
+          <h2>How We Use Your Information</h2>
+          <ul>
+            <li>To process and fulfill your orders.</li>
+            <li>To communicate with you about your order status.</li>
+            <li>To respond to your queries and provide customer support.</li>
+            <li>To improve our website and services.</li>
+            <li>To send you important updates about your orders.</li>
+            <li>We do <strong>not</strong> sell, trade, or rent your personal information to third parties.</li>
+          </ul>
+        </div>
+        <div class="policy-section">
+          <h2>Data Security</h2>
+          <p>We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. Your order data is transmitted securely through our checkout process.</p>
+        </div>
+        <div class="policy-section">
+          <h2>Cookies</h2>
+          <p>Our website uses browser local storage to save your shopping cart data locally on your device. This data is only stored on your device and is not transmitted to our servers except when you place an order.</p>
+        </div>
+        <div class="policy-section">
+          <h2>Third Party Services</h2>
+          <p>We use <strong>Formspree</strong> to process order form submissions securely. When you place an order, your provided details are submitted through Formspree's secure service to reach us. Formspree has its own privacy policy governing your data.</p>
+        </div>
+        <div class="policy-section">
+          <h2>Your Rights</h2>
+          <ul>
+            <li>You have the right to request access to the personal data we hold about you.</li>
+            <li>You can request correction or deletion of your personal data.</li>
+            <li>You can contact us at any time to opt out of any communications.</li>
+          </ul>
+        </div>
+        <div class="policy-section">
+          <h2>Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time. We will notify you of any significant changes by updating the date at the top of this page. We encourage you to review this policy periodically.</p>
+        </div>
+        <div class="policy-contact">
+          <p>For any privacy related queries, please contact us:</p>
+          <p>📧 <a href="mailto:shivkmr603@gmail.com">shivkmr603@gmail.com</a></p>
+          <p>📞 <a href="tel:9546700242">9546700242</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="privacyPolicyFooter"></div>
+</div>
+
+<!-- TERMS OF SERVICE PAGE -->
+<div class="page" id="page-terms-of-service">
+  <div class="policy-page">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a> / <span>Terms of Service</span></div>
+      <div class="policy-box">
+        <div class="policy-icon">📄</div>
+        <h1 class="policy-title">Terms of Service</h1>
+        <p class="policy-subtitle">Last updated: January 2024</p>
+        <div class="policy-section">
+          <h2>Agreement to Terms</h2>
+          <p>By accessing and using the Fashion Zones website (fashionzones.in) and placing an order, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website or services.</p>
+        </div>
+        <div class="policy-section">
+          <h2>Products and Pricing</h2>
+          <ul>
+            <li>All product descriptions, images, and prices are as accurate as possible. We reserve the right to correct any errors.</li>
+            <li>Prices are listed in Indian Rupees (₹) and are inclusive of applicable taxes unless stated otherwise.</li>
+            <li>We reserve the right to change prices at any time without prior notice.</li>
+            <li>Product images are for illustration purposes. Actual product may slightly vary in color or appearance.</li>
+            <li>Stock availability is updated in real time. We are not responsible if a product goes out of stock after your order is placed.</li>
+          </ul>
+        </div>
+        <div class="policy-section">
+          <h2>Orders and Payment</h2>
+          <ul>
+            <li>By placing an order, you confirm that all information provided is accurate and complete.</li>
+            <li>We reserve the right to cancel or refuse any order at our discretion.</li>
+            <li>An order is considered confirmed only after you receive a confirmation from our team.</li>
+            <li>Currently, we accept orders via our website form. Payment details will be communicated after order confirmation.</li>
+          </ul>
+        </div>
+        <div class="policy-section">
+          <h2>Shipping and Delivery</h2>
+          <ul>
+            <li>We offer shipping across India. Delivery timelines may vary based on your location.</li>
+            <li>Estimated delivery is 5–10 business days from order confirmation.</li>
+            <li>We are not responsible for delays caused by courier partners, natural disasters, or circumstances beyond our control.</li>
+            <li>Risk of loss and title for products pass to you upon delivery.</li>
+          </ul>
+        </div>
+        <div class="policy-section">
+          <h2>Returns and Refunds</h2>
+          <p>Please refer to our <a onclick="navigate('return-policy')" style="color:var(--clay);cursor:pointer;font-weight:600">Return Policy</a> for complete details on returns and refunds. Key points:</p>
+          <ul>
+            <li>7-day return window from date of delivery.</li>
+            <li>Unboxing video is mandatory for all return requests.</li>
+            <li>Products must be unused and in original packaging.</li>
+          </ul>
+        </div>
+        <div class="policy-section">
+          <h2>Intellectual Property</h2>
+          <p>All content on this website including text, images, logos, and graphics are the property of Fashion Zones. You may not reproduce, distribute, or use any content without our prior written permission.</p>
+        </div>
+        <div class="policy-section">
+          <h2>Limitation of Liability</h2>
+          <p>Fashion Zones shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our products or services. Our maximum liability is limited to the amount paid for the specific product in question.</p>
+        </div>
+        <div class="policy-section">
+          <h2>Governing Law</h2>
+          <p>These Terms of Service shall be governed by and construed in accordance with the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts in India.</p>
+        </div>
+        <div class="policy-section">
+          <h2>Changes to Terms</h2>
+          <p>We reserve the right to modify these Terms of Service at any time. Changes will be effective immediately upon posting to the website. Your continued use of the website after any changes constitutes your acceptance of the new terms.</p>
+        </div>
+        <div class="policy-contact">
+          <p>For any questions about these Terms, please contact us:</p>
+          <p>📧 <a href="mailto:shivkmr603@gmail.com">shivkmr603@gmail.com</a></p>
+          <p>📞 <a href="tel:9546700242">9546700242</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="termsFooter"></div>
+</div>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+// CART
+const CART_KEY='zone_cart';
+let currentProduct=null,currentQty=1;
+
+function getCart(){try{return JSON.parse(localStorage.getItem(CART_KEY))||[]}catch{return[]}}
+function saveCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));updateCartCount()}
+function updateCartCount(){
+  const n=getCart().reduce((s,i)=>s+i.qty,0);
+  const el=document.getElementById('cartCount');
+  if(el)el.textContent=n;
+}
+function isInCart(id){return getCart().some(i=>i.id===id)}
+function addToCart(id,qty=1){
+  const c=getCart();const ex=c.find(i=>i.id===id);
+  if(ex)ex.qty+=qty;else c.push({id,qty});
+  saveCart(c);
+}
+function removeFromCart(id){saveCart(getCart().filter(i=>i.id!==id));refreshCardBtns()}
+function getCartTotal(){return getCart().reduce((s,i)=>{const p=PRODUCTS.find(pr=>pr.id===i.id);return s+(p?p.price*i.qty:0)},0)}
+// STOCK MANAGEMENT
+const STOCK_KEY="zone_stock";
+function getStockData(){try{return JSON.parse(localStorage.getItem(STOCK_KEY))||{}}catch{return{}}}
+function getStock(id){const d=getStockData();const p=PRODUCTS.find(pr=>pr.id===id);if(!p)return 0;return d[id]!==undefined?d[id]:p.stock}
+function reduceStock(cart){const d=getStockData();cart.forEach(item=>{const cur=getStock(item.id);d[item.id]=Math.max(0,cur-item.qty)});localStorage.setItem(STOCK_KEY,JSON.stringify(d))}
+function refreshCardBtns(){
+  document.querySelectorAll('[data-cart-id]').forEach(btn=>{
+    const inC=isInCart(btn.dataset.cartId);
+    btn.textContent=inC?'In Cart ✓':'+ Add to Cart';
+    btn.classList.toggle('in-cart',inC);
+  });
+  if(currentProduct){
+    const btn=document.getElementById('addToCartBtn');
+    const sb=document.getElementById('stickyAddBtn');
+    const inC=isInCart(currentProduct.id);
+    if(btn){btn.textContent=inC?'✓ In Cart':'🛒 Add to Cart';btn.classList.toggle('in-cart',inC)}
+    if(sb)sb.textContent=inC?'In Cart ✓':'Add to Cart';
+  }
+}
+
+// MOBILE NAV
+function toggleNav(){
+  const ham=document.getElementById('hamburger');
+  const drawer=document.getElementById('mobileNavDrawer');
+  const nav=document.querySelector('.navbar');
+  const isOpen=drawer.style.transform==='translateX(0px)'||drawer.style.transform==='translateX(0)';
+  if(isOpen){
+    drawer.style.transform='translateX(-100%)';
+    ham.classList.remove('open');
+  } else {
+    // Set drawer top to actual navbar bottom so navbar stays fully visible
+    const navH=nav?nav.offsetHeight:66;
+    drawer.style.top=navH+'px';
+    drawer.style.transform='translateX(0)';
+    ham.classList.add('open');
+  }
+}
+function closeNav(){
+  const ham=document.getElementById('hamburger');
+  const drawer=document.getElementById('mobileNavDrawer');
+  if(drawer)drawer.style.transform='translateX(-100%)';
+  if(ham)ham.classList.remove('open');
+}
+document.addEventListener('click',e=>{
+  const drawer=document.getElementById('mobileNavDrawer');
+  const ham=document.getElementById('hamburger');
+  if(drawer&&ham&&drawer.style.transform==='translateX(0px)'&&!drawer.contains(e.target)&&!ham.contains(e.target))closeNav();
+});
+
+// TOAST
+let toastT;
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// FOOTER HTML
+function footerHTML(){return`<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <span class="footer-brand-name">Fashion Zones</span>
+      <div class="footer-tag">Smart Picks for Smarter Homes</div>
+      <p class="footer-desc">Discover smart, trending, and useful home products at the best prices. Quality you can trust, delivered to your door.</p>
+      <div class="footer-contact">
+        <a href="mailto:shivkmr603@gmail.com">✉️ shivkmr603@gmail.com</a>
+        <a href="tel:9546700242">📞 9546700242</a>
+        <a>🌐 fashionzones.in</a>
+      </div>
+      <a class="footer-instagram" href="${CONFIG.instagram}" target="_blank">📸 Follow on Instagram</a>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a onclick="filterByCat('trendy items')">Trendy Items</a></li>
+        <li><a onclick="filterByCat('home & kitchen')">Home &amp; Kitchen</a></li>
+        <li><a onclick="filterByCat('home essentials')">Home Essentials</a></li>
+        <li><a onclick="filterByCat('garden tools')">Garden Tools</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a onclick="navigate('home')">Home</a></li>
+        <li><a onclick="navigate('cart')">Cart</a></li>
+        <li><a onclick="navigate('checkout')">Checkout</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="mailto:shivkmr603@gmail.com">Contact Us</a></li>
+        <li><a onclick="navigate('return-policy')" style="cursor:pointer">Returns Policy</a></li>
+        <li><a onclick="navigate('privacy-policy')" style="cursor:pointer">Privacy Policy</a></li>
+        <li><a onclick="navigate('terms-of-service')" style="cursor:pointer">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Fashion Zones. All rights reserved. | fashionzones.in</span>
+    <span>Made with ♥ in India</span>
+  </div>
+</footer>`}
+
+// NAVIGATION
+function navigate(page,param=null){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('stickyBar').style.display='none';
+  window.scrollTo(0,0);closeNav();
+  if(page==='home'){
+    document.getElementById('page-home').classList.add('active');
+  } else if(page==='product'){
+    renderProductPage(param);
+    document.getElementById('page-product').classList.add('active');
+    if(window.innerWidth<768)document.getElementById('stickyBar').style.display='flex';
+  } else if(page==='cat'){
+    renderCategoryPage(param);
+    const pageId='page-cat-'+param.replace(/[\s&]/g,c=>c===' '?'-':'').replace(/--+/g,'-').replace(/-$/,'');
+    const catEl=document.getElementById(pageId)||document.getElementById('page-cat-trendy-items');
+    catEl.classList.add('active');
+  } else if(page==='cart'){
+    renderCartPage();
+    document.getElementById('page-cart').classList.add('active');
+  } else if(page==='checkout'){
+    if(!getCart().length){navigate('cart');return}
+    renderCheckoutPage();
+    document.getElementById('page-checkout').classList.add('active');
+  } else if(page==='return-policy'){
+    const el=document.getElementById('page-return-policy');
+    el.classList.add('active');
+    if(!document.getElementById('returnPolicyFooter').innerHTML)document.getElementById('returnPolicyFooter').innerHTML=footerHTML();
+  } else if(page==='privacy-policy'){
+    const el=document.getElementById('page-privacy-policy');
+    el.classList.add('active');
+    if(!document.getElementById('privacyPolicyFooter').innerHTML)document.getElementById('privacyPolicyFooter').innerHTML=footerHTML();
+  } else if(page==='terms-of-service'){
+    const el=document.getElementById('page-terms-of-service');
+    el.classList.add('active');
+    if(!document.getElementById('termsFooter').innerHTML)document.getElementById('termsFooter').innerHTML=footerHTML();
+  }
+  const hash=page==='product'?`product-${param}`:page==='cat'?`cat-${encodeURIComponent(param)}`:page;
+  history.pushState(null,'','#'+hash);
+}
+
+// CATEGORY FILTER
+function filterByCat(cat){
+  navigate('cat',cat);
+}
+
+// CARD BUILDER
+function buildCard(p){
+  const inC=isInCart(p.id);
+  const cat=p.category[0].replace(/\b\w/g,c=>c.toUpperCase());
+  return`<div class="product-card">
+    <div class="product-img-wrap" onclick="navigate('product','${p.id}')">
+      <img src="${p.images[0]}" alt="${p.name}" loading="lazy">
+      ${p.badge?`<span class="product-badge">${p.badge}</span>`:''}
+    </div>
+    <div class="product-info">
+      <div class="product-cat">${cat}</div>
+      <div class="product-name" onclick="navigate('product','${p.id}')" style="cursor:pointer">${p.name}</div>
+      <div class="stars">★★★★★</div>
+      <div class="product-price">${CONFIG.currency}${p.price.toLocaleString('en-IN')}</div>
+      <div class="card-actions">
+        <button class="card-btn${inC?' in-cart':''}" data-cart-id="${p.id}" onclick="cardAddToCart('${p.id}')">
+          ${inC?'In Cart ✓':'+ Add to Cart'}
+        </button>
+        <button class="card-view-btn" onclick="navigate('product','${p.id}')">View</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function cardAddToCart(id){
+  if(isInCart(id)){navigate('cart');return}
+  addToCart(id);refreshCardBtns();showToast('Added to cart! 🛒');
+}
+
+// HOME
+function renderHome(){
+  // Category icons
+  document.getElementById('catTrack').innerHTML=CATEGORIES.map(c=>`
+    <div class="cat-item" onclick="filterByCat('${c.key}')">
+      <div class="cat-circle"><img src="${c.image}" alt="${c.label}" loading="lazy" draggable="false"></div>
+      <div class="cat-label">${c.label}</div>
+    </div>`).join('');
+  filterProducts('all',null);
+  document.getElementById('homeFooter').innerHTML=footerHTML();
+  initCarouselDrag();
+  startAutoScroll();
+}
+
+function filterProducts(cat,btn){
+  if(btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+  const list=cat==='all'?PRODUCTS:PRODUCTS.filter(p=>p.category.some(c=>c===cat));
+  const h=document.getElementById('productsHeading');
+  if(h){
+    const label=cat==='all'?'All':cat.replace(/\b\w/g,c=>c.toUpperCase());
+    h.innerHTML=cat==='all'?'All <span>Products</span>':label+' <span>Products</span>';
+  }
+  const grid=document.getElementById('homeProductGrid');
+  const np=document.getElementById('noProducts');
+  const smWrap=document.getElementById('seeMoreWrap');
+  if(!list.length){if(grid)grid.innerHTML='';if(np)np.classList.remove('hidden');if(smWrap)smWrap.classList.add('hidden');return}
+  if(np)np.classList.add('hidden');
+  if(cat==='all'){
+    if(grid)grid.innerHTML=list.map(buildCard).join('');
+    if(smWrap)smWrap.classList.add('hidden');
+  } else {
+    const show=list.slice(0,6);
+    if(grid)grid.innerHTML=show.map(buildCard).join('');
+    if(smWrap){
+      if(list.length>6){smWrap.classList.remove('hidden');smWrap.dataset.cat=cat;document.getElementById('seeMoreCount').textContent=list.length-6;}
+      else smWrap.classList.add('hidden');
+    }
+  }
+}
+
+function seeMoreProducts(){
+  const cat=document.getElementById('seeMoreWrap').dataset.cat||'all';
+  if(cat==='all'){
+    // Show all products on home page without limit
+    const grid=document.getElementById('homeProductGrid');
+    const smWrap=document.getElementById('seeMoreWrap');
+    if(grid)grid.innerHTML=PRODUCTS.map(buildCard).join('');
+    if(smWrap)smWrap.classList.add('hidden');
+  } else {
+    filterByCat(cat);
+  }
+}
+
+// CAROUSEL
+let autoScrollInt=null;
+function startAutoScroll(){
+  const sc=document.getElementById('catScroll');
+  if(!sc)return;
+  clearInterval(autoScrollInt);
+  let dir=1,paused=false;
+  sc.addEventListener('mouseenter',()=>paused=true);
+  sc.addEventListener('mouseleave',()=>paused=false);
+  sc.addEventListener('touchstart',()=>paused=true);
+  sc.addEventListener('touchend',()=>setTimeout(()=>paused=false,2000));
+  autoScrollInt=setInterval(()=>{
+    if(paused)return;
+    sc.scrollLeft+=dir*1;
+    if(sc.scrollLeft>=sc.scrollWidth-sc.clientWidth-2)dir=-1;
+    if(sc.scrollLeft<=0)dir=1;
+  },20);
+}
+function initCarouselDrag(){
+  const el=document.getElementById('catScroll');
+  if(!el)return;
+  let isDown=false,startX,scrollLeft;
+  el.addEventListener('mousedown',e=>{isDown=true;el.classList.add('grabbing');startX=e.pageX-el.offsetLeft;scrollLeft=el.scrollLeft});
+  el.addEventListener('mouseleave',()=>{isDown=false;el.classList.remove('grabbing')});
+  el.addEventListener('mouseup',()=>{isDown=false;el.classList.remove('grabbing')});
+  el.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-el.offsetLeft;el.scrollLeft=scrollLeft-(x-startX)*1.5});
+}
+function scrollCats(dir){document.getElementById('catScroll').scrollBy({left:dir*200,behavior:'smooth'})}
+
+// PRODUCT PAGE
+function renderProductPage(id){
+  const p=PRODUCTS.find(pr=>pr.id===id);
+  if(!p){navigate('home');return}
+  currentProduct=p;currentQty=1;
+  const inC=isInCart(id);
+  const cat=p.category[0].replace(/\b\w/g,c=>c.toUpperCase());
+  const catKey=p.category[0];
+
+  document.getElementById('productBreadcrumb').innerHTML=
+    `<a onclick="navigate('home')">Home</a> /
+     <a onclick="navigate('cat','${catKey}')" style="cursor:pointer">${cat}</a> /
+     <span>${p.name}</span>`;
+
+  document.getElementById('productLayout').innerHTML=`
+    <div class="gallery">
+      <div class="gallery-main"><img src="${p.images[0]}" alt="${p.name}" id="mainImg" style="transition:opacity .25s"></div>
+      <div class="gallery-thumbs">
+        ${p.images.map((img,i)=>`
+          <div class="gallery-thumb${i===0?' active':''}" onclick="switchImg('${img}',this)">
+            <img src="${img}" alt="" loading="lazy">
+          </div>`).join('')}
+      </div>
+    </div>
+    <div>
+      <div class="product-detail-cat">${cat}</div>
+      <h1 class="product-detail-name">${p.name}</h1>
+      <div class="stars" style="font-size:.95rem;margin-bottom:10px">★★★★★
+        <span style="font-size:.8rem;color:var(--text-light);font-family:var(--font-body)">(${Math.floor(Math.random()*200+80)} reviews)</span>
+      </div>
+      <div class="product-detail-price">${CONFIG.currency}${p.price.toLocaleString('en-IN')}</div>
+      <span class="stock-badge" id="stockBadge">${getStock(p.id)>0?"✅ In Stock ("+getStock(p.id)+" available)":"❌ Out of Stock"}</span>
+      <p class="product-short-desc">${p.description.substring(0,200)}…</p>
+      <div class="qty-row">
+        <span class="qty-label">Quantity:</span>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <span class="qty-num" id="qtyDisplay">1</span>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+      <div class="action-btns">
+        <button class="btn-buy-now" onclick="buyNow()">⚡ Buy Now</button>
+        <button class="btn-add-cart${inC?' in-cart':''}" id="addToCartBtn" onclick="addToCartFromProduct()">
+          ${inC?'✓ In Cart':'🛒 Add to Cart'}
+        </button>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item"><span class="trust-icon">🚚</span> Free Delivery</div>
+        <div class="trust-item"><span class="trust-icon">🔒</span> Secure Order</div>
+        <div class="trust-item"><span class="trust-icon">📞</span> 24/7 Support</div>
+        <div class="trust-item"><span class="trust-icon">↩️</span> Easy Returns</div>
+      </div>
+    </div>`;
+
+  // Sticky bar
+  document.getElementById('stickyName').textContent=p.name;
+  document.getElementById('stickyPrice').textContent=CONFIG.currency+p.price.toLocaleString('en-IN');
+  document.getElementById('stickyAddBtn').textContent=inC?'In Cart ✓':'Add to Cart';
+
+  // Accordion
+  document.getElementById('accordionSection').innerHTML=`
+    <div class="accordion-title-main">Product Details</div>
+    <div class="accordion-list">
+      ${acc('📋 Description',`<p>${p.description}</p>`)}
+      ${acc('✅ Features',`<ul>${p.features.map(f=>`<li>${f}</li>`).join('')}</ul>`)}
+      ${acc('⚙️ How It Works',`<p>${p.howItWorks}</p>`)}
+      ${acc('💡 Why Choose This Product',`<p>${p.whyChoose}</p>`)}      ${acc('↩️ Return Policy',`<p><strong>7 Days Return Policy</strong></p><p style='margin-top:8px'>We offer a <strong>7-day return policy</strong> from the date of delivery. To be eligible for a return, please note the following conditions:</p><ul><li><strong>Unboxing video is mandatory</strong> — Returns will only be accepted if the customer has a clear and complete unboxing video recorded at the time of receiving the product. Without an unboxing video, return requests cannot be processed.</li><li>The product must be unused and in its original packaging.</li><li>Return request must be raised within 7 days of delivery.</li><li>Damaged, defective, or wrong products will be replaced or refunded after video verification.</li><li>To initiate a return, contact us at <strong>shivkmr603@gmail.com</strong> or call <strong>9546700242</strong> with your order details and unboxing video.</li></ul>`)}
+    </div>`;
+
+  // Related
+  let related=PRODUCTS.filter(pr=>pr.id!==id&&pr.category.some(c=>p.category.includes(c))).slice(0,4);
+  if(related.length<4)related=[...related,...PRODUCTS.filter(pr=>pr.id!==id&&!related.find(r=>r.id===pr.id))].slice(0,4);
+  document.getElementById('relatedGrid').innerHTML=related.map(buildCard).join('');
+  document.getElementById('productFooter').innerHTML=footerHTML();
+}
+
+function acc(title,content){
+  return`<div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-head-title">${title}</span>
+      <span class="accordion-icon">+</span>
+    </div>
+    <div class="accordion-body"><div class="accordion-content">${content}</div></div>
+  </div>`;
+}
+function toggleAcc(header){
+  const item=header.parentElement;
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.accordion-item').forEach(i=>i.classList.remove('open'));
+  document.querySelectorAll('.accordion-icon').forEach(i=>i.textContent='+');
+  if(!isOpen){item.classList.add('open');header.querySelector('.accordion-icon').textContent='+'}
+}
+
+function switchImg(src,thumb){
+  const img=document.getElementById('mainImg');
+  img.style.opacity='0';
+  setTimeout(()=>{img.src=src;img.style.opacity='1'},200);
+  document.querySelectorAll('.gallery-thumb').forEach(t=>t.classList.remove('active'));
+  thumb.classList.add('active');
+}
+function changeQty(d){currentQty=Math.max(1,Math.min(currentProduct?currentProduct.stock:99,currentQty+d));document.getElementById('qtyDisplay').textContent=currentQty}
+function addToCartFromProduct(){
+  if(!currentProduct)return;
+  addToCart(currentProduct.id,currentQty);
+  refreshCardBtns();
+  showToast(currentQty>1?currentQty+'x Added to cart! 🛒':'Added to cart! 🛒');
+}
+function buyNow(){if(!currentProduct)return;addToCart(currentProduct.id,currentQty);navigate('checkout')}
+
+// CATEGORY PAGES
+function catPageId(catKey){
+  // convert "home & kitchen" -> "home-kitchen", "trendy items" -> "trendy-items" etc
+  return catKey.replace(/&\s*/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/-$/,'');
+}
+function renderCategoryPage(catKey){
+  const slug=catPageId(catKey);
+  const grid=document.getElementById('catGrid-'+slug);
+  const footerEl=document.getElementById('catFooter-'+slug);
+  if(!grid)return;
+  const prods=PRODUCTS.filter(p=>p.category.includes(catKey));
+  grid.innerHTML=prods.length?prods.map(buildCard).join(''):'<p style="color:var(--text-light);padding:40px;text-align:center;grid-column:1/-1">No products in this category yet.</p>';
+  if(footerEl&&!footerEl.innerHTML)footerEl.innerHTML=footerHTML();
+}
+
+// CART PAGE
+function renderCartPage(){
+  const el=document.getElementById('cartContent');
+  const cart=getCart();
+  if(!cart.length){
+    el.innerHTML=`<div class="empty-cart">
+      <div class="icon">🛍️</div>
+      <h3>Your cart is empty</h3>
+      <p>Explore our collection and add products you love.</p>
+      <button class="btn-shop" onclick="navigate('home')">Continue Shopping</button>
+    </div>`;return;
+  }
+  const subtotal=getCartTotal();
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  el.innerHTML=`<div class="cart-layout">
+    <div class="cart-items-wrap">
+      ${cart.map(item=>{
+        const p=PRODUCTS.find(pr=>pr.id===item.id);if(!p)return'';
+        return`<div class="cart-item" id="ci-${p.id}">
+          <img class="cart-item-img" src="${p.images[0]}" alt="${p.name}" onclick="navigate('product','${p.id}')">
+          <div class="cart-item-info">
+            <div class="cart-item-name" onclick="navigate('product','${p.id}')">${p.name}</div>
+            <div class="cart-item-price" id="cp-${p.id}">${CONFIG.currency}${(p.price*item.qty).toLocaleString('en-IN')}</div>
+            <div class="cart-item-controls">
+              <div class="cart-qty-wrap">
+                <button class="cart-qty-btn" onclick="adjQty('${p.id}',-1)">−</button>
+                <span class="cart-qty-num" id="cq-${p.id}">${item.qty}</span>
+                <button class="cart-qty-btn" onclick="adjQty('${p.id}',1)">+</button>
+              </div>
+              <button class="remove-btn" onclick="remItem('${p.id}')">Remove</button>
+            </div>
+          </div>
+          <button class="cart-item-remove-x" onclick="remItem('${p.id}')">✕</button>
+        </div>`;}).join('')}
+    </div>
+    <div class="cart-summary">
+      <h3>Order Summary</h3>
+      <div class="summary-row"><span>Items (${count})</span><span>${CONFIG.currency}${subtotal.toLocaleString('en-IN')}</span></div>
+      <div class="summary-row"><span>Shipping</span><span style="color:var(--sage);font-weight:600">FREE</span></div>
+      <div class="summary-total"><span>Total</span><span>${CONFIG.currency}${subtotal.toLocaleString('en-IN')}</span></div>
+      <button class="btn-checkout" onclick="navigate('checkout')">Proceed to Checkout →</button>
+      <button class="btn-continue" onclick="navigate('home')">← Continue Shopping</button>
+    </div>
+  </div>`;
+}
+
+function adjQty(id,d){
+  const c=getCart();const item=c.find(i=>i.id===id);if(!item)return;
+  item.qty=Math.max(1,item.qty+d);saveCart(c);
+  const qel=document.getElementById('cq-'+id);const pel=document.getElementById('cp-'+id);
+  const p=PRODUCTS.find(pr=>pr.id===id);
+  if(qel)qel.textContent=item.qty;
+  if(pel&&p)pel.textContent=CONFIG.currency+(p.price*item.qty).toLocaleString('en-IN');
+}
+function remItem(id){
+  removeFromCart(id);
+  const el=document.getElementById('ci-'+id);if(el)el.remove();
+  if(!getCart().length)renderCartPage();
+}
+
+// CHECKOUT
+function renderCheckoutPage(){
+  // Reset payment UI to UPI default when checkout page loads
+  setTimeout(()=>{
+    const utrField=document.getElementById('utrField');
+    const upiBox=document.getElementById('upiBox');
+    if(utrField)utrField.style.display='block';
+    if(upiBox)upiBox.classList.add('show');
+    const payOptUPI=document.getElementById('payOptUPI');
+    const payOptCOD=document.getElementById('payOptCOD');
+    if(payOptUPI)payOptUPI.classList.add('selected');
+    if(payOptCOD)payOptCOD.classList.remove('selected');
+    const upiRadio=document.querySelector('input[value="upi"]');
+    if(upiRadio)upiRadio.checked=true;
+  },50);
+  const cart=getCart();let total=0;
+  document.getElementById('checkoutItems').innerHTML=cart.map(item=>{
+    const p=PRODUCTS.find(pr=>pr.id===item.id);if(!p)return'';
+    const lt=p.price*item.qty;total+=lt;
+    return`<div class="order-item">
+      <img src="${p.images[0]}" alt="${p.name}">
+      <div class="order-item-name">${p.name}<div class="order-item-sub">Qty: ${item.qty}</div></div>
+      <div class="order-item-price">${CONFIG.currency}${lt.toLocaleString('en-IN')}</div>
+    </div>`;}).join('');
+  document.getElementById('checkoutTotals').innerHTML=`
+    <div style="margin-top:12px">
+      <div class="summary-row"><span>Subtotal</span><span>${CONFIG.currency}${total.toLocaleString('en-IN')}</span></div>
+      <div class="summary-row"><span>Shipping</span><span style="color:var(--sage);font-weight:600">FREE</span></div>
+      <div class="summary-total"><span>Total</span><span>${CONFIG.currency}${total.toLocaleString('en-IN')}</span></div>
+    </div>`;
+}
+
+// Payment method selector
+function selectPayment(method){
+  document.getElementById('payOptUPI').classList.toggle('selected', method==='upi');
+  document.getElementById('payOptCOD').classList.toggle('selected', method==='cod');
+  document.getElementById('upiBox').classList.toggle('show', method==='upi');
+  document.getElementById('codBox').classList.toggle('show', method==='cod');
+  document.querySelector('input[value="'+method+'"]').checked=true;
+  // Show UTR field only when UPI is selected
+  const utrField=document.getElementById('utrField');
+  if(utrField)utrField.style.display=method==='upi'?'block':'none';
+  // Reset UTR state when switching
+  if(method!=='upi'){
+    const inp=document.getElementById('utrInput');
+    const err=document.getElementById('utrError');
+    const suc=document.getElementById('utrSuccess');
+    const ctr=document.getElementById('utrCounter');
+    if(inp){inp.value='';inp.className='utr-input';}
+    if(err)err.classList.add('hidden');
+    if(suc)suc.classList.add('hidden');
+    if(ctr)ctr.textContent='0/12';
+  }
+}
+
+// Live UTR validation
+function validateUTR(input){
+  const val=input.value.replace(/[^0-9]/g,'');
+  input.value=val; // only digits
+  const ctr=document.getElementById('utrCounter');
+  const err=document.getElementById('utrError');
+  const suc=document.getElementById('utrSuccess');
+  if(ctr)ctr.textContent=val.length+'/12';
+  if(val.length===0){
+    input.className='utr-input';
+    if(err)err.classList.add('hidden');
+    if(suc)suc.classList.add('hidden');
+  } else if(val.length===12){
+    input.className='utr-input utr-ok';
+    if(err)err.classList.add('hidden');
+    if(suc)suc.classList.remove('hidden');
+  } else {
+    input.className='utr-input utr-err';
+    if(err)err.classList.remove('hidden');
+    if(suc)suc.classList.add('hidden');
+  }
+}
+
+// Generate unique Order ID
+function generateOrderId(){
+  const ORDER_NUM_KEY='fz_order_num';
+  let num=parseInt(localStorage.getItem(ORDER_NUM_KEY)||'1000');
+  num=num+1;
+  localStorage.setItem(ORDER_NUM_KEY,num.toString());
+  return 'FZ-'+num;
+}
+
+async function placeOrder(){
+  const name=document.getElementById('ch-name').value.trim();
+  const email=document.getElementById('ch-email').value.trim();
+  const phone=document.getElementById('ch-phone').value.trim();
+  const address=document.getElementById('ch-address').value.trim();
+  const notes=document.getElementById('ch-notes').value.trim();
+  const payMethod=document.querySelector('input[name="payMethod"]:checked')?.value||'cod';
+  const payLabel=payMethod==='upi'?'UPI Payment (9546700242@ybl)':'Cash on Delivery (COD)';
+
+  // Validate fields
+  if(!name||!email||!phone||!address){showToast('⚠️ Please fill all required fields!');return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('⚠️ Please enter a valid email!');return}
+
+  // UTR validation for UPI — exactly 12 digits required
+  if(payMethod==='upi'){
+    const utr=document.getElementById('utrInput').value.trim();
+    if(!utr){
+      showToast('⚠️ Please enter your 12-digit UTR number!');
+      document.getElementById('utrInput').focus();
+      validateUTR(document.getElementById('utrInput'));
+      return;
+    }
+    if(utr.length!==12){
+      showToast('⚠️ UTR must be exactly 12 digits! You entered '+utr.length+' digits.');
+      document.getElementById('utrInput').focus();
+      document.getElementById('utrInput').className='utr-input utr-err';
+      document.getElementById('utrError').classList.remove('hidden');
+      document.getElementById('utrSuccess').classList.add('hidden');
+      return;
+    }
+  }
+
+  const cart=getCart();
+  if(!cart.length){showToast('Cart is empty!');return}
+  const btn=document.getElementById('btnPlaceOrder');
+  btn.disabled=true;btn.textContent='Placing Order...';
+
+  // Generate Order ID
+  const orderId=generateOrderId();
+  const utrNo=payMethod==='upi'?(document.getElementById('utrInput').value.trim()):'N/A (COD)';
+  const cartText=cart.map(i=>{const p=PRODUCTS.find(pr=>pr.id===i.id);return p?p.name+' x'+i.qty+' = '+CONFIG.currency+(p.price*i.qty).toLocaleString('en-IN'):''}).filter(Boolean).join('\n');
+  const total=getCartTotal();
+
+  // Email to store owner
+  try{
+    const res=await fetch(CONFIG.formspree,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        _subject:'New Order '+orderId+' from '+name+' – Fashion Zones',
+        'Order ID':orderId,
+        'Customer Name':name,
+        'Customer Email':email,
+        'Customer Phone':phone,
+        'Delivery Address':address,
+        'Order Items':cartText,
+        'Order Total':CONFIG.currency+total.toLocaleString('en-IN'),
+        'Payment Method':payLabel,
+        'UTR / Transaction No':utrNo,
+        'Notes':notes||'None'
+      })
+    });
+    if(res.ok){
+      // Confirmation email to customer
+      const confirmMsg='Dear '+name+','
+        +'\n\nThank you for shopping with Fashion Zones! Your order has been successfully placed. 🎉'
+        +'\n\n━━━━━━━━━━━━━━━━━━━━━━━'
+        +'\n📋 ORDER ID: '+orderId
+        +'\n━━━━━━━━━━━━━━━━━━━━━━━'
+        +'\n\n📦 ORDER DETAILS:'
+        +'\n'+cartText
+        +'\n\n💰 Total Amount: '+CONFIG.currency+total.toLocaleString('en-IN')
+        +'\n💳 Payment Method: '+payLabel
+        +(payMethod==='upi'?'\n🔢 UTR Number: '+utrNo:'')
+        +'\n\n🚚 DELIVERY INFORMATION:'
+        +'\nYour order will be delivered within 4–6 working days.'
+        +'\n\n📍 Delivery Address:'
+        +'\n'+address
+        +'\n\n━━━━━━━━━━━━━━━━━━━━━━━'
+        +'\nFor any queries, please contact us with your Order ID.'
+        +'\n📧 Email: shivkmr603@gmail.com'
+        +'\n📞 Phone: 9546700242'
+        +'\n\nThank you for trusting Fashion Zones!'
+        +'\n\nWarm regards,'
+        +'\nTeam Fashion Zones'
+        +'\nfashionzones.in';
+
+      await fetch(CONFIG.formspree,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({
+          _subject:'✅ Order Confirmed '+orderId+' – Fashion Zones | Dear '+name+', your order is placed!',
+          _replyto:email,
+          'To':email,
+          'Customer Name':name,
+          'Message':confirmMsg
+        })
+      });
+
+      // Show order ID in success overlay
+      const so=document.getElementById('successOrderId');
+      if(so)so.textContent='Your Order ID: '+orderId;
+      reduceStock(cart);saveCart([]);updateCartCount();
+      document.getElementById('successOverlay').classList.add('show');
+      setTimeout(()=>{document.getElementById('successOverlay').classList.remove('show');navigate('home')},5000);
+    }else{showToast('⚠️ Something went wrong. Please try again.');btn.disabled=false;btn.textContent='🛒 Place Order Securely'}
+  }catch(e){showToast('⚠️ Network error. Check your connection.');btn.disabled=false;btn.textContent='🛒 Place Order Securely'}
+}
+
+// SEARCH
+function handleSearch(val){
+  const dd=document.getElementById('searchDropdown');
+  if(!val||val.length<2){dd.classList.add('hidden');return}
+  const res=PRODUCTS.filter(p=>p.name.toLowerCase().includes(val.toLowerCase())).slice(0,5);
+  if(!res.length){dd.classList.add('hidden');return}
+  dd.innerHTML=res.map(p=>`<div class="search-result-item" onclick="navigate('product','${p.id}');closeSearch()">
+    <img src="${p.images[0]}" alt="${p.name}">
+    <div><div class="search-result-name">${p.name}</div><div class="search-result-price">${CONFIG.currency}${p.price.toLocaleString('en-IN')}</div></div>
+  </div>`).join('');
+  dd.classList.remove('hidden');
+}
+function handleMobileSearch(val){
+  const dd=document.getElementById('mobileSearchDropdown');
+  if(!val||val.length<2){dd.classList.add('hidden');return}
+  const res=PRODUCTS.filter(p=>p.name.toLowerCase().includes(val.toLowerCase())).slice(0,5);
+  if(!res.length){dd.classList.add('hidden');return}
+  dd.innerHTML=res.map(p=>`<div class="search-result-item" onclick="navigate('product','${p.id}');document.getElementById('mobileSearchInput').value='';document.getElementById('mobileSearchDropdown').classList.add('hidden')">
+    <img src="${p.images[0]}" alt="${p.name}">
+    <div><div class="search-result-name">${p.name}</div><div class="search-result-price">${CONFIG.currency}${p.price.toLocaleString('en-IN')}</div></div>
+  </div>`).join('');
+  dd.classList.remove('hidden');
+}
+function closeSearch(){document.getElementById('searchDropdown').classList.add('hidden');document.getElementById('searchInput').value=''}
+
+// HASH ROUTING
+window.addEventListener('popstate',handleHash);
+function handleHash(){
+  const hash=decodeURIComponent(window.location.hash.replace('#',''));
+  if(!hash||hash==='home')navigate('home');
+  else if(hash.startsWith('product-'))navigate('product',hash.replace('product-',''));
+  else if(hash.startsWith('cat-'))navigate('cat',hash.replace('cat-',''));
+  else if(hash==='cart')navigate('cart');
+  else if(hash==='checkout')navigate('checkout');
+  else if(hash==='return-policy')navigate('return-policy');
+  else if(hash==='privacy-policy')navigate('privacy-policy');
+  else if(hash==='terms-of-service')navigate('terms-of-service');
+  else navigate('home');
+}
+
+// RESPONSIVE - mobile search bar
+function checkMobile(){
+  document.getElementById('mobileSearchWrap').style.display=window.innerWidth<=480?'block':'none';
+}
+window.addEventListener('resize',checkMobile);
+
+// INIT
+document.addEventListener('DOMContentLoaded',()=>{
+  renderHome();
+  updateCartCount();
+  checkMobile();
+  if(window.location.hash)handleHash();
+});
+</script>
+</body>
+</html>
