@@ -438,6 +438,26 @@ ul{list-style:none}
 .utr-hint{font-size:.76rem;color:#7a5c00;margin-top:10px;line-height:1.7;background:#fff8e8;padding:10px 12px;border-radius:6px;border-left:3px solid var(--gold)}
 
 </style>
+
+<script>
+// Dynamic OG - runs when page loads for browser sharing
+(function(){
+  var hash = window.location.hash;
+  if(hash && hash.startsWith('#product-')) {
+    var id = hash.replace('#product-','');
+    var p = typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(function(pr){return pr.id===id}) : null;
+    if(p && p.images && p.images[0]) {
+      var metas = document.querySelectorAll('meta[property="og:image"], meta[name="twitter:image"]');
+      metas.forEach(function(m){ m.setAttribute('content', p.images[0]); });
+      var titleMeta = document.querySelector('meta[property="og:title"]');
+      if(titleMeta) titleMeta.setAttribute('content', p.name + ' – Fashion Zones');
+      var descMeta = document.querySelector('meta[property="og:description"]');
+      if(descMeta) descMeta.setAttribute('content', p.description ? p.description.substring(0,150)+'...' : '');
+      document.title = p.name + ' – Fashion Zones';
+    }
+  }
+})();
+</script>
 </head>
 <body>
 
