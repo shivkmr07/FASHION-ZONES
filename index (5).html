@@ -14,19 +14,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fashion Zones – Smart Picks for Smarter Homes</title>
 <meta name="description" content="Fashion Zones – Premium home essentials, trendy items, kitchen tools, and garden accessories. Shop at fashionzones.in">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://fashionzones.in/">
-<meta property="og:title" content="Fashion Zones – Smart Picks for Smarter Homes">
-<meta property="og:description" content="Discover premium home essentials, trendy gadgets, kitchen tools and more at unbeatable prices. Free delivery across India!">
-<meta property="og:image" content="https://i.ibb.co/sJQWtw94/61n-Mbr-ZBSVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif">
-<meta property="og:image:width" content="700">
-<meta property="og:image:height" content="700">
-<meta property="og:site_name" content="Fashion Zones">
-<meta property="og:locale" content="en_IN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fashion Zones – Smart Picks for Smarter Homes">
-<meta name="twitter:description" content="Discover premium home essentials, trendy gadgets, kitchen tools and more at unbeatable prices.">
-<meta name="twitter:image" content="https://i.ibb.co/sJQWtw94/61n-Mbr-ZBSVL-AC-AIweblab1006854-T4-FMavif-SF700-700-PQ69.avif">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -438,26 +425,6 @@ ul{list-style:none}
 .utr-hint{font-size:.76rem;color:#7a5c00;margin-top:10px;line-height:1.7;background:#fff8e8;padding:10px 12px;border-radius:6px;border-left:3px solid var(--gold)}
 
 </style>
-
-<script>
-// Dynamic OG - runs when page loads for browser sharing
-(function(){
-  var hash = window.location.hash;
-  if(hash && hash.startsWith('#product-')) {
-    var id = hash.replace('#product-','');
-    var p = typeof PRODUCTS !== 'undefined' ? PRODUCTS.find(function(pr){return pr.id===id}) : null;
-    if(p && p.images && p.images[0]) {
-      var metas = document.querySelectorAll('meta[property="og:image"], meta[name="twitter:image"]');
-      metas.forEach(function(m){ m.setAttribute('content', p.images[0]); });
-      var titleMeta = document.querySelector('meta[property="og:title"]');
-      if(titleMeta) titleMeta.setAttribute('content', p.name + ' – Fashion Zones');
-      var descMeta = document.querySelector('meta[property="og:description"]');
-      if(descMeta) descMeta.setAttribute('content', p.description ? p.description.substring(0,150)+'...' : '');
-      document.title = p.name + ' – Fashion Zones';
-    }
-  }
-})();
-</script>
 </head>
 <body>
 
